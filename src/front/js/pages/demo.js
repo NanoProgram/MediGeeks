@@ -40,7 +40,7 @@ export const Demo = () => {
       </ul>
       <br />
       <Link to="/">
-        <button className="btn btn-primary">Back OPROROROR home</button>
+        <button className="btn btn-primary">Back To home</button>
       </Link>
     </div>
   );
