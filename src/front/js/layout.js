@@ -5,9 +5,9 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
-import { Cita } from "./pages/cita_1";
-import { Cita2 } from "./pages/cita_2";
-import { Cita3 } from "./pages/cita_3";
+import { Cita } from "./pages/cita_1.jsx";
+import { Cita2 } from "./pages/cita_2.jsx";
+import { Cita3 } from "./pages/cita_3.jsx";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
