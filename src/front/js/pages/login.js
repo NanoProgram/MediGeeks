@@ -60,7 +60,7 @@ export function Login() {
       ></div>
 
       <Card
-        className="mx-5 mb-5 p-5 shadow-5"
+        className="d-flex justify-content-center align-items-center h-100"
         style={{
           marginTop: "-100px",
           background: "hsla(0, 0%, 100%, 0.8)",
@@ -69,17 +69,7 @@ export function Login() {
       >
         <Card.Body className="p-5 text-center">
           <h1 className="fw-bold mb-5">MediGeeks</h1>
-          <Row>
-            <Col xs={6}>
-              <Form.Control placeholder="First name" id="form1" type="text" />
-            </Col>
-            <Col xs={6}>
-              <Form.Group>
-                <Form.Control placeholder="Last name" id="form1" type="text" />
-              </Form.Group>
-            </Col>
-            &nbsp;
-          </Row>
+          
           <Form.Control
             wrapperClass="mb-4"
             placeholder="Email"
@@ -111,6 +101,9 @@ export function Login() {
               <FontAwesomeIcon icon={faGoogle} size="sm" />
             </Button>
           </div>
+          <Button variant="link" onClick={() => this.handleForgotPassword()}>
+            Se te olvidó la contraseña?
+          </Button>
         </Card.Body>
       </Card>
     </Container>
