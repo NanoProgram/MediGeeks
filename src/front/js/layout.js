@@ -11,7 +11,7 @@ import { Cita3 } from "./pages/cita_3.jsx";
 
 import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/navbar";
+import { Sidebar } from "./component/navbar";
 import { Footer } from "./component/footer";
 
 import { Login } from "./pages/login";
@@ -27,7 +27,7 @@ const Layout = () => {
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
-          <Navbar />
+          <Sidebar />
           <Routes>
             <Route element={<Login />} path="/login" />
             <Route element={<SignUp />} path="/signUp" />
