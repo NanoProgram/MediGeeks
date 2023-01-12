@@ -9,7 +9,7 @@ export const Home = () => {
   return (
     <div className="container text-center border p-1">
       <div className="text-center mt-5">
-        <h1>MediGeeks</h1>
+        <h1>MediGeeks GO GO GO</h1>
       </div>
       <div className="row justify-content-center g-2 ">
         <div className="col-4 ">
