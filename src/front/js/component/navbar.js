@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Offcanvas from 'react-bootstrap/Offcanvas';
+import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Offcanvas from "react-bootstrap/Offcanvas";
 
-
- export function Example() {
+export function Example() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -11,7 +10,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 
   return (
     <>
-      <Button  variant="primary" onClick={handleShow} >
+      <Button variant="primary" onClick={handleShow}>
         Menu
       </Button>
 
