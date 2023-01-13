@@ -43,6 +43,18 @@ def users_table_id(user_id):
 
     return "Usuario no existe", 404
 
+#API USER GET/ID
+#@api.route('/mediGeeks/users/<user_id>', methods=['PUT'])
+#def update_user_id(user_id):
+    
+    #data = request.json 
+    #for user in usersTable: 
+        #if user["ID"] == user_id:
+            #if user["NAME"] in data:
+                #user.name = data["NAME"]
+
+    #return "Usuario no existe", 404
+
 #API users POST
 @api.route('/mediGeeks/users', methods=['POST'])
 def add_new_user():
