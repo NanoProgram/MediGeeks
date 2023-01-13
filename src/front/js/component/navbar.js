@@ -15,7 +15,7 @@ export function Sidebar() {
         <h3>Menu</h3>
       </Button>
 
-      <Offcanvas show={show} onHide={handleClose} backdrop="static">
+      <Offcanvas width="200px" show={show} onHide={handleClose} backdrop="static">
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>
             <h2>MediGeeks</h2>
