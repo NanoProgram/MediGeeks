@@ -43,24 +43,24 @@ def users_table_id(user_id):
 
     return "Usuario no existe", 404
 
-#API USER GET/ID
-#@api.route('/mediGeeks/users/<user_id>', methods=['PUT'])
-#def update_user_id(user_id):
-    
-    #data = request.json 
-    #for user in usersTable: 
-        #if user["ID"] == user_id:
-            #if user["NAME"] in data:
-                #user.name = data["NAME"]
-
-    #return "Usuario no existe", 404
-
 #API users POST
 @api.route('/mediGeeks/users', methods=['POST'])
 def add_new_user():
     request_body = request.json
     usersTable.append(request_body)  
     return jsonify(usersTable), 200
+
+#API USER PUT/ID
+@api.route('/mediGeeks/users/<user_id>', methods=['PUT'])
+def update_user_id(user_id):
+    
+    data = request.json 
+    for user in usersTable: 
+        if user["ID"] == user_id:
+            user = data
+            return jsonify(user), 200 
+
+    return "Usuario no existe", 404
 
 #API doctor GET
 @api.route('/mediGeeks/doctors', methods=['GET'])
@@ -85,3 +85,15 @@ def add_new_doctor():
     request_body = request.json
     doctorsTable.append(request_body)  
     return jsonify(doctorsTable), 200
+
+#API DOCTOR PUT/ID
+@api.route('/mediGeeks/doctors/<doctor_id>', methods=['PUT'])
+def update_doctor_id(doctor_id):
+    
+    data = request.json 
+    for doctor in doctorsTable: 
+        if doctor["ID"] == doctor_id:
+            user = data
+            return jsonify(doctor), 200 
+
+    return "Usuario no existe", 404
