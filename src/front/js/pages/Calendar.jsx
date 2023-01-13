@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
-import "../../styles/calendar.css";
+import "../../styles/calendardoc.css";
 import { Link } from "react-router-dom";
 
-export const Calendar = () => {
+export const Calendardoc = () => {
 
 	return (
 	      <div className="position-absolute top-50 start-50 translate-middle">
