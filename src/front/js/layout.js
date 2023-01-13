@@ -10,7 +10,11 @@ import { Cita2 } from "./pages/cita_2.jsx";
 import { Cita3 } from "./pages/cita_3.jsx";
 import { Appointment } from "./pages/Appointment.jsx";
 import { Calendar } from "./pages/Calendar.jsx";
-import {Recuperar} from "./pages/recuperarContra"
+
+import { Example } from "./component/Example.jsx"
+import { ExampleSingUP } from "./component/Example_singup.jsx"
+import { Forgot } from "./component/Forgot.jsx"
+
 import injectContext from "./store/appContext";
 
 import { Sidebar } from "./component/navbar";
@@ -46,6 +50,9 @@ const Layout = () => {
             <Route element={<Appointment />} path="/appointment" />
             <Route element={<Calendar />} path="/calendar" />
             <Route element={<Sidebar_doc />} path="/sidebardoc" />
+            <Route element={<Example />} path="/example" />
+            <Route element={<ExampleSingUP />} path="/register" />
+            <Route element={<Forgot />} path="/forgot" />
           </Routes>
           <Footer />
         </ScrollToTop>
