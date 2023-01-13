@@ -15,6 +15,7 @@ import injectContext from "./store/appContext";
 
 import { Sidebar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Sidebar_doc } from "./component/Sidebar Doctors.jsx";
 
 
 import { SignUp } from "./pages/signUp";
@@ -30,6 +31,7 @@ const Layout = () => {
       <BrowserRouter basename={basename}>
         <ScrollToTop>
           <Sidebar />
+          <Sidebar_doc />
           <Routes>
             <Route element={<Login />} path="/login" />
             <Route element={<SignUp />} path="/signUp" />
@@ -42,6 +44,7 @@ const Layout = () => {
             <Route element={<Cita3 />} path="/cita3" />
             <Route element={<Appointment />} path="/appointment" />
             <Route element={<Calendar />} path="/calendar" />
+            <Route element={<Sidebar_doc />} path="/sidebardoc" />
           </Routes>
           <Footer />
         </ScrollToTop>
