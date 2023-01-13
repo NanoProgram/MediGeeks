@@ -23,13 +23,23 @@ export const Sidebar_doc = () => {
         </div>
         <div class="offcanvas-body">
           <div class="d-flex justify-content-center">
+            <Link to="/">
+                <button type="button" class="btn btn-danger button">Home</button>
+            </Link>
+          </div>
+          <div class="d-flex justify-content-center">
+            <Link to="/cita">
+                <button type="button" class="btn btn-danger button">Cita</button>
+            </Link>
+          </div>
+          <div class="d-flex justify-content-center">
             <Link to="/calendar">
                 <button type="button" class="btn btn-danger button">Calendar</button>
             </Link>
           </div>
           <div class="d-flex justify-content-center">
-            <Link to="/appointment">
-                <button type="button" class="btn btn-danger button">Appointment</button>
+            <Link to="/">
+                <button type="button" class="btn btn-danger button">Cerrar Sesión</button>
             </Link>
           </div>
         </div>
