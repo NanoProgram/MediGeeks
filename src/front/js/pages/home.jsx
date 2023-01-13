@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -14,7 +15,9 @@ export const Home = () => {
       <div className="row justify-content-center g-2 ">
         <div className="col-4 ">
           <div className="border border-dark p-2" id="esp_11">
-            <p>espacio 1</p>
+          <Link to="/calendar">
+              <button type="button" class="btn btn-primary">Calendar</button>
+            </Link>
           </div>
         </div>
         <div className="col-4">
