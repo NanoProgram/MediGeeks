@@ -4,13 +4,13 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/month.css";
 import { Calendar } from "../pages/Calendar.jsx";
 
-export const Month = () => {
+export const Month = (props) => {
   return (
-    <div className="position-absolute top-0 start-50 border border-dark">
+    <div className={props.position}>
       <div className="text-center bg-info">
         <strong>Enero 2023</strong>
       </div>
-      <table class="table table-striped text-center">
+      <table className="table table-striped text-center">
         <thead>
           <tr>
             <th scope="col">Su</th>
