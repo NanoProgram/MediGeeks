@@ -4,10 +4,10 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/calendar.css";
 import { Calendar } from "../pages/Calendar.jsx";
 
-export const MedicalCenter = () => {
+export const MedicalCenter = (props) => {
   return (
-    <div className="position-absolute top-0 start-10">
-      <table class="table table-warning table-striped text-center">
+    <div className={props.position}>
+      <table className="table table-warning table-striped text-center">
         <thead>
           <tr>
             <th scope="col">#</th>

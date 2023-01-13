@@ -8,11 +8,14 @@ import { Single } from "./pages/single";
 import { Cita } from "./pages/cita_1.jsx";
 import { Cita2 } from "./pages/cita_2.jsx";
 import { Cita3 } from "./pages/cita_3.jsx";
+import { Appointment } from "./pages/Appointment.jsx";
+import { Calendar } from "./pages/Calendar.jsx";
 
 import injectContext from "./store/appContext";
 
 import { Sidebar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Sidebar_doc } from "./component/Sidebar Doctors.jsx";
 
 
 import { SignUp } from "./pages/signUp";
@@ -28,6 +31,7 @@ const Layout = () => {
       <BrowserRouter basename={basename}>
         <ScrollToTop>
           <Sidebar />
+          <Sidebar_doc />
           <Routes>
             <Route element={<Login />} path="/login" />
             <Route element={<SignUp />} path="/signUp" />
@@ -38,6 +42,9 @@ const Layout = () => {
             <Route element={<Cita />} path="/cita" />
             <Route element={<Cita2 />} path="/cita2" />
             <Route element={<Cita3 />} path="/cita3" />
+            <Route element={<Appointment />} path="/appointment" />
+            <Route element={<Calendar />} path="/calendar" />
+            <Route element={<Sidebar_doc />} path="/sidebardoc" />
           </Routes>
           <Footer />
         </ScrollToTop>

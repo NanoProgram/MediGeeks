@@ -1,0 +1,10 @@
+.side {
+    width: 250px;
+}
+
+.button {
+    margin: 10px;
+    width: 120px;
+    height: 50px;
+    border-radius: 8%;
+}
