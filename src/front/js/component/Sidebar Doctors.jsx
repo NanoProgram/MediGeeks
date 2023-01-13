@@ -8,6 +8,7 @@ import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg"
 
 
 
+
 export const Sidebar_doc = () => {
 
 	return (
@@ -29,12 +30,12 @@ export const Sidebar_doc = () => {
           </div>
           <div class="d-flex justify-content-center">
             <Link to="/cita">
-                <button type="button" class="btn btn-danger button">Cita</button>
+                <button type="button" class="btn btn-danger button">Reserva Hora</button>
             </Link>
           </div>
           <div class="d-flex justify-content-center">
             <Link to="/calendar">
-                <button type="button" class="btn btn-danger button">Calendar</button>
+                <button type="button" class="btn btn-danger button">Calendario Interno</button>
             </Link>
           </div>
           <div class="d-flex justify-content-center">

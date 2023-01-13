@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState  } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/cita_1.css";
 import { Link } from "react-router-dom";
@@ -18,7 +18,7 @@ export const Cita3 = () => {
         </div>
 
         <div>
-            <h1> AQUI VA EL MAPA </h1>
+            <img src="https://nz.rs-cdn.com/images/nwszh-7ob16/blog/efd2c6c3f83c9987f8ff3669c2e602bb__7132/zoom668x511z100000cw668.png?etag=748c81bfdc8f69f870be957ba8f22fde"  className="img-thumbnail" alt="" />
         </div>
 
 
@@ -27,9 +27,6 @@ export const Cita3 = () => {
 
         <Link to="/">
             <button className="btn btn-primary">Finalizar</button>
-        </Link>
-        <Link to="/">
-            <button className="btn btn-primary">Back To home</button>
         </Link>
     </div>
   );

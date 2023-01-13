@@ -51,7 +51,7 @@ export const Cita2 = () => {
         <Link to="/">
           <button className="btn btn-primary">Back To home</button>
         </Link>
-        <Link to="/cita2">
+        <Link to="/cita3">
           <button className="btn btn-primary">Continue</button>
         </Link>
       </div>

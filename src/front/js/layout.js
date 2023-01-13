@@ -9,7 +9,7 @@ import { Cita } from "./pages/cita_1.jsx";
 import { Cita2 } from "./pages/cita_2.jsx";
 import { Cita3 } from "./pages/cita_3.jsx";
 import { Appointment } from "./pages/Appointment.jsx";
-import { Calendardoc } from "./pages/Calendar.jsx";
+import { Calendardoc } from "./pages/Calendardoc.jsx";
 import {Recuperar} from "./pages/recuperarContra"
 import injectContext from "./store/appContext";
 
@@ -30,7 +30,7 @@ const Layout = () => {
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
-          <Sidebar />
+    
           <Sidebar_doc />
           <Routes>
             <Route element={<Login />} path="/login" />
