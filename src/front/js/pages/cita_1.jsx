@@ -2,10 +2,11 @@ import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/cita_1.css";
 import { Link } from "react-router-dom";
+import "../../styles/general.css";
 
 export const Cita = () => {
   return (
-    <div className="container ">
+    <div className="container fondo p-2">
       <div className="text-center">
         <h1 className="center"> MediGeeks</h1>
         <h3> Toma de Hora</h3>

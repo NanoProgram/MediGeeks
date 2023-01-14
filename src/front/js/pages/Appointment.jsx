@@ -8,6 +8,7 @@ import { Month } from "../component/Month.jsx";
 import { Hours } from "../component/Hours.jsx";
 import { Link } from "react-router-dom";
 import Calendar from 'react-calendar';
+import "../../styles/general.css";
 
 export const Appointment = () => {
   const [date, setDate] = useState(new Date());
@@ -26,7 +27,7 @@ export const Appointment = () => {
 
       <Hours />
       
-      <div className="container">
+      <div className="d-flex justify-content-end">
         <Link to="/">
           <button className="btn btn-primary">Finalizar</button>
         </Link>

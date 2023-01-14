@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
+import "../../styles/general.css";
 import { Link } from "react-router-dom";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -15,9 +16,9 @@ export const Home = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="container text-center border p-1">
+    <div className="container text-center border p-1 fondo">
       <div className="text-center mt-5">
-        <h1>MediGeeks GO GO GO</h1>
+        <h1>MediGeeks</h1>
       </div>
       <div className="row justify-content-center g-2 ">
         <div className="col-4 ">
@@ -36,6 +37,7 @@ export const Home = () => {
             </div>
           </Link>
         </div>
+        {/* 
         <div className="col-4">
           <div className="border  p-2   border-5 rounded-3" id="esp_13">
             <p>espacio 3</p>
@@ -50,7 +52,7 @@ export const Home = () => {
           <div className="border  p-2   border-5 rounded-3" id="esp_22">
             <p>espacio 5</p>
           </div>
-        </div>
+        </div>*/}
       </div>
     </div>
   );

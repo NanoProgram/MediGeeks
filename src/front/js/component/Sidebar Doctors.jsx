@@ -14,7 +14,7 @@ export const Sidebar_doc = () => {
 	return (
         <>
         <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-        <strong>Menu Doc</strong>
+        <strong>Menu</strong>
       </button>
       
       <div class="offcanvas offcanvas-start side" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
