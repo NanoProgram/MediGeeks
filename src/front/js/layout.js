@@ -1,33 +1,20 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-import { Login } from "./pages/login";
 import { Home } from "./pages/home.jsx";
-import { Demo } from "./pages/demo";
-import { Single } from "./pages/single";
 import { Cita } from "./pages/cita_1.jsx";
 import { Cita2 } from "./pages/cita_2.jsx";
 import { Cita3 } from "./pages/cita_3.jsx";
 import { Appointment } from "./pages/Appointment.jsx";
-<<<<<<< HEAD
-import { Calendar } from "./pages/Calendar.jsx";
-
-import { Example } from "./component/Example.jsx"
-import { ExampleSingUP } from "./component/Example_singup.jsx"
-import { Forgot } from "./component/Forgot.jsx"
-
-=======
 import { Calendardoc } from "./pages/Calendardoc.jsx";
-import {Recuperar} from "./pages/recuperarContra"
->>>>>>> Julio_style
+import { Login } from "./component/login.jsx"
+import { Singup } from "./component/singup.jsx"
+import { Forgot } from "./component/Forgot.jsx"
 import injectContext from "./store/appContext";
-
-import { Sidebar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Sidebar_doc } from "./component/Sidebar Doctors.jsx";
 
 
-import { SignUp } from "./pages/signUp";
 
 //create your first component
 const Layout = () => {
@@ -39,24 +26,18 @@ const Layout = () => {
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
-    
           <Sidebar_doc />
           <Routes>
-            <Route element={<Login />} path="/login" />
-            <Route element={<SignUp />} path="/signUp" />
-            <Route element={<Recuperar />} path="/recuperarContra" />
+            <Route element={<Singup />} path="/signup" />
             <Route element={<Home />} path="/" />
-            <Route element={<Demo />} path="/demo" />
-            <Route element={<Single />} path="/single/:theid" />
             <Route element={<h1>Not found!</h1>} />
             <Route element={<Cita />} path="/cita" />
             <Route element={<Cita2 />} path="/cita2" />
             <Route element={<Cita3 />} path="/cita3" />
             <Route element={<Appointment />} path="/appointment" />
-            <Route element={<Calendardoc />} path="/calendar" />
+            <Route element={<Calendardoc />} path="/calendardoc" />
             <Route element={<Sidebar_doc />} path="/sidebardoc" />
-            <Route element={<Example />} path="/example" />
-            <Route element={<ExampleSingUP />} path="/register" />
+            <Route element={<Login />} path="/login" />
             <Route element={<Forgot />} path="/forgot" />
           </Routes>
           <Footer />

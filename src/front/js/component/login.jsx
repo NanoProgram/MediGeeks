@@ -5,7 +5,7 @@ import "../../styles/example.css";
 import { Link } from "react-router-dom";
 import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg"
 
-export const Example= () => {
+export const Login= () => {
 
 	return (
 
