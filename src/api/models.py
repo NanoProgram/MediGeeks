@@ -24,15 +24,17 @@ class User(db.Model):
     name = db.Column(db.String(120), unique=True, nullable=False)
     rut = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    #prevision_id = db.Column(db.Integer, ForeignKey('prevision.id'), nullable=False)
+    prevision_id = db.Column(db.Integer, ForeignKey('prevision.id'), nullable=False)
 
 class Doctor(db.Model):
+    __tablename__ = 'doctor'
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     name = db.Column(db.String(120), unique=True, nullable=False)
     rut = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    #especialidad_id = db.Column(db.Integer, ForeignKey('especialidad.id'), nullable=False)
+    especialidad_id = db.Column(db.Integer, ForeignKey('especialidad.id'), nullable=False)
+    especialidad = relationship('Especialidad', foreign_keys='Doctor.especialidad_id')
 
 class Centro(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -43,6 +45,7 @@ class Centro(db.Model):
     horario_fin_atencion = db.Column(db.String(120), nullable=False)
     
 class Especialidad(db.Model):
+    __tablename__ = 'doctor'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=True, nullable=False)
 
