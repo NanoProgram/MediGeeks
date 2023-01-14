@@ -1,19 +1,37 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
-import "../../styles/calendar.css";
-import { Calendar } from "./Calendar.jsx";
+import "../../styles/calendardoc.css";
+import { Calendardoc } from "./Calendardoc.jsx";
 import { MedicalCenter } from "../component/Medical Center.jsx";
 import { Month } from "../component/Month.jsx";
 import { Hours } from "../component/Hours.jsx";
 import { Link } from "react-router-dom";
+import Calendar from 'react-calendar';
+import "../../styles/general.css";
 
 export const Appointment = () => {
+  const [date, setDate] = useState(new Date());
   return (
     <div className="container container-center">
-      <MedicalCenter position= "position-absolute top-0 start-10"/>
-      <Month position= "position-absolute top-0 start-50 border border-dark"/>
-      <Hours position= "position-absolute top-50 start-50 translate-middle"/>
+      <div className="row justify-content-center g-2 ">
+      <div className="col-6 ">
+        <MedicalCenter />
+      </div>
+      <div className="col-6 ">
+      <Calendar value={date} onChange={setDate}/>
+      </div>
+
+
+      </div>
+
+      <Hours />
+      
+      <div className="d-flex justify-content-end">
+        <Link to="/">
+          <button className="btn btn-primary">Finalizar</button>
+        </Link>
+        </div>
     </div>
   );
 };

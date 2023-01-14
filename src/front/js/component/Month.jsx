@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/month.css";
-import { Calendar } from "../pages/Calendar.jsx";
+import { Calendar } from "../pages/Calendardoc.jsx";
 
 export const Month = (props) => {
   return (

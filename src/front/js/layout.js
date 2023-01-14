@@ -9,12 +9,17 @@ import { Cita } from "./pages/cita_1.jsx";
 import { Cita2 } from "./pages/cita_2.jsx";
 import { Cita3 } from "./pages/cita_3.jsx";
 import { Appointment } from "./pages/Appointment.jsx";
+<<<<<<< HEAD
 import { Calendar } from "./pages/Calendar.jsx";
 
 import { Example } from "./component/Example.jsx"
 import { ExampleSingUP } from "./component/Example_singup.jsx"
 import { Forgot } from "./component/Forgot.jsx"
 
+=======
+import { Calendardoc } from "./pages/Calendardoc.jsx";
+import {Recuperar} from "./pages/recuperarContra"
+>>>>>>> Julio_style
 import injectContext from "./store/appContext";
 
 import { Sidebar } from "./component/navbar";
@@ -34,7 +39,7 @@ const Layout = () => {
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
-          <Sidebar />
+    
           <Sidebar_doc />
           <Routes>
             <Route element={<Login />} path="/login" />
@@ -48,7 +53,7 @@ const Layout = () => {
             <Route element={<Cita2 />} path="/cita2" />
             <Route element={<Cita3 />} path="/cita3" />
             <Route element={<Appointment />} path="/appointment" />
-            <Route element={<Calendar />} path="/calendar" />
+            <Route element={<Calendardoc />} path="/calendar" />
             <Route element={<Sidebar_doc />} path="/sidebardoc" />
             <Route element={<Example />} path="/example" />
             <Route element={<ExampleSingUP />} path="/register" />
