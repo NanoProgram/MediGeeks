@@ -8,5 +8,9 @@
     
     width: 300px;
     height: 250px;
-    margin: auto;
+
+}
+
+p{
+    color:rgb(241, 38, 38);
 }
