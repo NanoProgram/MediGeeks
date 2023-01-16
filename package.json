@@ -73,6 +73,7 @@
 		]
 	},
 	"dependencies": {
+		"@datepicker-react/styled": "^2.8.4",
 		"@fortawesome/fontawesome-svg-core": "^6.2.1",
 		"@fortawesome/free-brands-svg-icons": "^6.2.1",
 		"@fortawesome/free-regular-svg-icons": "^6.2.1",
@@ -84,6 +85,7 @@
 		"react": "^16.8.4",
 		"react-bootstrap": "^2.7.0",
 		"react-calendar": "^4.0.0",
+		"react-date-picker": "^9.1.0",
 		"react-dom": "^16.8.4",
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^6.3.0"
