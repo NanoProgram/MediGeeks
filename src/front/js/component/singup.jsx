@@ -8,13 +8,13 @@ import { useForm } from "react-hook-form";
 
 export const Singup = () => {
 
-  const { register, formState: { errors }, handleSubmit } = useForm();
+  const { register, formState: { errors }, handleSubmit, } = useForm({ mode: "all", });
 
   console.log("errors", errors)
   return (
 
     <div className="login position-absolute top-50 start-50 translate-middle">
-      <form onSubmit={handleSubmit((data) => console.log(data))} >
+      <form autoComplete="off" onSubmit={handleSubmit((data) => console.log(data))} >
         <div className="logo d-flex justify-content-center">
           <img src={Medigeeks_Logo} />
         </div>
@@ -22,16 +22,12 @@ export const Singup = () => {
         <div className="form-outline mb-4">
           <input {...register("userName", {
             required: "Se requiere nombre y apellido",
-            minLength: {
-              value: 10,
-              message: "El nombre de usuario debe tener como minimo 10 caracteres"
-            },
-            maxLength: {
-              value: 40,
-              message: "El nombre de usuario debe tener como máximo 40 caracteres"
-            },
+            pattern: {
+              value: /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u,
+              message: "Nombre no es valido"
+            }
 
-          })} placeholder="Nombre Apellido" type="userNme" id="form2Example10" class="form-control" />
+          })} placeholder="Nombre Apellido" type="userName" id="form2Example10" class="form-control" />
 
           <p>{errors.userName?.message}</p>
 
@@ -41,8 +37,15 @@ export const Singup = () => {
 
 
         <div className="form-outline mb-4">
-          <input {...register("rut")} placeholder="R.U.T." type="password" id="form2Example20" className="form-control" />
-
+          <input {...register("rut",
+            {
+              required: "Se requiere RUT",
+              pattern: {
+                value: /\b[0-9|.]{1,10}\-[K|k|0-9]/,
+                message: "Rut no es valido"
+              }
+            })} placeholder="R.U.T." type="" id="form2Example20" className="form-control" />
+          <p>{errors.rut?.message}</p>
         </div>
         <div className="form-outline mb-4">
           <select {...register("prevision", {
@@ -50,7 +53,6 @@ export const Singup = () => {
           })}
             className="form-select form-select-sm mb-3s"
             aria-label=".form-select-sm example"
-
           >
             <option selected>Prevision</option>
             <option value="Fonasa">Fonasa</option>
@@ -59,9 +61,8 @@ export const Singup = () => {
             <option value="Masvida">Masvida</option>
             <option value="Colmena">Colmena</option>
           </select>
+          <p>{errors.prevision?.message}</p>
         </div>
-
-
         <div className="form-outline mb-4">
           <input {...register("email", {
             required: "correo electronico es requerido",
@@ -69,10 +70,8 @@ export const Singup = () => {
               value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
               message: "El email debe ser válido"
             }
-          })} placeholder="Email" type="password" id="form2Example30" className="form-control" />
+          })} placeholder="Email" type="" id="form2Example30" className="form-control" />
           <p>{errors.email?.message}</p>
-
-
         </div>
         <div className="form-outline mb-4">
           <input {...register("password", {
@@ -81,21 +80,12 @@ export const Singup = () => {
               value: /^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$/,
               message: "La contraseña debe contener al menos 6 caracteres, una mayúscula, una minúscula, un número y un carácter de caso especial"
             }
-
           })} placeholder="Contraseña" type="password" id="form2Example40" className="form-control" />
           <p>{errors.password?.message}</p>
-
         </div>
-
-
         <div className="form-outline mb-4">
           <input {...register("password")} placeholder="Confirme Contraseña" type="password" id="form2Example50" className="form-control" />
-
         </div>
-
-
-
-
         <div className="col d-flex justify-content-center">
           <button type="button" className="btn btn-primary btn-block mb-4 justify-content-center">Registrarse</button>
         </div>
