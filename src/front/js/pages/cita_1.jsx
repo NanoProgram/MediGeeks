@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/cita_1.css";
 import { Link } from "react-router-dom";
-import "../../styles/general.css";
 
 export const Cita = () => {
   return (

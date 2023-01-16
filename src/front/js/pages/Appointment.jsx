@@ -8,7 +8,6 @@ import { Month } from "../component/Month.jsx";
 import { Hours } from "../component/Hours.jsx";
 import { Link } from "react-router-dom";
 import Calendar from 'react-calendar';
-import "../../styles/general.css";
 
 export const Appointment = () => {
   const [date, setDate] = useState(new Date());

@@ -2,7 +2,6 @@ import React, { useContext ,useState} from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
-import "../../styles/general.css";
 import { Link } from "react-router-dom";
 import { sendEmail } from "../service/emailService";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -28,38 +27,42 @@ export const Home = () => {
         <h1>MediGeeks</h1>
       </div>
       <div className="row justify-content-center g-2 ">
-        <div className="col-4 ">
+        <div className="col-4  ">
           <Link to="/cita">
-            <div className="border  p-2   border-5 rounded-3" id="esp_11">
+            <div className="border   p-2   border-5 rounded-3" id="esp_11">
               <FontAwesomeIcon icon={faUserDoctor} size="5x" />
               <h4>Reserva de Hora</h4>
             </div>
           </Link>
         </div>
-        <div className="col-4">
+        <div className="col-4  ">
           <Link to="/appointment">
-            <div className="border  p-2   border-5 rounded-3" id="esp_11">
+            <button type="button" className=" shadow btn btn-outline-secondary ">
+            <div className="   p-2  rounded-3" id="esp_11">
               <FontAwesomeIcon icon={faCalendarDays} size="5x" />
               <h4>Doc</h4>
             </div>
+            </button>
           </Link>
         </div>
-        {/* 
+         
         <div className="col-4">
           <div className="border  p-2   border-5 rounded-3" id="esp_13">
-            <p>espacio 3</p>
+          <FontAwesomeIcon icon={faCalendarDays} size="5x" />
+              <h4>Anular Hora</h4>
           </div>
         </div>
         <div className="col-4 ">
           <div className="border  p-2   border-5 rounded-3" id="esp_21">
-            <p>espacio 4</p>
+          <FontAwesomeIcon icon={faCalendarDays} size="5x" />
+              <h4>Doc</h4>
           </div>
         </div>
         <div className="col-8 ">
           <div className="border  p-2   border-5 rounded-3" id="esp_22">
             <p>espacio 5</p>
           </div>
-        </div>*/}
+        </div>
       </div>
     </div>
   );
