@@ -8,6 +8,8 @@ import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg";
 
 export const Login= () => {
 
+  const {register, formState: {errors}, handleSubmit} = useForm();
+
 	return (
 
     <div   className="login position-absolute top-50 start-50 translate-middle">
@@ -17,14 +19,30 @@ export const Login= () => {
   <img  src={Medigeeks_Logo}/>
   </div> 
   <div class="form-outline mb-4">
-    <input type="email" id="form2Example1" class="form-control" />
-    <label class="form-label" for="form2Example1">Email address</label>
+    <input {...register("Email", {
+      required: true,
+      pattern: {
+        value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+        message: "Email no es valido"
+      }
+
+    })} type="email" id="form2Example1" class="form-control" placeholder="Dirección de Email"/>
+
+    <p>{errors.Email?.message}</p>
+
   </div>
 
   
   <div class="form-outline mb-4">
-    <input type="password" id="form2Example2" class="form-control" />
-    <label class="form-label" for="form2Example2">Password</label>
+    <input {...register("Password",{
+      required: "Se rerquiere de contraseña",
+      pattern: {
+        value: /^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$/,
+        message: "Contraeña no valida"
+      }
+    })} type="password" id="form2Example2" class="form-control" placeholder="Contraseña" />
+
+    <p>{errors.Password?.message}</p>
   </div>
 
   
@@ -44,7 +62,7 @@ export const Login= () => {
   </div>
 
   <div class="col d-flex justify-content-center">
-  <Link to="/"><button type="button" class="btn btn-primary btn-block mb-4 justify-content-center">Sign in</button></Link>
+  <button type="submit" class="btn btn-primary btn-block mb-4 justify-content-center">Sign in</button>
   </div>
 
   <div class="text-center">
