@@ -85,6 +85,7 @@
 		"react-bootstrap": "^2.7.0",
 		"react-calendar": "^4.0.0",
 		"react-dom": "^16.8.4",
+		"react-hook-form": "^7.42.1",
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^6.3.0"
 	}
