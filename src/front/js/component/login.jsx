@@ -18,6 +18,7 @@ export const Login= () => {
   <div className="logo d-flex justify-content-center">       
   <img  src={Medigeeks_Logo}/>
   </div> 
+  <br></br>
   <div class="form-outline mb-4">
     <input {...register("Email", {
       required: true,
@@ -26,7 +27,7 @@ export const Login= () => {
         message: "Email no es valido"
       }
 
-    })} type="email" id="form2Example1" class="form-control" placeholder="Dirección de Email"/>
+    })} type="" id="form2Example1" class="form-control" placeholder="Dirección de Email"/>
 
     <p>{errors.Email?.message}</p>
 
