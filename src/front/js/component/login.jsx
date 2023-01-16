@@ -27,7 +27,7 @@ export const Login= () => {
         message: "Email no es valido"
       }
 
-    })} type="email" id="form2Example1" class="form-control" placeholder="Dirección de Email"/>
+    })} type="" id="form2Example1" class="form-control" placeholder="Dirección de Email"/>
 
     <p>{errors.Email?.message}</p>
 
