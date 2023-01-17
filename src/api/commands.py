@@ -1,6 +1,6 @@
 
 import click
-from api.models import db, User, Prevision, Speciality, Center, Doctor
+from api.models import db, User, Prevision
 
 """
 In this file, you can add as many commands as you want using the @app.cli.command decorator
@@ -11,26 +11,22 @@ def setup_commands(app):
     
     """ 
     This is an example command "insert-test-users" that you can run from the command line
-    by typing: $ flask insert-test-centro 5
+    by typing: $ flask insert-test-prevision 5
     Note: 5 is the number of users to add
     """
-    @app.cli.command("insert-test-user") # name of our command
+    @app.cli.command("insert-test-prevision") # name of our command
     @click.argument("count") # argument of out command
     def insert_test_data(count):
-        print("Creando test user")
+        print("Creando test prevision")
         for x in range(1, int(count) + 1):
-            user = User()
-            user.id = x
-            user.email = "email_prueba@" + str(x)
-            user.name = "Nombre_prueba" + str(x)
-            user.rut = "rut_prueba" + str(x)
-            user.password = "password_prueba" + str(x)
-            user.prevision_id = x
-            db.session.add(user)
+            prevision = Prevision()
+            prevision.id = x
+            prevision.name = "test_prevision" + str(x)
+            db.session.add(prevision)
             db.session.commit()
-            print("User: ", user.id, " created.")
+            print("Prevision: ", prevision.id, " created.")
 
-        print("All test user created")
+        print("All test prevision created")
 
     @app.cli.command("insert-test-doctor") # name of our command
     @click.argument("count") # argument of out command

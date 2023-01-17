@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Prevision, Speciality, Center, Doctor
+from api.models import db, User, Prevision
 from api.utils import generate_sitemap, APIException
 import re
 
@@ -16,13 +16,12 @@ def get_users_table():
     user = list(map(lambda p:p.serialize(),user))
     return jsonify(user), 200 
 
-@api.route('/mediGeeks/users/<int:id>', methods=['GET'])
-def get_users_table_id(id):
-    user = User.query.filter_by(id=id).first()
-    if user:
-        return jsonify(user.serialize()), 200
-    else:
-        return "Usuario no existe", 404
+#API USER GET
+@api.route('/mediGeeks/prevision', methods=['GET'])
+def get_prevision():
+    prevision = Prevision.query.all()
+    prevision = list(map(lambda p:p.serialize(),prevision))
+    return jsonify(prevision), 200 
 
 @api.route('/mediGeeks/users', methods=['POST'])
 def add_new_user():
