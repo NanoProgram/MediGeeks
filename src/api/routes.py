@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, User, Prevision
 from api.utils import generate_sitemap, APIException
 
 api = Blueprint('api', __name__)
@@ -31,6 +31,12 @@ def users_table():
     
     return jsonify(usersTable), 200 
 
+#API USER GET
+@api.route('/mediGeeks/prevision', methods=['GET'])
+def get_prevision():
+    prevision = Prevision.query.all()
+    prevision = list(map(lambda p:p.serialize(),prevision))
+    return jsonify(prevision), 200 
 
 #API USER GET/ID
 @api.route('/mediGeeks/users/<user_id>', methods=['GET'])
