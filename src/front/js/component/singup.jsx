@@ -7,9 +7,16 @@ import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg";
 import { useForm } from "react-hook-form";
 
 export const Singup = () => {
-
-  const { register, formState: { errors }, handleSubmit, } = useForm({ mode: "all", });
-
+  
+  const { register, formState: { errors }, handleSubmit } = useForm({ mode: "all", });
+  function samePassword() {
+    let password = document.getElementById("password").value;
+    let confirm_password = document.getElementById("confirm_password").value;
+    if (password != confirm_password) {
+    alert("Las contraseñas no coinciden");
+    }
+    }
+    
   console.log("errors", errors)
   return (
 
@@ -80,14 +87,15 @@ export const Singup = () => {
               value: /^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$/,
               message: "La contraseña debe contener al menos 6 caracteres, una mayúscula, una minúscula, un número y un carácter de caso especial"
             }
-          })} placeholder="Contraseña" type="password" id="form2Example40" className="form-control" />
+          })} placeholder="Contraseña" type="password" id="password" className="form-control" />
           <p>{errors.password?.message}</p>
         </div>
         <div className="form-outline mb-4">
-          <input {...register("password")} placeholder="Confirme Contraseña" type="password" id="form2Example50" className="form-control" />
+          <input  onBlur={samePassword} placeholder="Confirme Contraseña" type="password" id="confirm_password" className="form-control" />
         </div>
         <div className="col d-flex justify-content-center">
-          <button type="button" className="btn btn-primary btn-block mb-4 justify-content-center">Registrarse</button>
+          <button type="submit" onClick={samePassword}
+          className="btn btn-primary btn-block mb-4 justify-content-center">Registrarse</button>
         </div>
 
 
