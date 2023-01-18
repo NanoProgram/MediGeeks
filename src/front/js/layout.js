@@ -14,6 +14,7 @@ import injectContext from "./store/appContext";
 import { Footer } from "./component/footer";
 import { Sidebar_doc } from "./component/Sidebar Doctors.jsx";
 import { AdmissionDoctor } from "./component/singupdoc.jsx";
+import { Recover } from "./component/recoverPassword.jsx";
 
 
 
@@ -29,6 +30,7 @@ const Layout = () => {
         <ScrollToTop>
           <Sidebar_doc />
           <Routes>
+          <Route element={<Recover/>} path="/recoverPassword" />
           <Route element={<AdmissionDoctor/>} path="/singupdoc" />
             <Route element={<Singup />} path="/signup" />
             <Route element={<Home />} path="/" />
