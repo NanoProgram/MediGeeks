@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Prevision
+from api.models import db, User, Prevision, Especialidad, Centro, Doctor
 from api.utils import generate_sitemap, APIException
 
 api = Blueprint('api', __name__)
@@ -27,16 +27,38 @@ doctorsTable = [
 
 #API USER GET
 @api.route('/mediGeeks/users', methods=['GET'])
-def users_table():
-    
-    return jsonify(usersTable), 200 
+def get_users_table():
+    user = User.query.all()
+    user = list(map(lambda p:p.serialize(),user))
+    return jsonify(user), 200 
 
-#API USER GET
+#API DOCTOR GET
+@api.route('/mediGeeks/doctors', methods=['GET'])
+def get_doctor_table():
+    doctor = Doctor.query.all()
+    doctor = list(map(lambda p:p.serialize(),doctor))
+    return jsonify(doctor), 200
+
+#API CENTRO GET
+@api.route('/mediGeeks/centro', methods=['GET'])
+def get_centro_table():
+    centro = Centro.query.all()
+    centro = list(map(lambda p:p.serialize(),centro))
+    return jsonify(centro), 200 
+
+#API PREVISION GET
 @api.route('/mediGeeks/prevision', methods=['GET'])
 def get_prevision():
     prevision = Prevision.query.all()
     prevision = list(map(lambda p:p.serialize(),prevision))
     return jsonify(prevision), 200 
+
+#API ESPECIALIDAD GET
+@api.route('/mediGeeks/especialidad', methods=['GET'])
+def get_especialidad():
+    especialidad = Especialidad.query.all()
+    especialidad = list(map(lambda p:p.serialize(),especialidad))
+    return jsonify(especialidad), 200 
 
 #API USER GET/ID
 @api.route('/mediGeeks/users/<user_id>', methods=['GET'])
@@ -68,11 +90,6 @@ def update_user_id(user_id):
 
     return "Usuario no existe", 404
 
-#API doctor GET
-@api.route('/mediGeeks/doctors', methods=['GET'])
-def doctors_table():
-    
-    return jsonify(doctorsTable), 200 
 
 #API doctor GET/ID
 @api.route('/mediGeeks/doctors/<doctor_id>', methods=['GET'])
