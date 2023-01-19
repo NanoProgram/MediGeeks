@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Prevision
+from api.models import db, User, Prevision, Especialidad, Centro, Doctor
 from api.utils import generate_sitemap, APIException
 import re
 
@@ -16,13 +16,46 @@ def get_users_table():
     user = list(map(lambda p:p.serialize(),user))
     return jsonify(user), 200 
 
-#API USER GET
+#API DOCTOR GET
+@api.route('/mediGeeks/doctors', methods=['GET'])
+def get_doctor_table():
+    doctor = Doctor.query.all()
+    doctor = list(map(lambda p:p.serialize(),doctor))
+    return jsonify(doctor), 200
+
+#API CENTRO GET
+@api.route('/mediGeeks/centro', methods=['GET'])
+def get_centro_table():
+    centro = Centro.query.all()
+    centro = list(map(lambda p:p.serialize(),centro))
+    return jsonify(centro), 200 
+
+#API PREVISION GET
 @api.route('/mediGeeks/prevision', methods=['GET'])
 def get_prevision():
     prevision = Prevision.query.all()
     prevision = list(map(lambda p:p.serialize(),prevision))
     return jsonify(prevision), 200 
 
+#API ESPECIALIDAD GET
+@api.route('/mediGeeks/especialidad', methods=['GET'])
+def get_especialidad():
+    especialidad = Especialidad.query.all()
+    especialidad = list(map(lambda p:p.serialize(),especialidad))
+    return jsonify(especialidad), 200 
+
+#API USER GET/ID
+@api.route('/mediGeeks/users/<user_id>', methods=['GET'])
+def users_table_id(user_id):
+    
+    print(user_id)
+    for user in usersTable: 
+        if user["ID"] == user_id:
+           return jsonify(user), 200 
+
+    return "Usuario no existe", 404
+
+#API users POST
 @api.route('/mediGeeks/users', methods=['POST'])
 def add_new_user():
     request_body = request.get_json()
@@ -47,12 +80,18 @@ def add_new_user():
         db.session.commit()
         return jsonify(new_user.serialize()), 201
 
-#API DOCTOR GET, GET ID and POST
-@api.route('/mediGeeks/doctors', methods=['GET'])
-def get_doctor_table():
-    doctor = Doctor.query.all()
-    doctor = list(map(lambda p:p.serialize(),doctor))
-    return jsonify(doctor), 200
+#API USER PUT/ID
+@api.route('/mediGeeks/users/<user_id>', methods=['PUT'])
+def update_user_id(user_id):
+    
+    data = request.json 
+    for user in usersTable: 
+        if user["ID"] == user_id:
+            user = data
+            return jsonify(user), 200 
+
+    return "Usuario no existe", 404
+
 
 @api.route('/mediGeeks/doctors/<int:id>', methods=['GET'])
 def get_doctor_table_id(id):
