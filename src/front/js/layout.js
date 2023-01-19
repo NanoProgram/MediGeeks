@@ -18,6 +18,9 @@ import { Recover } from "./component/recoverPassword.jsx";
 import { Inicio } from "./component/beginning.jsx";
 import { One } from "./component/one.jsx";
 import { Two } from "./component/two.jsx";
+import { Three } from "./component/three.jsx";
+import { Four } from "./component/four.jsx";
+import { Five } from "./component/five.jsx";
 
 //create your first component
 const Layout = () => {
@@ -31,6 +34,9 @@ const Layout = () => {
         <ScrollToTop>
           <Sidebar_doc />
           <Routes>
+          <Route element={<Five />} path="/five" />
+          <Route element={<Four />} path="/four" />
+          <Route element={<Three />} path="/three" />
           <Route element={<Two />} path="/two" />
           <Route element={<One />} path="/one" />
           <Route element={<Recover/>} path="/recoverPassword" />
