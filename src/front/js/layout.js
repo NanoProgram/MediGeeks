@@ -15,8 +15,9 @@ import { Footer } from "./component/footer";
 import { Sidebar_doc } from "./component/Sidebar Doctors.jsx";
 import { AdmissionDoctor } from "./component/singupdoc.jsx";
 import { Recover } from "./component/recoverPassword.jsx";
-import { Inicio } from "./pages/inicio.jsx";
-
+import { Inicio } from "./component/beginning.jsx";
+import { One } from "./component/one.jsx";
+import { Two } from "./component/two.jsx";
 
 
 //create your first component
@@ -31,10 +32,12 @@ const Layout = () => {
         <ScrollToTop>
           <Sidebar_doc />
           <Routes>
+          <Route element={<Two />} path="/two" />
+          <Route element={<One />} path="/one" />
           <Route element={<Recover/>} path="/recoverPassword" />
           <Route element={<AdmissionDoctor/>} path="/singupdoc" />
             <Route element={<Singup />} path="/signup" />
-            <Route element={<Inicio />} path="/inicio" />
+            <Route element={<Inicio />} path="/beginning" />
             <Route element={<h1>Not found!</h1>} />
             <Route element={<Cita />} path="/cita" />
             <Route element={<Cita2 />} path="/cita2" />
