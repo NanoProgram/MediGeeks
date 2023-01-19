@@ -1,6 +1,6 @@
 
 import click
-from api.models import db, User, Prevision, Especialidad, Centro, Doctor
+from api.models import db, User, Prevision, Speciality, Center, Doctor
 
 """
 In this file, you can add as many commands as you want using the @app.cli.command decorator
@@ -64,40 +64,40 @@ def setup_commands(app):
 
         print("All test prevision created")
 
-    @app.cli.command("insert-test-centro") # name of our command
+    @app.cli.command("insert-test-center") # name of our command
     @click.argument("count") # argument of out command
     def insert_test_data(count):
-        print("Creando test centro")
+        print("Creando test center")
         for x in range(1, int(count) + 1):
-            centro = Centro()
-            centro.id = x
-            centro.name = "test_name" + str(x)
-            centro.comuna = "test_comuna" + str(x)
-            centro.direccion = "test_direccion" + str(x)
-            centro.horario_inicio_atencion = "test_hora_inicio" + str(x)
-            centro.horario_fin_atencion = "test_hora_fin" + str(x)
-            db.session.add(centro)
+            center = Center()
+            center.id = x
+            center.name = "test_name" + str(x)
+            center.commune = "test_comuna" + str(x)
+            center.direction = "test_direccion" + str(x)
+            center.start_of_service_hours = "test_hora_inicio" + str(x)
+            center.end_of_service_hours = "test_hora_fin" + str(x)
+            db.session.add(center)
             db.session.commit()
-            print("Centro: ", centro.id, " created.")
+            print("Center: ", center.id, " created.")
 
-        print("All test centro created")
+        print("All test center created")
 
         ### Insert the code to populate others tables if needed
 
 
-    @app.cli.command("insert-test-especialidad") # name of our command
+    @app.cli.command("insert-test-speciality") # name of our command
     @click.argument("count") # argument of out command
     def insert_test_data(count):
-        print("Creando test especialidad")
+        print("Creando test speciality")
         for x in range(1, int(count) + 1):
-            especialidad = Especialidad()
-            especialidad.id = x
-            especialidad.name = "tipo-especialidad-prueba" + str(x)
-            db.session.add(especialidad)
+            speciality = Especialidad()
+            speciality.id = x
+            speciality.name = "tipo-especialidad-prueba" + str(x)
+            db.session.add(speciality)
             db.session.commit()
-            print("Especialidad: ", especialidad.id, " created.")
+            print("Speciality: ", speciality.id, " created.")
 
-        print("All test especialidad created")
+        print("All test speciality created")
 
 
     
