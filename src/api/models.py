@@ -55,8 +55,8 @@ class Prevision(db.Model):
            
         }
 
-class Especialidad(db.Model):
-    __tablename__ ='especialidad'
+class Speciality(db.Model):
+    __tablename__ ='speciality'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=True, nullable=False)
 
@@ -74,7 +74,7 @@ class Doctor(db.Model):
     name = db.Column(db.String(120), unique=False, nullable=False)
     rut = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    especialidad_id = db.Column(db.Integer, db.ForeignKey('especialidad.id'), nullable=False)
+    speciality_id = db.Column(db.Integer, db.ForeignKey('speciality.id'), nullable=False)
 
     def __repr__(self):
         return f'<User {self.email}>'
@@ -85,28 +85,28 @@ class Doctor(db.Model):
             "email": self.email,
             "name": self.name,
             "rut": self.rut,
-            "especialidad_id": self.especialidad_id,
+            "speciality_id": self.speciality_id,
            
         }
   
 
-class Centro(db.Model):
-    __tablename__='centro'
+class Center(db.Model):
+    __tablename__='center'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=True, nullable=False)
-    comuna = db.Column(db.String(120), nullable=False)
-    direccion = db.Column(db.String(120), nullable=False)
-    horario_inicio_atencion = db.Column(db.String(120), nullable=False)
-    horario_fin_atencion = db.Column(db.String(120), nullable=False)
+    commune = db.Column(db.String(120), nullable=False)
+    direction = db.Column(db.String(120), nullable=False)
+    start_of_service_hours = db.Column(db.String(120), nullable=False)
+    end_of_service_hours = db.Column(db.String(120), nullable=False)
 
     def serialize(self):
         return {
             "id": self.id,
             "name": self.name,
-            "comuna": self.comuna,
-            "direccion": self.direccion,
-            "horario_inicio_atencion": self.horario_inicio_atencion,
-            "horario_fin_atencion": self.horario_fin_atencion,
+            "commune": self.commune,
+            "direction": self.direction,
+            "start_of_service_hours": self.start_of_service_hours,
+            "end_of_service_hours": self.end_of_service_hours,
            
         }
     
