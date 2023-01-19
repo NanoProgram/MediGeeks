@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Prevision, Especialidad, Centro, Doctor
+from api.models import db, User, Prevision, Speciality, Center, Doctor
 from api.utils import generate_sitemap, APIException
 
 api = Blueprint('api', __name__)
@@ -32,6 +32,15 @@ def get_users_table():
     user = list(map(lambda p:p.serialize(),user))
     return jsonify(user), 200 
 
+#API users POST
+@api.route('/mediGeeks/users', methods=['POST'])
+def add_new_user():
+    request_body = request.get_json()
+    user = User.query.all()
+    user = list(map(lambda p:p.serialize(),user))
+    user.append(request_body)  
+    return jsonify(user), 200
+
 #API DOCTOR GET
 @api.route('/mediGeeks/doctors', methods=['GET'])
 def get_doctor_table():
@@ -40,11 +49,11 @@ def get_doctor_table():
     return jsonify(doctor), 200
 
 #API CENTRO GET
-@api.route('/mediGeeks/centro', methods=['GET'])
-def get_centro_table():
-    centro = Centro.query.all()
-    centro = list(map(lambda p:p.serialize(),centro))
-    return jsonify(centro), 200 
+@api.route('/mediGeeks/centers', methods=['GET'])
+def get_center_table():
+    center = Center.query.all()
+    center = list(map(lambda p:p.serialize(),center))
+    return jsonify(center), 200 
 
 #API PREVISION GET
 @api.route('/mediGeeks/prevision', methods=['GET'])
@@ -53,12 +62,12 @@ def get_prevision():
     prevision = list(map(lambda p:p.serialize(),prevision))
     return jsonify(prevision), 200 
 
-#API ESPECIALIDAD GET
-@api.route('/mediGeeks/especialidad', methods=['GET'])
-def get_especialidad():
-    especialidad = Especialidad.query.all()
-    especialidad = list(map(lambda p:p.serialize(),especialidad))
-    return jsonify(especialidad), 200 
+#API speciality GET
+@api.route('/mediGeeks/speciality', methods=['GET'])
+def get_speciality():
+    speciality = Speciality.query.all()
+    speciality = list(map(lambda p:p.serialize(),speciality))
+    return jsonify(speciality), 200 
 
 #API USER GET/ID
 @api.route('/mediGeeks/users/<user_id>', methods=['GET'])
@@ -71,12 +80,7 @@ def users_table_id(user_id):
 
     return "Usuario no existe", 404
 
-#API users POST
-@api.route('/mediGeeks/users', methods=['POST'])
-def add_new_user():
-    request_body = request.json
-    usersTable.append(request_body)  
-    return jsonify(usersTable), 200
+
 
 #API USER PUT/ID
 @api.route('/mediGeeks/users/<user_id>', methods=['PUT'])
