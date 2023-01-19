@@ -3,8 +3,8 @@ import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/example.css";
 import { Link } from "react-router-dom";
-import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg"
-import { useForm } from "react-hook-form";
+import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg";
+
 
 export const Login= () => {
 
@@ -12,8 +12,9 @@ export const Login= () => {
 
 	return (
 
-    <div className="login position-absolute top-50 start-50 translate-middle">
-        <form onSubmit={handleSubmit((data) => console.log(data))}>
+    <div   className="login position-absolute top-50 start-50 translate-middle">
+       
+        <form>
   <div className="logo d-flex justify-content-center">       
   <img  src={Medigeeks_Logo}/>
   </div> 

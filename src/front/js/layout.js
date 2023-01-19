@@ -15,6 +15,7 @@ import { Footer } from "./component/footer";
 import { Sidebar_doc } from "./component/Sidebar Doctors.jsx";
 import { AdmissionDoctor } from "./component/singupdoc.jsx";
 import { Recover } from "./component/recoverPassword.jsx";
+import { Inicio } from "./pages/inicio.jsx";
 
 
 
@@ -33,7 +34,7 @@ const Layout = () => {
           <Route element={<Recover/>} path="/recoverPassword" />
           <Route element={<AdmissionDoctor/>} path="/singupdoc" />
             <Route element={<Singup />} path="/signup" />
-            <Route element={<Home />} path="/" />
+            <Route element={<Inicio />} path="/inicio" />
             <Route element={<h1>Not found!</h1>} />
             <Route element={<Cita />} path="/cita" />
             <Route element={<Cita2 />} path="/cita2" />
