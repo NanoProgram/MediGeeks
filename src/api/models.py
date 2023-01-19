@@ -28,6 +28,19 @@ class User(db.Model):
     password = db.Column(db.String(80), unique=False, nullable=False)
     prevision_id = db.Column(db.Integer, db.ForeignKey('prevision.id'), nullable=False)
 
+    def __repr__(self):
+        return f'<User {self.email}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "email": self.email,
+            "name": self.name,
+            "rut": self.rut,
+            "prevision_id": self.prevision_id,
+           
+        }
+
 class Prevision(db.Model):
     __tablename__='prevision'
     id = db.Column(db.Integer, primary_key=True)
@@ -40,49 +53,26 @@ class Prevision(db.Model):
            
         }
 
-"""class Doctor(db.Model):
+class Especialidad(db.Model):
+    __tablename__ ='especialidad'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), unique=True, nullable=False)
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+           
+        }
+
+class Doctor(db.Model):
     __tablename__ = 'doctor'
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     name = db.Column(db.String(120), unique=True, nullable=False)
     rut = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    especialidad_id = db.Column(db.Integer, ForeignKey('especialidad.id'), nullable=False)
-    especialidad = relationship('Especialidad', foreign_keys='Doctor.especialidad_id')
-
-class Centro(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), unique=True, nullable=False)
-    comuna = db.Column(db.String(120), nullable=False)
-    direccion = db.Column(db.String(120), nullable=False)
-    horario_inicio_atencion = db.Column(db.String(120), nullable=False)
-    horario_fin_atencion = db.Column(db.String(120), nullable=False)
-    
-class Especialidad(db.Model):
-    __tablename__ = 'doctor'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), unique=True, nullable=False)
-
-
-       
-class Calendario(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    centro_id = db.Column(db.Integer, ForeignKey('centro.id'), nullable=False)
-    año = db.Column(db.String(120), unique=True, nullable=False)
-    mes = db.Column(db.String(120), nullable=False)
-    dia = db.Column(db.String(120), nullable=False)
-    hora_atencion_inicio = db.Column(db.String(120), nullable=False)
-    hora_atencion_fin = db.Column(db.String(120), nullable=False)
-    disponible = db.Column(db.Boolean(), unique=False, nullable=False)
-
-class Cita(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    #doctor_id = db.Column(db.Integer, ForeignKey('doctor.id'), nullable=False)
-    #especialidad_id = db.Column(db.Integer, ForeignKey('especialidad.id'), nullable=False)
-    #centro_id = db.Column(db.Integer, ForeignKey('centro.id'), nullable=False)
-    #calendario_id = db.Column(db.Integer, ForeignKey('calendario.id'), nullable=False)
-    disponible = db.Column(db.Boolean(), unique=False, nullable=False)
-    #user_id = db.Column(db.Integer, ForeignKey('user.id'), nullable=False)
+    especialidad_id = db.Column(db.Integer, db.ForeignKey('especialidad.id'), nullable=False)
 
     def __repr__(self):
         return f'<User {self.email}>'
@@ -91,5 +81,80 @@ class Cita(db.Model):
         return {
             "id": self.id,
             "email": self.email,
-            # do not serialize the password, its a security breach
-        }"""
+            "name": self.name,
+            "rut": self.rut,
+            "especialidad_id": self.especialidad_id,
+           
+        }
+  
+
+class Centro(db.Model):
+    __tablename__='centro'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), unique=True, nullable=False)
+    comuna = db.Column(db.String(120), nullable=False)
+    direccion = db.Column(db.String(120), nullable=False)
+    horario_inicio_atencion = db.Column(db.String(120), nullable=False)
+    horario_fin_atencion = db.Column(db.String(120), nullable=False)
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "comuna": self.comuna,
+            "direccion": self.direccion,
+            "horario_inicio_atencion": self.horario_inicio_atencion,
+            "horario_fin_atencion": self.horario_fin_atencion,
+           
+        }
+    
+
+
+       
+class Calendario(db.Model):
+    __tablename__='calendario'
+    id = db.Column(db.Integer, primary_key=True)
+    centro_id = db.Column(db.Integer, db.ForeignKey('centro.id'), nullable=False)
+    año = db.Column(db.String(120), unique=True, nullable=False)
+    mes = db.Column(db.String(120), nullable=False)
+    dia = db.Column(db.String(120), nullable=False)
+    hora_atencion_inicio = db.Column(db.String(120), nullable=False)
+    hora_atencion_fin = db.Column(db.String(120), nullable=False)
+    disponible = db.Column(db.Boolean(), unique=False, nullable=False)
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "centro_id": self.centro_id,
+            "año": self.año,
+            "mes": self.mes,
+            "dia": self.dia,
+            "hora_atencion_inicio": self.hora_atencion_inicio,
+            "hora_atencion_fin": self.hora_atencion_fin,
+            "disponible": self.disponible,
+           
+        }
+
+class Cita(db.Model):
+    __tablename__='cita'
+    id = db.Column(db.Integer, primary_key=True)
+    doctor_id = db.Column(db.Integer, db.ForeignKey('doctor.id'), nullable=False)
+    especialidad_id = db.Column(db.Integer, db.ForeignKey('especialidad.id'), nullable=False)
+    centro_id = db.Column(db.Integer, db.ForeignKey('centro.id'), nullable=False)
+    calendario_id = db.Column(db.Integer, db.ForeignKey('calendario.id'), nullable=False)
+    disponible = db.Column(db.Boolean(), unique=False, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "doctor_id": self.doctor_id,
+            "especialidad_id": self.especialidad_id,
+            "centro_id": self.centro_id,
+            "calendario_id": self.calendario_id,
+            "disponible": self.disponible,
+            "user_id": self.user_id,
+           
+        }
+
+  
