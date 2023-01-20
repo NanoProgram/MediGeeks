@@ -7,14 +7,13 @@ import { Cita2 } from "./pages/cita_2.jsx";
 import { Cita3 } from "./pages/cita_3.jsx";
 import { Appointment } from "./pages/Appointment.jsx";
 import { Calendardoc } from "./pages/Calendardoc.jsx";
-import { Login } from "./component/login.jsx"
-import { Singup } from "./component/singup.jsx"
-import { Forgot } from "./component/Forgot.jsx"
+import { Login } from "./component/login.jsx";
+import { Singup } from "./component/singup.jsx";
+import { Forgot } from "./component/Forgot.jsx";
 import injectContext from "./store/appContext";
 import { Footer } from "./component/footer";
 import { Sidebar_doc } from "./component/Sidebar Doctors.jsx";
-
-
+import { Prueba } from "./pages/pruebas.jsx";
 
 //create your first component
 const Layout = () => {
@@ -28,13 +27,14 @@ const Layout = () => {
         <ScrollToTop>
           <Sidebar_doc />
           <Routes>
-            <Route element={<Singup />} path="/signup" />
-            <Route element={<Home />} path="/" />
+            <Route element={<Prueba />} path="/prueba" />
+            <Route element={<Singup />} path="/singup" />
+            <Route element={<Home />} path="/home" />
             <Route element={<h1>Not found!</h1>} />
-            <Route element={<Cita />} path="/cita" />
-            <Route element={<Cita2 />} path="/cita2" />
-            <Route element={<Cita3 />} path="/cita3" />
-            <Route element={<Appointment />} path="/appointment" />
+            <Route element={<Cita />} path="/appointment" />
+            {/*<Route element={<Cita2 />} path="/appointment-confirmed" />*/}
+            <Route element={<Cita3 />} path="/appointment-confirmed" />
+            <Route element={<Appointment />} path="/doctor" />
             <Route element={<Calendardoc />} path="/calendardoc" />
             <Route element={<Sidebar_doc />} path="/sidebardoc" />
             <Route element={<Login />} path="/login" />
