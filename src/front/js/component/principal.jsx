@@ -11,7 +11,7 @@ import "../../styles/principal.css";
 
 export const Principal = () => {
   return (
-    <div className=" background conteiner-md">
+    <div className=" background container-md">
       <Inicio />
       <br />
       <br />
