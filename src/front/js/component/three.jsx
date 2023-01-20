@@ -1,5 +1,5 @@
 import React from 'react'
-
+import "../../styles/three.css"
 export const Three = () => {
   return (
     <div id="carouselExampleDark" class="carousel carousel-dark slide">

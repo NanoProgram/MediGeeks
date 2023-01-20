@@ -1,0 +1,35 @@
+import React from 'react'
+import { Inicio } from "../component/beginning.jsx";
+import { One } from "../component/one.jsx";
+import { Two } from "../component/two.jsx";
+import { Three } from "../component/three.jsx";
+import { Four } from "../component/four.jsx";
+import { Five } from "../component/five.jsx";
+import "../../styles/principal.css"
+
+export const Principal = () => {
+  return (
+    <div className='container mi-fondo-claro-3d' >
+        
+        <Inicio />
+        <br />
+        <br />
+        <br />
+        <One />
+        <br />
+        <br />
+        <br />
+        <Two />
+        <br />
+        <br />
+        <br />
+        <Three />
+        <br />
+        <br />
+        <br />
+        <Four />
+        <br />
+        <Five />
+    </div>
+  )
+}
