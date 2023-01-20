@@ -15,12 +15,9 @@ import { Footer } from "./component/footer";
 import { Sidebar_doc } from "./component/Sidebar Doctors.jsx";
 import { AdmissionDoctor } from "./component/singupdoc.jsx";
 import { Recover } from "./component/recoverPassword.jsx";
-import { Inicio } from "./component/beginning.jsx";
-import { One } from "./component/one.jsx";
-import { Two } from "./component/two.jsx";
-import { Three } from "./component/three.jsx";
-import { Four } from "./component/four.jsx";
-import { Five } from "./component/five.jsx";
+
+import { Principal} from "./component/principal.jsx";
+
 
 
 //create your first component
@@ -35,15 +32,13 @@ const Layout = () => {
         <ScrollToTop>
           <Sidebar_doc />
           <Routes>
-          <Route element={<Five />} path="/five" />
-          <Route element={<Four />} path="/four" />
-          <Route element={<Three />} path="/three" />
-          <Route element={<Two />} path="/two" />
-          <Route element={<One />} path="/one" />
+          
+          <Route element={<Principal />} path="/" />
+       
           <Route element={<Recover/>} path="/recoverPassword" />
           <Route element={<AdmissionDoctor/>} path="/singupdoc" />
             <Route element={<Singup />} path="/signup" />
-            <Route element={<Inicio />} path="/beginning" />
+            
             <Route element={<h1>Not found!</h1>} />
             <Route element={<Cita />} path="/cita" />
             <Route element={<Cita2 />} path="/cita2" />
