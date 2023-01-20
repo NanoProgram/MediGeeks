@@ -9,7 +9,7 @@ import "../../styles/principal.css"
 
 export const Principal = () => {
   return (
-    <div className='container mi-fondo-claro-3d' >
+    <div className=' background' >
         
         <Inicio />
         <br />

@@ -4,18 +4,35 @@ import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg";
 
 export const Inicio = () => {
   return (
-   
     <nav class="navbar bg-body-tertiary">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <img src={Medigeeks_Logo} alt="Bootstrap" width="150" height="120"></img>
-    </a>
-    <button type="button" class="btn btn-primary">Nuestros Servicios</button>
-    <button type="button" class="btn btn-primary">Galeria</button>
-    <button type="button" class="btn btn-primary">Opiniones de nuestros clientes</button>
-    <button type="button" class="btn btn-primary">Contactenos</button>
-    <button type="button" class="btn btn-primary">Ingresar</button>
-  </div>
-</nav>
+     <img
+    src={Medigeeks_Logo}
+    alt="Bootstrap"
+    width="150"
+    height="150"
+    className="transparent-img"
+    />
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Nuestros Servicios</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Galeria</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Opiniones de nuestros clientes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Contactenos</a>
+      </li>
+      
+      <button class="btn btn-outline-success me-2" type="button">Ingresar</button>
+    
+    </ul>
+    
+  </nav>
+  
+      
+ 
   );
 };
