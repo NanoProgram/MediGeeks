@@ -61,8 +61,8 @@ export const Cita2 = () => {
         <br />
         <div>
             {availableTimeSlots.map(timeSlot => (
-                <div key={timeSlot}>
-                    <button className="btn " onClick={() => handleTimeSlotSelection(timeSlot)}>
+                <div className=" " key={timeSlot}>
+                    <button type="button" className="btn btn-outline-dark m-1" onClick={() => handleTimeSlotSelection(timeSlot)}>
                         {timeSlot}
                     </button>
                 </div>
