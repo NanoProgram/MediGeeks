@@ -9,21 +9,31 @@ import re
 api = Blueprint('api', __name__)
 
 
-#API USER GET, GET ID and POST
+#API USER GET
 @api.route('/mediGeeks/users', methods=['GET'])
 def get_users_table():
     user = User.query.all()
     user = list(map(lambda p:p.serialize(),user))
     return jsonify(user), 200 
 
+#API USER GET/ID
+@api.route('/mediGeeks/users/<int:id>', methods=['GET'])
+def get_users_table_id(id):
+    user = User.query.filter_by(id=id).first()
+    if user:
+        return jsonify(user.serialize()), 200
+    else:
+        return "Usuario no existe", 404
+
+
 #API users POST
 @api.route('/mediGeeks/users', methods=['POST'])
 def add_new_user():
     request_body = request.get_json()
-    user = User.query.all()
-    user = list(map(lambda p:p.serialize(),user))
-    user.append(request_body)  
-    return jsonify(user), 200
+    new_user = User(**request_body)
+    db.session.add(new_user)
+    db.session.commit()
+    return jsonify(new_user.serialize()), 201
 
 #API DOCTOR GET
 @api.route('/mediGeeks/doctors', methods=['GET'])
@@ -52,17 +62,6 @@ def get_speciality():
     speciality = Speciality.query.all()
     speciality = list(map(lambda p:p.serialize(),speciality))
     return jsonify(speciality), 200 
-
-#API USER GET/ID
-@api.route('/mediGeeks/users/<user_id>', methods=['GET'])
-def users_table_id(user_id):
-    
-    print(user_id)
-    for user in usersTable: 
-        if user["ID"] == user_id:
-           return jsonify(user), 200 
-
-    return "Usuario no existe", 404
 
 
 #API USER PUT/ID
