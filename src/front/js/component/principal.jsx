@@ -32,7 +32,7 @@ export const Principal = () => {
         <Four />
         <br />
         <Five />
-        <Five />
+        <Footer />
     </div>
   )
 }
