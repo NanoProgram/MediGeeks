@@ -7,23 +7,6 @@ from api.utils import generate_sitemap, APIException
 
 api = Blueprint('api', __name__)
 
-usersTable = [
-        {
-        "ID": "US-001",  "NAME": "Santino Cuevas", "RUT": "22.354.650-9", "ID PREVISION": "SD-001", "EMAIL": "santino.cuevas@gmail.com", "PASSWORD": "451cd6541w681f"
-    },
-    {
-        "ID": "US-002",  "NAME": "Pablo Escovar", "RUT": "17.801.666-6", "ID PREVISION": "SD-002", "EMAIL": "pablo.escovar@gmail.com", "PASSWORD": "Dnfur651g81"
-    }
-    ]
-
-doctorsTable = [
-        {
-        "ID": "MD-001",  "NAME": "Alberto Contreras", "RUT": "12.548.575-2", "ID ESPECIALIDAD": "SP-001", "EMAIL": "alberto.contreras@gmail.com", "PASSWORD": "zvb65168186"
-    },
-    {
-        "ID": "MD-002",  "NAME": "Dolores Fuertes", "RUT": "11.522.222-0", "ID ESPECIALIDAD": "SP-002", "EMAIL": "dolores.fuertes@gmail.com", "PASSWORD": "fwewfe54684"
-    }
-    ]
 
 #API USER GET
 @api.route('/mediGeeks/users', methods=['GET'])
@@ -32,14 +15,24 @@ def get_users_table():
     user = list(map(lambda p:p.serialize(),user))
     return jsonify(user), 200 
 
+#API USER GET/ID
+@api.route('/mediGeeks/users/<int:id>', methods=['GET'])
+def get_users_table_id(id):
+    user = User.query.filter_by(id=id).first()
+    if user:
+        return jsonify(user.serialize()), 200
+    else:
+        return "Usuario no existe", 404
+
+
 #API users POST
 @api.route('/mediGeeks/users', methods=['POST'])
 def add_new_user():
     request_body = request.get_json()
-    user = User.query.all()
-    user = list(map(lambda p:p.serialize(),user))
-    user.append(request_body)  
-    return jsonify(user), 200
+    new_user = User(**request_body)
+    db.session.add(new_user)
+    db.session.commit()
+    return jsonify(new_user.serialize()), 201
 
 #API DOCTOR GET
 @api.route('/mediGeeks/doctors', methods=['GET'])
@@ -68,17 +61,6 @@ def get_speciality():
     speciality = Speciality.query.all()
     speciality = list(map(lambda p:p.serialize(),speciality))
     return jsonify(speciality), 200 
-
-#API USER GET/ID
-@api.route('/mediGeeks/users/<user_id>', methods=['GET'])
-def users_table_id(user_id):
-    
-    print(user_id)
-    for user in usersTable: 
-        if user["ID"] == user_id:
-           return jsonify(user), 200 
-
-    return "Usuario no existe", 404
 
 
 
