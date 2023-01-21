@@ -1,27 +1,53 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/example.css";
 import { Link } from "react-router-dom";
 import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg";
 import { useForm } from "react-hook-form";
-
+import { sendEmail } from "../service/emailService";
 export const Singup = () => {
-  
+
   const { register, formState: { errors }, handleSubmit } = useForm({ mode: "all", });
+
+  const [user, setUser] = useState({});
+
+
+
+
   function samePassword() {
     let password = document.getElementById("password").value;
     let confirm_password = document.getElementById("confirm_password").value;
     if (password != confirm_password) {
-    alert("Las contraseñas no coinciden");
+      alert("Las contraseñas no coinciden");
     }
-    }
-    
+  }
+
   console.log("errors", errors)
+
+  function onSubmit(data) {
+
+    console.log(data)
+    
+    verify(data)
+  }
+
+
+  const verify = (data) => {
+
+    let params = {
+      to_email: data.email,
+      to_name: data.userName,
+      to_link: "www.google.cl"
+    };
+    sendEmail(params);
+  };
+
+
   return (
 
     <div className="login position-absolute top-50 start-50 translate-middle">
-      <form autoComplete="off" onSubmit={handleSubmit((data) => console.log(data))} >
+      <form autoComplete="off" onSubmit={handleSubmit(onSubmit)} >
         <div className="logo d-flex justify-content-center">
           <img src={Medigeeks_Logo} />
         </div>
@@ -33,16 +59,9 @@ export const Singup = () => {
               value: /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u,
               message: "Nombre no es valido"
             }
-
           })} placeholder="Nombre Apellido" type="userName" id="form2Example10" class="form-control" />
-
           <p>{errors.userName?.message}</p>
-
-
-
         </div>
-
-
         <div className="form-outline mb-4">
           <input {...register("rut",
             {
@@ -91,11 +110,11 @@ export const Singup = () => {
           <p>{errors.password?.message}</p>
         </div>
         <div className="form-outline mb-4">
-          <input  onBlur={samePassword} placeholder="Confirme Contraseña" type="password" id="confirm_password" className="form-control" />
+          <input onBlur={samePassword} placeholder="Confirme Contraseña" type="password" id="confirm_password" className="form-control" />
         </div>
         <div className="col d-flex justify-content-center">
-          <button type="submit" onClick={samePassword}
-          className="btn btn-primary btn-block mb-4 justify-content-center">Registrarse</button>
+          <input type="submit" value="registrarse"
+          />
         </div>
 
 
