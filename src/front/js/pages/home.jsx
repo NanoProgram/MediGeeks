@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext ,useState} from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { Link } from "react-router-dom";
-
+import { sendEmail } from "../service/emailService";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,8 +11,15 @@ import {
   faCalendarDays,
 } from "@fortawesome/free-solid-svg-icons";
 
+
 export const Home = () => {
   const { store, actions } = useContext(Context);
+  const [email, setEmail] = useState("");
+  const [user, setUser] = useState({
+    email: "mail@mail.com",
+    name: "Jhon Doe",
+  });
+  const [link, setLink] = useState("www.google.com");
 
   return (
     <div className="ripple-background circle.xxlarge.shade1">
@@ -72,6 +79,27 @@ export const Home = () => {
           </div>
         </div>
       </div>
+    </div>
+  );
+  const verify = (_) => {
+    if (email.localeCompare(user.email) != 0) throw Error("Invalid Email");
+    let params = {
+      to_email: user.email,
+      to_name: user.name,
+      to_link: link,
+    };
+    sendEmail(params);
+  };
+
+  return (
+    <div className="text-center mt-5">
+      <input
+        title="email"
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <button onClick={verify}>Verify email</button>
     </div>
   );
 };

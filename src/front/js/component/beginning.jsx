@@ -1,7 +1,7 @@
 import React from 'react'
 import "../../styles/inicio.css"
 import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg";
-
+import {One} from "../component/one.jsx"
 export const Inicio = () => {
   return (
     <nav class="navbar bg-body-tertiary">
