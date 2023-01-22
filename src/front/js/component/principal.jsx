@@ -31,6 +31,7 @@ export const Principal = () => {
       <Four />
       <br />
       <Five />
+      <br />
       <Footer />
     </div>
   );
