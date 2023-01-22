@@ -80,6 +80,7 @@ export const Singup = () => {
             className="form-select form-select-sm mb-3s"
             aria-label=".form-select-sm example"
           >
+            
             <option selected>Prevision</option>
             <option value="Fonasa">Fonasa</option>
             <option value="Banmedica">Banmedica</option>
