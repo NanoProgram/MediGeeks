@@ -48,7 +48,6 @@ const Layout = () => {
             <Route element={<Sidebar_doc />} path="/sidebardoc" />
             <Route element={<Login />} path="/login" />
             <Route element={<Forgot />} path="/forgot" />
-            <Route element={<SingupBack />} path="/trial" />
           </Routes>
           <Footer />
         </ScrollToTop>
