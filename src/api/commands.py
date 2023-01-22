@@ -90,7 +90,7 @@ def setup_commands(app):
     def insert_test_data(count):
         print("Creando test speciality")
         for x in range(1, int(count) + 1):
-            speciality = Especialidad()
+            speciality = Speciality()
             speciality.id = x
             speciality.name = "tipo-especialidad-prueba" + str(x)
             db.session.add(speciality)
