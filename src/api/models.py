@@ -11,6 +11,7 @@ class User(db.Model):
     rut = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(260), unique=False, nullable=False)
     prevision_id = db.Column(db.Integer, db.ForeignKey('prevision.id'), nullable=False)
+    verified = db.Column(db.Boolean(), default=False, nullable=False)
 
     def __repr__(self):
         return f'<User {self.email}>'
@@ -57,6 +58,7 @@ class Doctor(db.Model):
     rut = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     speciality_id = db.Column(db.Integer, db.ForeignKey('speciality.id'), nullable=False)
+    verified = db.Column(db.Boolean(), default=False, nullable=False)
 
     def __repr__(self):
         return f'<User {self.email}>'
