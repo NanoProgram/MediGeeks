@@ -13,7 +13,7 @@ import { Forgot } from "./component/Forgot.jsx"
 import injectContext from "./store/appContext";
 import { Footer } from "./component/footer";
 import { Sidebar_doc } from "./component/Sidebar Doctors.jsx";
-import { SingupBack } from "./component/singUpBackup.jsx";
+
 
 
 
@@ -40,7 +40,6 @@ const Layout = () => {
             <Route element={<Sidebar_doc />} path="/sidebardoc" />
             <Route element={<Login />} path="/login" />
             <Route element={<Forgot />} path="/forgot" />
-            <Route element={<SingupBack />} path="/trial" />
           </Routes>
           <Footer />
         </ScrollToTop>
