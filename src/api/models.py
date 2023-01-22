@@ -113,48 +113,48 @@ class Center(db.Model):
 
 
        
-class Calendario(db.Model):
-    __tablename__='calendario'
+class Calendar(db.Model):
+    __tablename__='calendar'
     id = db.Column(db.Integer, primary_key=True)
-    centro_id = db.Column(db.Integer, db.ForeignKey('centro.id'), nullable=False)
-    año = db.Column(db.String(120), unique=True, nullable=False)
-    mes = db.Column(db.String(120), nullable=False)
-    dia = db.Column(db.String(120), nullable=False)
-    hora_atencion_inicio = db.Column(db.String(120), nullable=False)
-    hora_atencion_fin = db.Column(db.String(120), nullable=False)
-    disponible = db.Column(db.Boolean(), unique=False, nullable=False)
+    center_id = db.Column(db.Integer, db.ForeignKey('center.id'), nullable=False)
+    year = db.Column(db.String(120), unique=True, nullable=False)
+    month = db.Column(db.String(120), nullable=False)
+    day = db.Column(db.String(120), nullable=False)
+    appointment_start_time = db.Column(db.String(120), nullable=False)
+    appointment_end_time = db.Column(db.String(120), nullable=False)
+    available = db.Column(db.Boolean(), unique=False, nullable=False)
 
     def serialize(self):
         return {
             "id": self.id,
-            "centro_id": self.centro_id,
-            "año": self.año,
-            "mes": self.mes,
-            "dia": self.dia,
-            "hora_atencion_inicio": self.hora_atencion_inicio,
-            "hora_atencion_fin": self.hora_atencion_fin,
-            "disponible": self.disponible,
+            "center_id": self.center_id,
+            "year": self.year,
+            "month": self.month,
+            "day": self.day,
+            "appointment_start_time": self.appointment_start_time,
+            "appointment_end_time": self.appointment_end_time,
+            "available": self.available,
            
         }
 
-class Cita(db.Model):
-    __tablename__='cita'
+class Appointment(db.Model):
+    __tablename__='appointment'
     id = db.Column(db.Integer, primary_key=True)
     doctor_id = db.Column(db.Integer, db.ForeignKey('doctor.id'), nullable=False)
-    especialidad_id = db.Column(db.Integer, db.ForeignKey('especialidad.id'), nullable=False)
-    centro_id = db.Column(db.Integer, db.ForeignKey('centro.id'), nullable=False)
-    calendario_id = db.Column(db.Integer, db.ForeignKey('calendario.id'), nullable=False)
-    disponible = db.Column(db.Boolean(), unique=False, nullable=False)
+    speciality_id = db.Column(db.Integer, db.ForeignKey('speciality.id'), nullable=False)
+    center_id = db.Column(db.Integer, db.ForeignKey('center.id'), nullable=False)
+    calendar_id = db.Column(db.Integer, db.ForeignKey('calendar.id'), nullable=False)
+    available = db.Column(db.Boolean(), unique=False, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def serialize(self):
         return {
             "id": self.id,
             "doctor_id": self.doctor_id,
-            "especialidad_id": self.especialidad_id,
-            "centro_id": self.centro_id,
-            "calendario_id": self.calendario_id,
-            "disponible": self.disponible,
+            "speciality_id": self.speciality_id,
+            "center_id": self.center_id,
+            "calendar_id": self.calendar_id,
+            "available": self.available,
             "user_id": self.user_id,
            
         }
