@@ -976,7 +976,6 @@
   "resolved" "https://registry.npmjs.org/@discoveryjs/json-ext/-/json-ext-0.5.6.tgz"
   "version" "0.5.6"
 
- 22796d5 (Calendar)
 "@emailjs/browser@^3.10.0":
   "integrity" "sha512-pregUOBkSjjctQoAgn8DcSaeY4ypHjXAJEzWlJysM3RkQXw1ulavfHva3YYeAkxfJ7qbIhpyvRmhyQlgNG4GVg=="
   "resolved" "https://registry.npmjs.org/@emailjs/browser/-/browser-3.10.0.tgz"
@@ -1003,12 +1002,6 @@
   "integrity" "sha512-OWORNpfjMsSSUBVrRBVGECkhWcULOAJz9ZW8uK9qgxD+87M7jHRcvh/A96XXNhXTLmKcoYSQtBEX7lHMO7YRwg=="
   "resolved" "https://registry.npmjs.org/@emotion/unitless/-/unitless-0.7.5.tgz"
   "version" "0.7.5"
-"@emailjs/browser@^3.10.0":
-  "integrity" "sha512-pregUOBkSjjctQoAgn8DcSaeY4ypHjXAJEzWlJysM3RkQXw1ulavfHva3YYeAkxfJ7qbIhpyvRmhyQlgNG4GVg=="
-  "resolved" "https://registry.npmjs.org/@emailjs/browser/-/browser-3.10.0.tgz"
-  "version" "3.10.0"
-=======
->>>>>>> 22796d5 (Calendar)
 
 "@eslint/eslintrc@^1.0.5":
   "integrity" "sha512-BLxsnmK3KyPunz5wmCCpqy0YelEoxxGmH73Is+Z74oOTMtExcjkr3dDR6quwrjh1YspA8DH9gnX1o069KiS9AQ=="
@@ -4733,9 +4726,9 @@
     "prop-types" "^15.6.0"
 
 "react-date-picker@^9.1.0":
-  "integrity" "sha512-kAE7HFLq1ic4pS0Pk9SyPTjejIfjTyPov04a2eZzLxfZh8ss8EPaaaX7bBUP4RUCkbxHpR0P4UHloD0/fFDCZw=="
-  "resolved" "https://registry.npmjs.org/react-date-picker/-/react-date-picker-9.2.0.tgz"
-  "version" "9.2.0"
+  "integrity" "sha512-wj9SoOhEgQTzJsDRLePpNzUDNrcSiCpj1TFSwiAnLlOuJvvkk10I9rdvIyHmeJg/G17hyP5wSwTppCZHqOTHhA=="
+  "resolved" "https://registry.npmjs.org/react-date-picker/-/react-date-picker-9.1.0.tgz"
+  "version" "9.1.0"
   dependencies:
     "@types/react-calendar" "^3.0.0"
     "@wojtekmaj/date-utils" "^1.0.3"
@@ -4777,15 +4770,7 @@
     "strip-ansi" "^6.0.1"
     "text-table" "^0.2.0"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 "react-dom@^15.5.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.14.0", "react-dom@^16.8.0 || ^17 || ^18", "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", "react-dom@>= 16.8.0", "react-dom@>=16.14.0", "react-dom@>=16.6.0", "react-dom@>=16.8", "react-dom@>=16.8.0":
-=======
-"react-dom@^15.5.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.8.4", "react-dom@>= 16.8.0", "react-dom@>=16.14.0", "react-dom@>=16.6.0", "react-dom@>=16.8":
->>>>>>> 22796d5 (Calendar)
-=======
-"react-dom@^15.5.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.14.0", "react-dom@^16.8.0 || ^17 || ^18", "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", "react-dom@>= 16.8.0", "react-dom@>=16.14.0", "react-dom@>=16.6.0", "react-dom@>=16.8", "react-dom@>=16.8.0":
->>>>>>> e72be1b (terminando appointmen)
   "integrity" "sha512-1gCeQXDLoIqMgqD3IO2Ah9bnf0w9kzhwN5q4FGnHZ67hBm9yePzB5JJAIQCc8x3pFnNlwFq4RidZggNAAkzWWw=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-16.14.0.tgz"
   "version" "16.14.0"
@@ -4824,32 +4809,6 @@
   "resolved" "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.42.1.tgz"
   "version" "7.42.1"
 
-<<<<<<< HEAD
-=======
-"react-is@^16.13.1", "react-is@^16.3.2":
-"react-fast-compare@^3.0.1":
-  "integrity" "sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA=="
-  "resolved" "https://registry.npmjs.org/react-fast-compare/-/react-fast-compare-3.2.0.tgz"
-  "version" "3.2.0"
-
-"react-fit@^1.4.0":
-  "integrity" "sha512-cf9sFKbr1rlTB9fNIKE5Uy4NCMUOqrX2mdJ69V4RtmV4KubPdtnbIP1tEar16GXaToCRr7I7c9d2wkTNk9TV5g=="
-  "resolved" "https://registry.npmjs.org/react-fit/-/react-fit-1.4.0.tgz"
-  "version" "1.4.0"
-  dependencies:
-    "detect-element-overflow" "^1.2.0"
-    "prop-types" "^15.6.0"
-    "tiny-warning" "^1.0.0"
-
-<<<<<<< HEAD
->>>>>>> 22796d5 (Calendar)
-=======
-"react-hook-form@^7.42.1":
-  "integrity" "sha512-2UIGqwMZksd5HS55crTT1ATLTr0rAI4jS7yVuqTaoRVDhY2Qc4IyjskCmpnmdYqUNOYFy04vW253tb2JRVh+IQ=="
-  "resolved" "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.42.1.tgz"
-  "version" "7.42.1"
-
->>>>>>> 788d09e (avance)
 "react-is@^16.13.1", "react-is@^16.3.2", "react-is@^16.7.0", "react-is@>= 16.8.0":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
