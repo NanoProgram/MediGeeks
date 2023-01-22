@@ -4,13 +4,37 @@ import "../../styles/cita_1.css";
 import { Link } from "react-router-dom";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import Calendar from 'react-calendar';
-import "../../styles/general.css";
+import DatePicker from 'react-date-picker'
+import "react-date-picker/dist/DatePicker.css"
+//import 'react-datepicker/dist/react-datepicker.css';
+
 
 
 
 
 export const Cita2 = () => {
   const [date, setDate] = useState(new Date());
+  const [value, onChange] = useState(new Date());
+
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [availableTimeSlots, setAvailableTimeSlots] = useState([]);
+
+  const handleDateSelection = async date => {
+      setSelectedDate(date);
+      const timeSlots = await fetchTimeSlotsFromDB(date);
+      setAvailableTimeSlots(timeSlots);
+  }
+
+  const fetchTimeSlotsFromDB = async date => {
+      // Aquí podrías hacer una petición a una base de datos para obtener los rangos horarios disponibles para la fecha seleccionada
+      // Utilizando el paquete fetch o cualquier otro para hacer peticiones HTTP
+      // Ejemplo: const response = await fetch(`/api/timeslots?date=${date}`);
+      //const timeSlots = await response.json();
+      //return timeSlots;
+      return ["08:00-09:00", "09:00-10:00", "10:00-11:00"];
+  }
+
+
   return (
     <div className="container justify-content-center fondo p-2" >
       <div className="d-flex justify-content-center">
@@ -26,24 +50,25 @@ export const Cita2 = () => {
         </div>
         </div>
         <div className="p-2">
-        <Calendar value={date} onChange={setDate}/>
-
-
-            <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" className="btn-check" name="btnradio" id="btnradio1" autoComplete="off"/>
-                <label className="btn btn-outline-primary" htmlFor="btnradio1">
-                Rango 1
-                </label>
-                <input type="radio" className="btn-check" name="btnradio" id="btnradio2" autoComplete="off" />
-                <label className="btn btn-outline-primary" htmlFor="btnradio2">
-                Rango 2
-                </label>
-                <input type="radio" className="btn-check" name="btnradio" id="btnradio3" autoComplete="off" />
-                <label className="btn btn-outline-primary" htmlFor="btnradio3">
-                Rango 3
-                </label>
-            </div>
-                    
+        <DatePicker
+            className="react-date-picker__input react-date-picker__input--custom-bg"
+            value={selectedDate}
+            onChange={handleDateSelection}
+            autoFocus={true}
+            minDate={new Date()}
+        />
+        <br />
+        <br />
+        <div>
+            {availableTimeSlots.map(timeSlot => (
+                <div className=" " key={timeSlot}>
+                    <button type="button" className="btn btn-outline-dark m-1" onClick={() => handleTimeSlotSelection(timeSlot)}>
+                        {timeSlot}
+                    </button>
+                </div>
+            ))}
+        </div>
+                
         </div>
         
     </div>

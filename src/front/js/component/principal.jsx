@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { Inicio } from "../component/beginning.jsx";
 import { One } from "../component/one.jsx";
 import { Two } from "../component/two.jsx";
@@ -35,5 +35,5 @@ export const Principal = () => {
         <br />
         <Footer />
     </div>
-  )
-}
+  );
+};
