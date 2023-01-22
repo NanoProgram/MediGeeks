@@ -3,27 +3,11 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-"""class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    name = db.Column(db.String(120), unique=True, nullable=False)
-
-
-    def __repr__(self):
-        return f'<User {self.email}>'
-
-    def serialize(self):
-        return {
-            "id": self.id,
-            "email": self.email,
-            # do not serialize the password, its a security breach
-        }"""
-
 class User(db.Model):
     __tablename__='user'
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    name = db.Column(db.String(120), unique=True, nullable=False)
+    name = db.Column(db.String(120), unique=False, nullable=False)
     rut = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(260), unique=False, nullable=False)
     prevision_id = db.Column(db.Integer, db.ForeignKey('prevision.id'), nullable=False)
@@ -69,7 +53,7 @@ class Doctor(db.Model):
     __tablename__ = 'doctor'
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    name = db.Column(db.String(120), unique=True, nullable=False)
+    name = db.Column(db.String(120), unique=False, nullable=False)
     rut = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     speciality_id = db.Column(db.Integer, db.ForeignKey('speciality.id'), nullable=False)
@@ -115,7 +99,7 @@ class Calendar(db.Model):
     __tablename__='calendar'
     id = db.Column(db.Integer, primary_key=True)
     center_id = db.Column(db.Integer, db.ForeignKey('center.id'), nullable=False)
-    year = db.Column(db.String(120), unique=True, nullable=False)
+    year = db.Column(db.String(120), nullable=False)
     month = db.Column(db.String(120), nullable=False)
     day = db.Column(db.String(120), nullable=False)
     appointment_start_time = db.Column(db.String(120), nullable=False)
