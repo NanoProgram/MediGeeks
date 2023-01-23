@@ -6,14 +6,12 @@ import { Link } from "react-router-dom";
 import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg";
 import { useForm } from "react-hook-form";
 import { sendEmail } from "../service/emailService";
+
+
 export const Singup = () => {
 
   const { register, formState: { errors }, handleSubmit } = useForm({ mode: "all", });
-
   const [user, setUser] = useState({});
-
-
-
 
   function samePassword() {
     let password = document.getElementById("password").value;
@@ -22,19 +20,13 @@ export const Singup = () => {
       alert("Las contraseñas no coinciden");
     }
   }
-
   console.log("errors", errors)
-
   function onSubmit(data) {
-
     console.log(data)
-    
     verify(data)
   }
 
-
   const verify = (data) => {
-
     let params = {
       to_email: data.email,
       to_name: data.userName,
@@ -42,7 +34,6 @@ export const Singup = () => {
     };
     sendEmail(params);
   };
-
 
   return (
 
@@ -78,9 +69,7 @@ export const Singup = () => {
             required: "Selecione una prevision"
           })}
             className="form-select form-select-sm mb-3s"
-            aria-label=".form-select-sm example"
-          >
-            
+            aria-label=".form-select-sm example">
             <option selected>Prevision</option>
             <option value="Fonasa">Fonasa</option>
             <option value="Banmedica">Banmedica</option>
@@ -114,11 +103,8 @@ export const Singup = () => {
           <input onBlur={samePassword} placeholder="Confirme Contraseña" type="password" id="confirm_password" className="form-control" />
         </div>
         <div className="col d-flex justify-content-center">
-          <input type="submit" value="registrarse"
-          />
+          <input type="submit" value="registrarse" />
         </div>
-
-
       </form>
     </div>
   );
