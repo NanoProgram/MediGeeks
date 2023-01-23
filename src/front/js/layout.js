@@ -15,9 +15,7 @@ import { Footer } from "./component/footer";
 import { Sidebar_doc } from "./component/Sidebar Doctors.jsx";
 import { AdmissionDoctor } from "./component/singupdoc.jsx";
 import { Recover } from "./component/recoverPassword.jsx";
-
 import { Principal} from "./component/principal.jsx";
-
 import { Prueba } from "./pages/pruebas.jsx";
 
 
@@ -32,14 +30,11 @@ const Layout = () => {
       <BrowserRouter basename={basename}>
         <ScrollToTop>
           <Sidebar_doc />
-          <Routes>
-          
-          <Route element={<Principal />} path="/" />
-       
+          <Routes>          
+          <Route element={<Principal />} path="/" />       
           <Route element={<Recover/>} path="/recoverPassword" />
           <Route element={<AdmissionDoctor/>} path="/singupdoc" />
             <Route element={<Singup />} path="/signup" />
-            
             <Route element={<Prueba />} path="/prueba" />
             <Route element={<Singup />} path="/singup" />
             <Route element={<Home />} path="/home" />
