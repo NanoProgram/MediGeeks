@@ -11,7 +11,7 @@ import { Login } from "./component/login.jsx";
 import { Singup } from "./component/singup.jsx";
 import { Forgot } from "./component/Forgot.jsx";
 import injectContext from "./store/appContext";
-import { Footer } from "./component/footer";
+import { Footer } from "./component/footer.jsx";
 import { Sidebar_doc } from "./component/Sidebar Doctors.jsx";
 import { AdmissionDoctor } from "./component/singupdoc.jsx";
 import { Recover } from "./component/recoverPassword.jsx";
@@ -45,7 +45,7 @@ const Layout = () => {
             <Route element={<Calendardoc />} path="/calendardoc" />
             <Route element={<Sidebar_doc />} path="/sidebardoc" />
             <Route element={<Login />} path="/login" />
-            <Route element={<Forgot />} path="/forgot" />
+            <Route element={<Footer />} path="/footer" />
           </Routes>
           <Footer />
         </ScrollToTop>

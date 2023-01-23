@@ -2,15 +2,21 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 import os
-from flask import Flask, request, jsonify, url_for, send_from_directory
+from flask import Flask, request, jsonify, url_for, send_from_directory, make_response
 from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
 from api.utils import APIException, generate_sitemap
-from api.models import db
+from api.models import db, User
 from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
+import jwt
+from datetime import datetime, timedelta
+from functools import wraps
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required
+import uuid
+from  werkzeug.security import generate_password_hash, check_password_hash
 
 #from models import Person
 
@@ -42,6 +48,8 @@ setup_commands(app)
 # Add all endpoints form the API with a "api" prefix
 app.register_blueprint(api, url_prefix='/api')
 
+jwt = JWTManager(app)
+
 # Handle/serialize errors like a JSON object
 @app.errorhandler(APIException)
 def handle_invalid_usage(error):
@@ -49,6 +57,7 @@ def handle_invalid_usage(error):
 
 # generate sitemap with all your endpoints
 @app.route('/')
+@jwt_required()
 def sitemap():
     if ENV == "development":
         return generate_sitemap(app)
@@ -62,6 +71,76 @@ def serve_any_other_file(path):
     response = send_from_directory(static_file_dir, path)
     response.cache_control.max_age = 0 # avoid cache memory
     return response
+
+# ruta para iniciar sesión de usuario
+@app.route('/login', methods =['POST'])
+def login():
+    # creates dictionary of form data
+    auth = request.form
+
+    if not auth or not auth.get('email') or not auth.get('password'):
+        # devuelve 401 si falta algún correo electrónico o contraseña
+        return make_response(
+            'Could not verify',
+            401,
+            {'WWW-Authenticate' : 'Basic realm ="¡Se requiere iniciar sesión !!"'}
+            )
+
+    user = User.query\
+        .filter_by(email = auth.get('email'))\
+        .first()
+
+    if not user:
+        # devuelve 401 si el usuario no existe
+        return make_response(
+            'Could not verify',
+            401,
+            {'WWW-Authenticate' : 'Basic realm ="Usuario o contraseña incorrectos !!"'}
+        )
+
+    if check_password_hash(user.password, auth.get('password')):
+        # genera el token JWT
+        access_token = create_access_token(identity=user.id)
+        return jsonify({ "token": access_token, "user_id": user.id })
+    # devuelve 403 si la contraseña es incorrecta
+    return make_response(
+        'Could not verify',
+        403,
+        {'WWW-Authenticate' : 'Basic realm ="Usuario o contraseña incorrectos !!"'}
+    )
+
+#  ruta de registro
+@app.route('/signup', methods =['POST'])
+def signup():
+    # crea un diccionario de los datos del formulario
+    data = request.form
+
+    # obtiene nombre, correo electrónico y contraseña
+    email = data.get('email')
+    password = data.get('password')
+
+    # comprobando el usuario existente
+    user = User.query\
+        .filter_by(email = email)\
+        .first()
+
+    if not user:
+        # objeto ORM de la base de datos
+        user = User(
+            id = str(uuid.uuid4()),
+            email = email,
+            password = generate_password_hash(password),
+            is_active = True
+        )
+        # insertar usuario
+        db.session.add(user)
+        db.session.commit()
+
+        return make_response('Registrado con éxito', 201)
+    else:
+        # devuelve 202 si el usuario ya existe
+        return make_response('El usuario ya existe. Inicie sesión', 202)
+
 
 
 # this only runs if `$ python src/main.py` is executed
