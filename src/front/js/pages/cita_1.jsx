@@ -5,17 +5,28 @@ import { Link } from "react-router-dom";
 import { Doc_disponible } from "../component/doc_disponible.jsx";
 
 export const Cita = () => {
-  const [disableEspecialidad, setDisableEspecialidad] = useState(true);
-  const [centroDisable, setCentroDisable] = useState(true);
+  const [comuna1, setComuna1] = useState([]);
 
-  const EspecialidadClick = () => {
-    setDisableEspecialidad(!disableEspecialidad);
-    setCentroDisable(true);
+  const comunaSelection = async (date) => {
+    const comunas = await fetchComuna1();
+    setComuna1(comunas);
+    console.log(comunas);
   };
 
-  const CentroClick = () => {
-    setDisableEspecialidad(true);
-    setCentroDisable(!centroDisable);
+  const fetchComuna1 = async () => {
+    // Aquí podrías hacer una petición a una base de datos para obtener los rangos horarios disponibles para la fecha seleccionada
+    // Utilizando el paquete fetch o cualquier otro para hacer peticiones HTTP
+    // Ejemplo: const response = await fetch(`/api/timeslots?date=${date}`);
+    //const timeSlots = await response.json();
+    //return timeSlots;
+    return ["Peña", "Santiago", "Maipu"];
+  };
+
+  const handleComunaSelection = (event) => {
+    const comunaSeleccionada = event.target.value;
+    console.log(`Comuna seleccionada: ${comunaSeleccionada}`);
+    // Aquí podrías utilizar la comuna seleccionada para hacer una petición a la API
+    //o base de datos para obtener los centros médicos disponibles en esa comuna.
   };
 
   return (
@@ -23,31 +34,13 @@ export const Cita = () => {
       <div className="text-center">
         <h1 className="center"> MediGeeks</h1>
         <h3> Toma de Hora</h3>
-        <button
-          type="button"
-          className="btn btn-primary btn-lg m-2"
-          onClick={EspecialidadClick}
-        >
-          Especialidad
-        </button>
-        <button
-          type="button"
-          className="btn btn-primary btn-lg m-2"
-          onClick={CentroClick}
-        >
-          Centro
-        </button>
       </div>
       <div className="d-flex justify-content-center">
-        <div
-          className="m-3"
-          style={{ display: !centroDisable ? "none" : "block" }}
-        >
+        <div className="m-3">
           <select
             class="form-select form-select-sm mb-3s m-1"
             aria-label=".form-select-sm example"
             style={{ width: "150px" }}
-            disabled={disableEspecialidad}
           >
             <option selected>Especialidad</option>
             <option value="1">Especialidad 1</option>
@@ -59,19 +52,21 @@ export const Cita = () => {
             class="form-select form-select-sm mb-3s m-1"
             aria-label=".form-select-sm example"
             style={{ width: "150px" }}
-            disabled={disableEspecialidad}
+            onChange={handleComunaSelection}
+            onClick={comunaSelection}
           >
             <option selected>Comuna</option>
-            <option value="1">Comuna 1</option>
-            <option value="2">Comuna 2</option>
-            <option value="3">Comuna 3</option>
+            {comuna1.map((comunas) => (
+              <option value={comunas.id} key={comunas.id}>
+                {comunas}
+              </option>
+            ))}
           </select>
 
           <select
             class="form-select form-select-sm mb-3s m-1"
             aria-label=".form-select-sm example"
             style={{ width: "150px" }}
-            disabled={disableEspecialidad}
           >
             <option selected>Centro Medico</option>
             <option value="1">Centro Medico 1</option>
@@ -82,60 +77,6 @@ export const Cita = () => {
             class="form-select form-select-sm mb-3s m-1"
             aria-label=".form-select-sm example"
             style={{ width: "150px" }}
-            disabled={disableEspecialidad}
-          >
-            <option selected>Doc</option>
-            <option value="1">Doc1</option>
-            <option value="2">Doc2</option>
-            <option value="3">Doc3</option>
-          </select>
-        </div>
-
-        <div
-          className="m-3 "
-          style={{ display: !disableEspecialidad ? "none" : "block" }}
-        >
-          <select
-            class="form-select form-select-sm mb-3s m-1"
-            aria-label=".form-select-sm example"
-            style={{ width: "150px" }}
-            disabled={centroDisable}
-          >
-            <option selected>Comuna</option>
-            <option value="1">Comuna 1</option>
-            <option value="2">Comuna 2</option>
-            <option value="3">Comuna 3</option>
-          </select>
-
-          <select
-            class="form-select form-select-sm mb-3s m-1"
-            aria-label=".form-select-sm example"
-            style={{ width: "150px" }}
-            disabled={centroDisable}
-          >
-            <option selected>Centro Medico</option>
-            <option value="1">Centro Medico 1</option>
-            <option value="2">Centro Medico 2</option>
-            <option value="3">Centro Medico 3</option>
-          </select>
-
-          <select
-            class="form-select form-select-sm mb-3s m-1"
-            aria-label=".form-select-sm example"
-            style={{ width: "150px" }}
-            disabled={centroDisable}
-            s
-          >
-            <option selected>Especialidad</option>
-            <option value="1">Especialidad 1</option>
-            <option value="2">Especialidad 2</option>
-            <option value="3">Especialidad 3</option>
-          </select>
-          <select
-            class="form-select form-select-sm mb-3s m-1"
-            aria-label=".form-select-sm example"
-            style={{ width: "150px" }}
-            disabled={centroDisable}
           >
             <option selected>Doc</option>
             <option value="1">Doc1</option>
