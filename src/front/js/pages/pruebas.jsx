@@ -1,73 +1,100 @@
-import React, { useState } from "react";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import React, { useContext, useState } from "react";
+import { Context } from "../store/appContext";
+import "../../styles/cita_1.css";
+import { Link } from "react-router-dom";
+import { Doc_disponible } from "../component/doc_disponible.jsx";
 
 export const Prueba = () => {
-  const [selectedOption, setSelectedOption] = useState("");
-  const [selectedOption2, setSelectedOption2] = useState(false);
-  const [selectedOption3, setSelectedOption3] = useState(false);
-  const [selectedOption4, setSelectedOption4] = useState(false);
+  const [comuna1, setComuna1] = useState([]);
 
-  const handleSelectChange = (e) => {
-    setSelectedOption(e.target.value);
-    if (e.target.value) setSelectedOption2(true);
+  const comunaSelection = async (date) => {
+    const comunas = await fetchComuna1();
+    setComuna1(comunas);
+    console.log(comunas);
   };
-  const handleSelectChange2 = (e) => {
-    setSelectedOption2(e.target.value);
-    if (e.target.value) setSelectedOption3(true);
+
+  const fetchComuna1 = async () => {
+    // Aquí podrías hacer una petición a una base de datos para obtener los rangos horarios disponibles para la fecha seleccionada
+    // Utilizando el paquete fetch o cualquier otro para hacer peticiones HTTP
+    // Ejemplo: const response = await fetch(`/api/timeslots?date=${date}`);
+    //const timeSlots = await response.json();
+    //return timeSlots;
+    return ["Peña", "Santiago", "Maipu"];
   };
-  const handleSelectChange3 = (e) => {
-    setSelectedOption3(e.target.value);
-    if (e.target.value) setSelectedOption4(true);
+
+  const handleComunaSelection = (event) => {
+    const comunaSeleccionada = event.target.value;
+    console.log(`Comuna seleccionada: ${comunaSeleccionada}`);
+    // Aquí podrías utilizar la comuna seleccionada para hacer una petición a la API
+    //o base de datos para obtener los centros médicos disponibles en esa comuna.
   };
+
   return (
-    <Form>
-      <FormGroup>
-        <Label for="selectOption1">Select an option 1</Label>
-        <Input type="select" id="selectOption1" onChange={handleSelectChange}>
-          <option value="">Select an option</option>
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
-        </Input>
-      </FormGroup>
-      <FormGroup>
-        <Label for="selectOption2">Select an option 2</Label>
-        <Input
-          type="select"
-          id="selectOption2"
-          disabled={!selectedOption2}
-          onChange={handleSelectChange2}
-        >
-          <option value="">Select an option</option>
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
-        </Input>
-      </FormGroup>
-      <FormGroup>
-        <Label for="selectOption3">Select an option 3</Label>
-        <Input
-          type="select"
-          id="selectOption3"
-          disabled={!selectedOption3}
-          onChange={handleSelectChange3}
-        >
-          <option value="">Select an option</option>
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
-        </Input>
-      </FormGroup>
-      <FormGroup>
-        <Label for="selectOption4">Select an option 4</Label>
-        <Input type="select" id="selectOption4" disabled={!selectedOption4}>
-          <option value="">Select an option</option>
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
-        </Input>
-      </FormGroup>
-      <Button color="primary">Submit</Button>
-    </Form>
+    <div className="container fondo p-2">
+      <div className="text-center">
+        <h1 className="center"> MediGeeks</h1>
+        <h3> Toma de Hora</h3>
+      </div>
+      <div className="d-flex justify-content-center">
+        <div className="m-3">
+          <select
+            class="form-select form-select-sm mb-3s m-1"
+            aria-label=".form-select-sm example"
+            style={{ width: "150px" }}
+          >
+            <option selected>Especialidad</option>
+            <option value="1">Especialidad 1</option>
+            <option value="2">Especialidad 2</option>
+            <option value="3">Especialidad 3</option>
+          </select>
+
+          <select
+            class="form-select form-select-sm mb-3s m-1"
+            aria-label=".form-select-sm example"
+            style={{ width: "150px" }}
+            onChange={handleComunaSelection}
+            onClick={comunaSelection}
+          >
+            <option selected>Comuna</option>
+            {comuna1.map((comunas) => (
+              <option value={comunas.id} key={comunas.id}>
+                {comunas}
+              </option>
+            ))}
+          </select>
+
+          <select
+            class="form-select form-select-sm mb-3s m-1"
+            aria-label=".form-select-sm example"
+            style={{ width: "150px" }}
+          >
+            <option selected>Centro Medico</option>
+            <option value="1">Centro Medico 1</option>
+            <option value="2">Centro Medico 2</option>
+            <option value="3">Centro Medico 3</option>
+          </select>
+          <select
+            class="form-select form-select-sm mb-3s m-1"
+            aria-label=".form-select-sm example"
+            style={{ width: "150px" }}
+          >
+            <option selected>Doc</option>
+            <option value="1">Doc1</option>
+            <option value="2">Doc2</option>
+            <option value="3">Doc3</option>
+          </select>
+        </div>
+      </div>
+      <br />
+      <Doc_disponible />
+      <div className="d-flex justify-content-between">
+        <Link to="/home">
+          <button className="btn btn-primary">Back To home</button>
+        </Link>
+        <Link to="/appointment-confirmed">
+          <button className="btn btn-primary">Continue</button>
+        </Link>
+      </div>
+    </div>
   );
 };

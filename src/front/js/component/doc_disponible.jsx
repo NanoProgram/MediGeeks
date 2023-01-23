@@ -3,7 +3,6 @@ import { Context } from "../store/appContext";
 import "../../styles/cita_1.css";
 import { Link } from "react-router-dom";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
-import Calendar from "react-calendar";
 import DatePicker from "react-date-picker";
 import "react-date-picker/dist/DatePicker.css";
 //import 'react-datepicker/dist/react-datepicker.css';
@@ -17,6 +16,10 @@ export const Doc_disponible = () => {
 
   const handleDateSelection = async (date) => {
     setSelectedDate(date);
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    console.log(day);
+    console.log(month);
     const timeSlots = await fetchTimeSlotsFromDB(date);
     setAvailableTimeSlots(timeSlots);
   };
@@ -52,6 +55,7 @@ export const Doc_disponible = () => {
             onChange={handleDateSelection}
             autoFocus={false}
             minDate={new Date()}
+            mode="single"
           />
           <br />
           <br />
