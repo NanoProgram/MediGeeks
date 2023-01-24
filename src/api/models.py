@@ -1,11 +1,12 @@
 from flask_sqlalchemy import SQLAlchemy
+import uuid
 
 
 db = SQLAlchemy()
 
 class User(db.Model):
     __tablename__='user'
-    id = db.Column(db.String(100), primary_key=True)
+    id = db.Column(db.String(100), primary_key=True, default=str(uuid.uuid1()))
     email = db.Column(db.String(120), unique=True, nullable=False)
     name = db.Column(db.String(120), unique=False, nullable=False)
     rut = db.Column(db.String(120), unique=True, nullable=False)
@@ -53,7 +54,7 @@ class Speciality(db.Model):
 
 class Doctor(db.Model):
     __tablename__ = 'doctor'
-    id = db.Column(db.String(100), primary_key=True)
+    id = db.Column(db.String(100), primary_key=True, default=str(uuid.uuid1()))
     email = db.Column(db.String(120), unique=True, nullable=False)
     name = db.Column(db.String(120), unique=False, nullable=False)
     rut = db.Column(db.String(120), unique=True, nullable=False)

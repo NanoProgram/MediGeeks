@@ -62,7 +62,7 @@ export const AdmissionDoctor = () => {
     return (
 
         <div className="login position-absolute top-50 start-50 translate-middle">
-            <form autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
+            <form autoComplete="off" onSubmit={handleSubmit(submitBack)}>
                 <div className="logo d-flex justify-content-center">
                     <img src={Medigeeks_Logo} />
                 </div>
@@ -74,8 +74,8 @@ export const AdmissionDoctor = () => {
                             value: /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u,
                             message: "Nombre no es valido"
                         }
-                    })} placeholder="Nombre Apellido" type="userName" id="form2Example10" class="form-control" />
-                    <p>{errors.userName?.message}</p>
+                    })} placeholder="Nombre Apellido" id="form2Example10" class="form-control" />
+                    <p>{errors.name?.message}</p>
                 </div>
                 <div className="form-outline mb-4">
                     <input {...register("rut",
