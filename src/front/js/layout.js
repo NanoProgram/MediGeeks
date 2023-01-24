@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./pages/home.jsx";
 import { Cita } from "./pages/cita_1.jsx";
-import { Cita2 } from "./pages/cita_2.jsx";
 import { Cita3 } from "./pages/cita_3.jsx";
 import { Appointment } from "./pages/Appointment.jsx";
 import { Calendardoc } from "./pages/Calendardoc.jsx";
@@ -39,8 +38,7 @@ const Layout = () => {
             <Route element={<Singup />} path="/singup" />
             <Route element={<Home />} path="/home" />
             <Route element={<h1>Not found!</h1>} />
-            <Route element={<Cita />} path="/appointment" />
-            {/*<Route element={<Cita2 />} path="/appointment-confirmed" />*/}
+            <Route element={<Cita />} path="/appointment" />          
             <Route element={<Cita3 />} path="/appointment-confirmed" />
             <Route element={<Appointment />} path="/doctor" />
             <Route element={<Calendardoc />} path="/calendardoc" />
@@ -48,7 +46,7 @@ const Layout = () => {
             <Route element={<Login />} path="/login" />
             <Route element={<Footer />} path="/footer" />
           </Routes>
-          <Footer />
+        
         </ScrollToTop>
       </BrowserRouter>
     </div>
