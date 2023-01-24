@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 9e0c7a68c8fe
+Revision ID: 37a55779e2ba
 Revises: 
-Create Date: 2023-01-22 18:46:04.391906
+Create Date: 2023-01-24 02:25:22.729154
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '9e0c7a68c8fe'
+revision = '37a55779e2ba'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -53,7 +53,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('doctor',
-    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('id', sa.String(length=100), nullable=False),
     sa.Column('email', sa.String(length=120), nullable=False),
     sa.Column('name', sa.String(length=120), nullable=False),
     sa.Column('rut', sa.String(length=120), nullable=False),
@@ -66,7 +66,7 @@ def upgrade():
     sa.UniqueConstraint('rut')
     )
     op.create_table('user',
-    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('id', sa.String(length=100), nullable=False),
     sa.Column('email', sa.String(length=120), nullable=False),
     sa.Column('name', sa.String(length=120), nullable=False),
     sa.Column('rut', sa.String(length=120), nullable=False),
@@ -80,12 +80,12 @@ def upgrade():
     )
     op.create_table('appointment',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('doctor_id', sa.Integer(), nullable=False),
+    sa.Column('doctor_id', sa.String(length=100), nullable=False),
     sa.Column('speciality_id', sa.Integer(), nullable=False),
     sa.Column('center_id', sa.Integer(), nullable=False),
     sa.Column('calendar_id', sa.Integer(), nullable=False),
     sa.Column('available', sa.Boolean(), nullable=False),
-    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.String(length=100), nullable=False),
     sa.ForeignKeyConstraint(['calendar_id'], ['calendar.id'], ),
     sa.ForeignKeyConstraint(['center_id'], ['center.id'], ),
     sa.ForeignKeyConstraint(['doctor_id'], ['doctor.id'], ),

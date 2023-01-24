@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint, make_response
-from api.models import db, User, Prevision, Speciality, Center, Doctor
+from api.models import db, User, Prevision, Speciality, Center, Doctor, Calendar, Appointment
 from api.utils import generate_sitemap, APIException
 import re
 
@@ -109,6 +109,20 @@ def get_speciality():
     speciality = Speciality.query.all()
     speciality = list(map(lambda p:p.serialize(),speciality))
     return jsonify(speciality), 200 
+
+#API speciality GET
+@api.route('/mediGeeks/calendar', methods=['GET'])
+def get_calendar():
+    calendar = Calendar.query.all()
+    calendar = list(map(lambda p:p.serialize(),calendar))
+    return jsonify(calendar), 200
+
+#API speciality GET
+@api.route('/mediGeeks/appointments', methods=['GET'])
+def get_appointment():
+    appointment = Appointment.query.all()
+    appointment = list(map(lambda p:p.serialize(),appointment))
+    return jsonify(appointment), 200
 
 
 
