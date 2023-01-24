@@ -1,12 +1,13 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
-from flask import Flask, request, jsonify, url_for, Blueprint
+from flask import Flask, request, jsonify, url_for, Blueprint, make_response
 from api.models import db, User, Prevision, Speciality, Center, Doctor
 from api.utils import generate_sitemap, APIException
 import re
 
 api = Blueprint('api', __name__)
+
 
 
 #API USER GET, GET ID and POST
@@ -66,6 +67,7 @@ def get_doctor_table_id(id):
 @api.route('/mediGeeks/doctors', methods=['POST'])
 def add_new_doctor():
     request_body = request.get_json()
+    print(request_body)
     name = request_body.get("name")
     email = request_body.get("email")
     rut = request_body.get("rut")

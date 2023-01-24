@@ -17,17 +17,41 @@ export const AdmissionDoctor = () => {
         }
     }
 
+
+      const submitBack = async (input) => {
+        try { 
+            console.log(input)
+            const res = await fetch("https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us83.gitpod.io/api/mediGeeks/doctors", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(input)
+          });
+          const data = await res.json();
+          console.log(data)
+          if (data.success) {
+           
+          } else {
+           
+          }
+        } catch (error) {
+          console.error("Error:", error);
+        }
+        console.log(JSON.stringify(input))
+      }
+
     console.log("errors", errors)
     return (
 
         <div className="login position-absolute top-50 start-50 translate-middle">
-            <form autoComplete="off" onSubmit={handleSubmit((data) => console.log(data))} >
+            <form autoComplete="off" onSubmit={handleSubmit(submitBack)} >
                 <div className="logo d-flex justify-content-center">
                     <img src={Medigeeks_Logo} />
                 </div>
                 &nbsp;
                 <div className="form-outline mb-4">
-                    <input {...register("userName", {
+                    <input {...register("name", {
                         required: "Se requiere nombre y apellido",
                         pattern: {
                             value: /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u,
@@ -36,7 +60,7 @@ export const AdmissionDoctor = () => {
 
                     })} placeholder="Nombre Apellido" type="userName" id="form2Example10" class="form-control" />
 
-                    <p>{errors.userName?.message}</p>
+                    <p>{errors.name?.message}</p>
 
 
 
@@ -55,20 +79,20 @@ export const AdmissionDoctor = () => {
                     <p>{errors.rut?.message}</p>
                 </div>
                 <div className="form-outline mb-4">
-                    <select {...register("prevision", {
+                    <select {...register("speciality_id", {
                         required: "Selecione una prevision"
                     })}
                         className="form-select form-select-sm mb-3s"
                         aria-label=".form-select-sm example"
                     >
                         <option selected>Especialidad</option>
-                        <option value="Pediatra">Pediatra</option>
-                        <option value="Ginecologia">Banmedica</option>
-                        <option value="Oftalmologia">Oftalmologia</option>
-                        <option value="Psiquiatria">Psiquiatria</option>
-                        <option value="Dentista">Dentista</option>
+                        <option value={1}>Pediatra</option>
+                        <option value="2">Banmedica</option>
+                        <option value="3">Oftalmologia</option>
+                        <option value="4">Psiquiatria</option>
+                        <option value="5">Dentista</option>
                     </select>
-                    <p>{errors.prevision?.message}</p>
+                    <p>{errors.speciality_id?.message}</p>
                 </div>
                 <div className="form-outline mb-4">
                     <input {...register("email", {
@@ -94,8 +118,7 @@ export const AdmissionDoctor = () => {
                     <input onBlur={samePassword} placeholder="Confirme Contraseña" type="password" id="confirm_password" className="form-control" />
                 </div>
                 <div className="col d-flex justify-content-center">
-                    <button type="submit" onClick={samePassword}
-                        className="btn btn-primary btn-block mb-4 justify-content-center">Registrarse</button>
+                    <input type="submit" value="Registrarse"/>
                 </div>
 
 
