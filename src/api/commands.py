@@ -1,6 +1,6 @@
 
 import click
-from api.models import db, User, Prevision, Speciality, Center, Doctor
+from api.models import db, User, Prevision, Speciality, Center, Doctor, Calendar, Appointment
 
 """
 In this file, you can add as many commands as you want using the @app.cli.command decorator
@@ -20,10 +20,10 @@ def setup_commands(app):
         print("Creando test user")
         for x in range(1, int(count) + 1):
             user = User()
-            user.id = x
-            user.email = "email_prueba@" + str(x)
+            user.id = "Paciente" + str(x)
+            user.email = "email@" + str(x)
             user.name = "Nombre_prueba" + str(x)
-            user.rut = "rut_prueba" + str(x)
+            user.rut = "rut" + str(x)
             user.password = "password_prueba" + str(x)
             user.prevision_id = x
             db.session.add(user)
@@ -38,12 +38,12 @@ def setup_commands(app):
         print("Creando test doctor")
         for x in range(1, int(count) + 1):
             doctor = Doctor()
-            doctor.id = x
-            doctor.email = "email_prueba@" + str(x)
-            doctor.name = "Nombre_prueba" + str(x)
+            doctor.id = "Doctor" + str(x)
+            doctor.email = "email_doc@" + str(x)
+            doctor.name = "Doc" + str(x)
             doctor.rut = "rut_prueba" + str(x)
             doctor.password = "password_prueba" + str(x)
-            doctor.especialidad_id = x
+            doctor.speciality_id = x
             db.session.add(doctor)
             db.session.commit()
             print("Doctor: ", doctor.id, " created.")
@@ -98,6 +98,46 @@ def setup_commands(app):
             print("Speciality: ", speciality.id, " created.")
 
         print("All test speciality created")
+
+    @app.cli.command("insert-test-calendar") # name of our command
+    @click.argument("count") # argument of out command
+    def insert_test_data(count):
+        print("Creando test calendar")
+        for x in range(1, int(count) + 1):
+            calendar = Calendar()
+            calendar.id = x
+            calendar.year = "año" + str(x)
+            calendar.month = "mes" + str(x)
+            calendar.day = "dia" + str(x)
+            calendar.appointment_start_time = "Apertura" + str(x)
+            calendar.appointment_end_time = "FIN" + str(x)
+            calendar.available = True
+            calendar.center_id = x
+            db.session.add(calendar)
+            db.session.commit()
+            print("Calendar: ", calendar.id, " created.")
+
+        print("All test calendar created")
+
+    @app.cli.command("insert-test-appointment") # name of our command
+    @click.argument("count") # argument of out command
+    def insert_test_data(count):
+        print("Creando test appointment")
+        for x in range(1, int(count) + 1):
+            appointment = Appointment()
+            appointment.id = x
+            appointment.available = True
+            appointment.doctor_id = "Doctor" + str(x)
+            appointment.speciality_id = x
+            appointment.center_id = x
+            appointment.calendar_id = x
+            appointment.user_id = "Paciente" + str(x)
+            db.session.add(appointment)
+            db.session.commit()
+            print("Appointment: ", appointment.id, " created.")
+
+        print("All test appointment created")
+
 
 
     
