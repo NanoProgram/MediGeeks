@@ -9,7 +9,7 @@ export const Sidebar_doc = () => {
   return (
     <>
       <button
-        class="btn btn-warning"
+        className="btn btn-warning"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasExample"
@@ -19,47 +19,47 @@ export const Sidebar_doc = () => {
       </button>
 
       <div
-        class="offcanvas offcanvas-start side"
-        tabindex="-1"
+        className="offcanvas offcanvas-start side"
+        tabIndex="-1"
         id="offcanvasExample"
         aria-labelledby="offcanvasExampleLabel"
       >
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+        <div className="offcanvas-header">
+          <h5 className="offcanvas-title" id="offcanvasExampleLabel">
             <img src={Medigeeks_Logo} />
           </h5>
           <button
             type="button"
-            class="btn-close"
+            className="btn-close"
             data-bs-dismiss="offcanvas"
             aria-label="Close"
           ></button>
         </div>
-        <div class="offcanvas-body">
-          <div class="d-flex justify-content-center">
+        <div className="offcanvas-body">
+          <div className="d-flex justify-content-center">
             <Link to="/home">
-              <button type="button" class="btn btn-danger button">
+              <button type="button" className="btn btn-danger button">
                 Home
               </button>
             </Link>
           </div>
-          <div class="d-flex justify-content-center">
+          <div className="d-flex justify-content-center">
             <Link to="/cita">
-              <button type="button" class="btn btn-danger button">
+              <button type="button" className="btn btn-danger button">
                 Reserva Hora
               </button>
             </Link>
           </div>
-          <div class="d-flex justify-content-center">
+          <div className="d-flex justify-content-center">
             <Link to="/calendar">
-              <button type="button" class="btn btn-danger button">
+              <button type="button" className="btn btn-danger button">
                 Calendario Interno
               </button>
             </Link>
           </div>
-          <div class="d-flex justify-content-center">
+          <div className="d-flex justify-content-center">
             <Link to="/">
-              <button type="button" class="btn btn-danger button">
+              <button type="button" className="btn btn-danger button">
                 Cerrar Sesión
               </button>
             </Link>

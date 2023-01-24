@@ -1,27 +1,53 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/cita_1.css";
 import { Link } from "react-router-dom";
 import { Doc_disponible } from "../component/doc_disponible.jsx";
 
 export const Prueba = () => {
+  const [loading, setLoading] = useState(true);
   const [specialities, setSpecialities] = useState([]);
+  const [doctors, setDoctors] = useState([]);
 
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us84.gitpod.io/api/mediGeeks/specialitys",
+        {
+          method: ["GET"],
+          headers: {
+            "Content-type": "application/json",
+          },
+        }
+      );
+
+      const data = await response.json();
+      setSpecialities(data);
+      console.log(data);
+    } catch (error) {
+      console.log(data);
+      console.log(error);
+      console.error(error);
+    }
+  };
+
+  /*
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await fetch(
-          "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us83.gitpod.io/api/mediGeeks/specialitys"
+          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us84.gitpod.io/api/mediGeeks/doctors"
         );
         const data = await response.json();
-        setSpecialities(data);
+        setDoctors(data);
         console.log(data);
       } catch (error) {
         console.error(error);
       }
     }
     fetchData();
-  }, []);
+    */
+
   return (
     <div className="container fondo p-2">
       <div className="text-center">
@@ -34,6 +60,7 @@ export const Prueba = () => {
             className="form-select form-select-sm mb-3s m-1"
             aria-label=".form-select-sm example"
             style={{ width: "150px" }}
+            onClick={fetchData}
           >
             <option selected>Especialidad</option>
             {specialities.map((speciality) => (
@@ -42,22 +69,18 @@ export const Prueba = () => {
           </select>
 
           <select
-            class="form-select form-select-sm mb-3s m-1"
+            className="form-select form-select-sm mb-3s m-1"
             aria-label=".form-select-sm example"
             style={{ width: "150px" }}
-            onChange={handleComunaSelection}
-            onClick={comunaSelection}
           >
             <option selected>Comuna</option>
-            {comuna1.map((comunas) => (
-              <option value={comunas.id} key={comunas.id}>
-                {comunas}
-              </option>
-            ))}
+            <option value="1">Comuna 1</option>
+            <option value="2">Comuna 2</option>
+            <option value="3">Comuna 3</option>
           </select>
 
           <select
-            class="form-select form-select-sm mb-3s m-1"
+            className="form-select form-select-sm mb-3s m-1"
             aria-label=".form-select-sm example"
             style={{ width: "150px" }}
           >
@@ -67,7 +90,7 @@ export const Prueba = () => {
             <option value="3">Centro Medico 3</option>
           </select>
           <select
-            class="form-select form-select-sm mb-3s m-1"
+            className="form-select form-select-sm mb-3s m-1"
             aria-label=".form-select-sm example"
             style={{ width: "150px" }}
           >
