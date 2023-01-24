@@ -1,73 +1,76 @@
-import React, { useState } from "react";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import React, { useState, useEffect } from "react";
 
 export const Prueba = () => {
-  const [selectedOption, setSelectedOption] = useState("");
-  const [selectedOption2, setSelectedOption2] = useState(false);
-  const [selectedOption3, setSelectedOption3] = useState(false);
-  const [selectedOption4, setSelectedOption4] = useState(false);
+  const [specialties, setSpecialties] = useState([]);
+  const [communities, setCommunities] = useState([]);
+  const [medicalCenters, setMedicalCenters] = useState([]);
+  const [doctors, setDoctors] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const handleSelectChange = (e) => {
-    setSelectedOption(e.target.value);
-    if (e.target.value) setSelectedOption2(true);
-  };
-  const handleSelectChange2 = (e) => {
-    setSelectedOption2(e.target.value);
-    if (e.target.value) setSelectedOption3(true);
-  };
-  const handleSelectChange3 = (e) => {
-    setSelectedOption3(e.target.value);
-    if (e.target.value) setSelectedOption4(true);
-  };
+  useEffect(() => {
+    // Realizar consulta Fetch para obtener datos de la base de datos
+    fetch(
+      "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us83.gitpod.io/api/mediGeeks/specialitys"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setSpecialties(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  if (loading) {
+    return <p>Cargando...</p>;
+  }
+
   return (
-    <Form>
-      <FormGroup>
-        <Label for="selectOption1">Select an option 1</Label>
-        <Input type="select" id="selectOption1" onChange={handleSelectChange}>
-          <option value="">Select an option</option>
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
-        </Input>
-      </FormGroup>
-      <FormGroup>
-        <Label for="selectOption2">Select an option 2</Label>
-        <Input
-          type="select"
-          id="selectOption2"
-          disabled={!selectedOption2}
-          onChange={handleSelectChange2}
-        >
-          <option value="">Select an option</option>
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
-        </Input>
-      </FormGroup>
-      <FormGroup>
-        <Label for="selectOption3">Select an option 3</Label>
-        <Input
-          type="select"
-          id="selectOption3"
-          disabled={!selectedOption3}
-          onChange={handleSelectChange3}
-        >
-          <option value="">Select an option</option>
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
-        </Input>
-      </FormGroup>
-      <FormGroup>
-        <Label for="selectOption4">Select an option 4</Label>
-        <Input type="select" id="selectOption4" disabled={!selectedOption4}>
-          <option value="">Select an option</option>
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
-        </Input>
-      </FormGroup>
-      <Button color="primary">Submit</Button>
-    </Form>
+    <div className="m-3">
+      <select
+        className="form-select form-select-sm mb-3s m-1"
+        aria-label=".form-select-sm example"
+        style={{ width: "150px" }}
+      >
+        <option selected>Especialidad</option>
+        {specialties.map((specialty) => (
+          <option value={specialty.id}>{specialty.name}</option>
+        ))}
+      </select>
+
+      <select
+        className="form-select form-select-sm mb-3s m-1"
+        aria-label=".form-select-sm example"
+        style={{ width: "150px" }}
+      >
+        <option selected>Comuna</option>
+        {communities.map((community) => (
+          <option value={community.id}>{community.name}</option>
+        ))}
+      </select>
+
+      <select
+        className="form-select form-select-sm mb-3s m-1"
+        aria-label=".form-select-sm example"
+        style={{ width: "150px" }}
+      >
+        <option selected>Centro Medico</option>
+        {medicalCenters.map((center) => (
+          <option value={center.id}>{center.name}</option>
+        ))}
+      </select>
+
+      <select
+        className="form-select form-select-sm mb-3s m-1"
+        aria-label=".form-select-sm example"
+        style={{ width: "150px" }}
+      >
+        <option selected>Doc</option>
+        {doctors.map((doctor) => (
+          <option value={doctor.id}>{doctor.name}</option>
+        ))}
+      </select>
+    </div>
   );
 };
