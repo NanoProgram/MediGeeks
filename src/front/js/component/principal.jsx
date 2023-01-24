@@ -5,13 +5,12 @@ import { Two } from "../component/two.jsx";
 import { Three } from "../component/three.jsx";
 import { Four } from "../component/four.jsx";
 import { Five } from "../component/five.jsx";
-import {Footer} from "../component/footer.jsx"
 
 import "../../styles/principal.css"
 
 export const Principal = () => {
   return (
-    <div className=' background conteiner-md' >
+    <div className=' background container-md' >
         
         <Inicio />
         <br />
@@ -33,7 +32,7 @@ export const Principal = () => {
         <br />
         <Five />
         <br />
-        <Footer />
+        
     </div>
   );
 };

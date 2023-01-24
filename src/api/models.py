@@ -12,7 +12,7 @@ class User(db.Model):
     password = db.Column(db.String(260), unique=False, nullable=False)
     prevision_id = db.Column(db.Integer, db.ForeignKey('prevision.id'), nullable=False)
     verified = db.Column(db.Boolean(), default=False, nullable=False)
-    is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+   
     
     def __repr__(self):
         return f'<User {self.email}>'

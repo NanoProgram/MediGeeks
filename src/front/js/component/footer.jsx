@@ -37,9 +37,9 @@ export const Footer = () => {
               <i className="fa-solid fa-user-doctor"></i>
               <strong>MediGeeks</strong>
             </h4>
-            <h7>
+            <p>
               Proporcionar un servicio eficiente y fácil de usar para que los pacientes puedan programar sus citas médicas en línea. Esto incluye la disponibilidad de una amplia variedad de horarios de citas, la capacidad de seleccionar al médico de su elección y la posibilidad de recibir recordatorios y confirmaciones de citas por correo electrónico o mensajes de texto.
-            </h7>
+            </p>
           </div>
         </div>
         <br />

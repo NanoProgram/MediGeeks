@@ -11,7 +11,6 @@ from api.models import db, User
 from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
-import jwt
 from datetime import datetime, timedelta
 from functools import wraps
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required
@@ -73,7 +72,7 @@ def serve_any_other_file(path):
     return response
 
 # ruta para iniciar sesión de usuario
-@app.route('/login', methods =['POST'])
+@app.route('/login', methods =['GET'])
 def login():
     # creates dictionary of form data
     auth = request.form
