@@ -109,7 +109,7 @@ def login():
     )
 
 #  ruta de registro
-@app.route('/signup', methods =['POST'])
+"""@app.route('/signup', methods =['POST'])
 def signup():
     # crea un diccionario de los datos del formulario
     data = request.form
@@ -138,7 +138,38 @@ def signup():
         return make_response('Registrado con éxito', 201)
     else:
         # devuelve 202 si el usuario ya existe
-        return make_response('El usuario ya existe. Inicie sesión', 202)
+        return make_response('El usuario ya existe. Inicie sesión', 202)"""
+
+"""@api.route('/mediGeeks/users', methods=['POST'])
+def create_user():
+    request_body = request.get_json()
+    name = request_body.get("name")
+    email = request_body.get("email")
+    rut = request_body.get("rut")
+    password = request_body.get("password")
+    errors = {}
+    if not name or not re.match(r"^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]+(?: [a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]+)*$", name):
+        errors["name"] = "Name should only contain letters, spaces and some accented characters"
+    if not rut or not re.match(r"\b[0-9|.]{1,10}\-[K|k|0-9]", rut):
+        errors["rut"] = "Rut no es valido"
+    if not email or not re.match(r"^(([^<>()[\],;:\s@']+(\.[^<>()[\],;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$", email):
+        errors["email"] = "Invalid email address"
+    if not password or not re.match(r"^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$", password):
+        errors["password"] = "Contraseña debe contener al menos 6 caracteres, Una mayuscula, Una Minuscula, Un Numero y Un Caracter Especial"
+    if errors:
+        return jsonify(errors), 400
+    else:
+        # Check if user already exists
+        existing_user = User.query.filter_by(email=email).first()
+        if existing_user:
+            return make_response('El usuario ya existe. Inicie sesión', 202)
+        else:
+            # Create new user and add to database
+            new_user = User(**request_body)
+            new_user.password = generate_password_hash(password)
+            db.session.add(new_user)
+            db.session.commit()
+            return jsonify(new_user.serialize()), 201"""
 
 
 
