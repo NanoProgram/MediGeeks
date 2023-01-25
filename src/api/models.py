@@ -4,9 +4,12 @@ import uuid
 
 db = SQLAlchemy()
 
+def random_uuid():
+    return str(uuid.uuid4())
+
 class User(db.Model):
     __tablename__='user'
-    id = db.Column(db.String(100), primary_key=True, default=str(uuid.uuid1()))
+    id = db.Column(db.String(100), primary_key=True, default=random_uuid)
     email = db.Column(db.String(120), unique=True, nullable=False)
     name = db.Column(db.String(120), unique=False, nullable=False)
     rut = db.Column(db.String(120), unique=True, nullable=False)
@@ -54,11 +57,11 @@ class Speciality(db.Model):
 
 class Doctor(db.Model):
     __tablename__ = 'doctor'
-    id = db.Column(db.String(100), primary_key=True, default=str(uuid.uuid1()))
+    id = db.Column(db.String(100), primary_key=True, default=random_uuid)
     email = db.Column(db.String(120), unique=True, nullable=False)
     name = db.Column(db.String(120), unique=False, nullable=False)
     rut = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(80), unique=False, nullable=False)
+    password = db.Column(db.String(260), unique=False, nullable=False)
     speciality_id = db.Column(db.Integer, db.ForeignKey('speciality.id'), nullable=False)
     verified = db.Column(db.Boolean(), default=False, nullable=False)
 
@@ -126,12 +129,12 @@ class Calendar(db.Model):
 class Appointment(db.Model):
     __tablename__='appointment'
     id = db.Column(db.Integer, primary_key=True)
-    doctor_id = db.Column(db.String(100), db.ForeignKey('doctor.id'), nullable=False)
+    doctor_id = db.Column(db.String(260), db.ForeignKey('doctor.id'), nullable=False)
     speciality_id = db.Column(db.Integer, db.ForeignKey('speciality.id'), nullable=False)
     center_id = db.Column(db.Integer, db.ForeignKey('center.id'), nullable=False)
     calendar_id = db.Column(db.Integer, db.ForeignKey('calendar.id'), nullable=False)
     available = db.Column(db.Boolean(), unique=False, nullable=False)
-    user_id = db.Column(db.String(100), db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.String(260), db.ForeignKey('user.id'), nullable=False)
 
     def serialize(self):
         return {

@@ -34,9 +34,9 @@ export const AdmissionDoctor = () => {
           const data = await res.json();
           console.log(data)
           if (data.success) {
-           
+                alert(data.message);
           } else {
-           
+                 alert(data.message);
           }
         } catch (error) {
           console.error("Error:", error);

@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 37a55779e2ba
+Revision ID: 3df32acfc8e7
 Revises: 
-Create Date: 2023-01-24 02:25:22.729154
+Create Date: 2023-01-25 19:47:43.325381
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '37a55779e2ba'
+revision = '3df32acfc8e7'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -57,7 +57,7 @@ def upgrade():
     sa.Column('email', sa.String(length=120), nullable=False),
     sa.Column('name', sa.String(length=120), nullable=False),
     sa.Column('rut', sa.String(length=120), nullable=False),
-    sa.Column('password', sa.String(length=80), nullable=False),
+    sa.Column('password', sa.String(length=260), nullable=False),
     sa.Column('speciality_id', sa.Integer(), nullable=False),
     sa.Column('verified', sa.Boolean(), nullable=False),
     sa.ForeignKeyConstraint(['speciality_id'], ['speciality.id'], ),
@@ -80,12 +80,12 @@ def upgrade():
     )
     op.create_table('appointment',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('doctor_id', sa.String(length=100), nullable=False),
+    sa.Column('doctor_id', sa.String(length=260), nullable=False),
     sa.Column('speciality_id', sa.Integer(), nullable=False),
     sa.Column('center_id', sa.Integer(), nullable=False),
     sa.Column('calendar_id', sa.Integer(), nullable=False),
     sa.Column('available', sa.Boolean(), nullable=False),
-    sa.Column('user_id', sa.String(length=100), nullable=False),
+    sa.Column('user_id', sa.String(length=260), nullable=False),
     sa.ForeignKeyConstraint(['calendar_id'], ['calendar.id'], ),
     sa.ForeignKeyConstraint(['center_id'], ['center.id'], ),
     sa.ForeignKeyConstraint(['doctor_id'], ['doctor.id'], ),
