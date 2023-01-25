@@ -1,9 +1,19 @@
 import React from 'react'
 
+const cardStyle = {
+    width: '75%',
+    height: 'auto',
+    marginBottom: '3px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    backgroundImage: `url(https://crearmisitioweb.com/images/posts/quienes-somos.jpeg)`,
+    backgroundSize: 'cover'
+  }
+
 export const One = () => {
     return (
     <section id="services">
-        <div class="card w-75 mb-3 mx-auto">
+        <div class="card w-75 mb-3 mx-auto"style={cardStyle} >
             <div class="card-body text-center">
                 <h1 class="card-title">Quienes somos</h1>
                 <br />
@@ -13,7 +23,7 @@ export const One = () => {
                     <br />
                     Nuestra misión es brindar soluciones de vanguardia y servicios excepcionales a nuestros clientes, ayudándoles a alcanzar sus objetivos y superar sus desafíos. Estamos comprometidos a ser un socio confiable para nuestros clientes y una empresa respetada en la industria.</p>
                 <br />
-                <a href="#" class="btn btn-primary">Contactenos</a>
+                <a href="#contact" class="btn btn-primary">Contactenos</a>
             </div>
         </div>
     </section>

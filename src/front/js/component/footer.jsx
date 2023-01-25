@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Footer = () => {
   return (
-    <footer style={{ backgroundColor: 'Light Blue' }}>
+    <footer>
       <section className=' p-4'>
         <div className='me-5 d-none d-lg-block' >
           <span>Conéctese con nosotros en las redes sociales:</span>
