@@ -9,7 +9,7 @@ console.log(params)
     from_name: "MediGeeks",
     to_email: params.to_email,
     to_name: params.to_name,
-    to_link: params.to_link
+    to_link: params.to_link,
   };
   emailjs.send(serviceId, templateId, templateParams, key).then(
     (result) => {
