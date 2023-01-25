@@ -20,7 +20,6 @@ export const Two = () => {
                                 <button className="btn btn-primary me-2" type="button">registrarse</button>
                             </a>
                         </div>
-
                     </div>
                 </div>
             </div>

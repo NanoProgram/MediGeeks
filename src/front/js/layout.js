@@ -27,7 +27,7 @@ const Layout = () => {
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
-          <Sidebar_doc />
+          
           <Routes>          
           <Route element={<Principal />} path="/" />       
           <Route element={<Recover/>} path="/recoverPassword" />

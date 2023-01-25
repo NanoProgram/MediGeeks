@@ -12,25 +12,35 @@ export const Principal = () => {
   return (
     <div className=' background container-md' >
         
-        <Inicio />
+        <Inicio />   
         <br />
         <br />
         <br />
-        <One />
+        <br />     
+        <One /> 
         <br />
         <br />
         <br />
-        <Two />
+        <br />
+        <Two /> 
         <br />
         <br />
         <br />
-        <Three />
+        <br />
+        <Three />   
         <br />
         <br />
         <br />
-        <Four />
+        <br />
+        <Four />  
+        <br />
+        <br />
+        <br />
         <br />
         <Five />
+        <br />
+        <br />
+        <br />
         <br />
         <Footer />
     </div>
