@@ -2,6 +2,7 @@ import React from 'react'
 import "../../styles/three.css"
 export const Three = () => {
   return (
+    <section id="Gallery">
     <div id="carouselExampleDark" class="carousel carousel-dark slide mx-auto" style={{width:'80%', height:'80%'}}>
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">holaaaaa</button>
@@ -42,5 +43,6 @@ export const Three = () => {
       <span class="visually-hidden">Next</span>
     </button>
   </div>
+  </section>
   )
 }

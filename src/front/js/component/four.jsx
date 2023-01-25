@@ -2,6 +2,7 @@ import React from "react";
 
 export const Four = () => {
   return (
+    <section id="opinions">
     <div id="four" style={{ display: "flex", flexDirection: "row" }}>
       <div style={{ textAlign: "center" }}>
         <img
@@ -57,5 +58,6 @@ export const Four = () => {
         </p>
       </div>
     </div>
+    </section>
   );
 };

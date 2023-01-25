@@ -1,38 +1,27 @@
 import React from 'react'
 import "../../styles/inicio.css"
-import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg";
-import {One} from "../component/one.jsx"
+import { One } from "../component/one.jsx"
+
 export const Inicio = () => {
   return (
     <nav class="navbar bg-body-tertiary">
-     <img
-    src={Medigeeks_Logo}
-    alt="Bootstrap"
-    width="150"
-    height="150"
-    className="transparent-img"
-    />
-    <ul class="nav justify-content-end">
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Nuestros Servicios</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Galeria</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Opiniones de nuestros clientes</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Contactenos</a>
-      </li>
-      
-      <button class="btn btn-outline-success me-2" type="button">Ingresar</button>
-    
-    </ul>
-    
-  </nav>
-  
-      
- 
+      <h3 style={{ color: "white" }}>MediGeeks</h3>
+      <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#services" style={{ color: "white" }}>Quienes somos </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#Gallery" style={{ color: "white" }}>Galeria</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#opinions" style={{ color: "white" }}>Opiniones de nuestros clientes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#contact" style={{ color: "white" }}>Contactenos</a>
+        </li>
+        <button class="btn btn-primary me-2" type="button">Ingresar</button>
+        <button class="btn btn-primary me-2" type="button">Registrarse</button>
+      </ul>
+    </nav>
   );
 };

@@ -3,7 +3,7 @@ import React from 'react'
 export const Five = () => {
   return (
 
-    <div className='row' style={{display: "flex" ,justifyContent:"center"}}>
+    <div className='row' style={{display: "flex" ,justifyContent:"center"}} id="contact">
       <div className='col-4'>
       <h2 style={{ textAlign: "center" }}>Contactenos</h2>
       <br />

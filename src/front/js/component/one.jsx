@@ -2,6 +2,7 @@ import React from 'react'
 
 export const One = () => {
     return (
+    <section id="services">
         <div class="card w-75 mb-3 mx-auto">
             <div class="card-body text-center">
                 <h1 class="card-title">Quienes somos</h1>
@@ -15,7 +16,7 @@ export const One = () => {
                 <a href="#" class="btn btn-primary">Contactenos</a>
             </div>
         </div>
-
+    </section>
 
     )
 }
