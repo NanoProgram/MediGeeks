@@ -36,7 +36,7 @@ export const AdmissionDoctor = () => {
           if (data.success) {
             verify(data)
           } else {
-           
+                 alert(data.message);
           }
         } catch (error) {
           console.error("Error:", error);

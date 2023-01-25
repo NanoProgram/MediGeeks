@@ -121,10 +121,16 @@ def add_new_doctor():
     if errors:
         return jsonify(errors), 400
     else:
-        new_doctor = Doctor(**request_body)
-        db.session.add(new_doctor)
-        db.session.commit()
-        return jsonify(new_doctor.serialize()), 201
+        # Check if user already exists
+        existing_doctor = Doctor.query.filter_by(email=email).first()
+        if existing_doctor:
+            return make_response('El usuario ya existe. Inicie sesión', 202)
+        else:
+            new_doctor = Doctor(**request_body)
+            new_doctor.password = generate_password_hash(password)
+            db.session.add(new_doctor)
+            db.session.commit()
+            return jsonify(new_doctor.serialize()), 201
 
 #API CENTRO GET
 @api.route('/mediGeeks/centers', methods=['GET'])
