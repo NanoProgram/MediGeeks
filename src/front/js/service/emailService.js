@@ -5,6 +5,7 @@ export const sendEmail = (params) => {
   const templateId = process.env.TEMPLATE_ID;
   const key = process.env.KEY;
 console.log(params)
+console.log(serviceId,templateId,key)
   const templateParams = {
     from_name: "MediGeeks",
     to_email: params.to_email,
