@@ -24,7 +24,7 @@ export const AdmissionDoctor = () => {
       const submitBack = async (input) => {
         try { 
             console.log(input)
-            const res = await fetch("https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us83.gitpod.io/api/mediGeeks/doctors", {
+            const res = await fetch("https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us84.gitpod.io/api/mediGeeks/doctors", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"
@@ -71,7 +71,7 @@ export const AdmissionDoctor = () => {
                             value: /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u,
                             message: "Nombre no es valido"
                         }
-                    })} placeholder="Nombre Apellido" id="form2Example10" class="form-control" />
+                    })} placeholder="Nombre Apellido" id="form2Example10" class="form-control" type=""/>
                     <p>{errors.name?.message}</p>
                 </div>
                 <div className="form-outline mb-4">
