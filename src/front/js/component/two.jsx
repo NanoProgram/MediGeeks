@@ -30,5 +30,7 @@ export const Two = () => {
                 </div>
             </div>
         </div>
+
+        
     )
 }

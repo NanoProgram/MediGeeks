@@ -19,8 +19,12 @@ export const Inicio = () => {
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#contact" style={{ color: "white" }}>Contactenos</a>
         </li>
-        <button class="btn btn-primary me-2" type="button">Ingresar</button>
-        <button class="btn btn-primary me-2" type="button">Registrarse</button>
+        <a href="/login">
+          <button className="btn btn-primary me-2" type="button">Ingresar</button>
+        </a>
+        <a href="/singup">
+          <button className="btn btn-primary me-2" type="button">registrarse</button>
+        </a>
       </ul>
     </nav>
   );
