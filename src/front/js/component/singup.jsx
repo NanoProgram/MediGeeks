@@ -20,6 +20,30 @@ export const Singup = () => {
       alert("Las contraseñas no coinciden");
     }
   }
+
+  const submitBack = async (input) => {
+    try { 
+        console.log(input)
+        const res = await fetch("https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us84.gitpod.io/api/mediGeeks/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(input)
+      });
+      const data = await res.json();
+      console.log(data)
+      if (data.success) {
+            alert(data.message);
+      } else {
+             alert(data.message);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+    console.log(JSON.stringify(input))
+  }
+
   console.log("errors", errors)
   function onSubmit(data) {
     console.log(data)
@@ -38,20 +62,20 @@ export const Singup = () => {
   return (
 
     <div className="login position-absolute top-50 start-50 translate-middle">
-      <form autoComplete="off" onSubmit={handleSubmit(onSubmit)} >
+      <form autoComplete="off" onSubmit={handleSubmit(submitBack)} >
         <div className="logo d-flex justify-content-center">
           <img src={Medigeeks_Logo} />
         </div>
         &nbsp;
         <div className="form-outline mb-4">
-          <input {...register("userName", {
+          <input {...register("name", {
             required: "Se requiere nombre y apellido",
             pattern: {
               value: /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u,
               message: "Nombre no es valido"
             }
-          })} placeholder="Nombre Apellido" type="userName" id="form2Example10" class="form-control" />
-          <p>{errors.userName?.message}</p>
+          })} placeholder="Nombre Apellido"  id="form2Example10" class="form-control" />
+          <p>{errors.name?.message}</p>
         </div>
         <div className="form-outline mb-4">
           <input {...register("rut",
@@ -65,19 +89,19 @@ export const Singup = () => {
           <p>{errors.rut?.message}</p>
         </div>
         <div className="form-outline mb-4">
-          <select {...register("prevision", {
+          <select {...register("prevision_id", {
             required: "Selecione una prevision"
           })}
             className="form-select form-select-sm mb-3s"
             aria-label=".form-select-sm example">
             <option selected>Prevision</option>
-            <option value="Fonasa">Fonasa</option>
-            <option value="Banmedica">Banmedica</option>
-            <option value="Cruz Blanca">Cruz Blanca</option>
-            <option value="Masvida">Masvida</option>
-            <option value="Colmena">Colmena</option>
+            <option value="1">Fonasa</option>
+            <option value="2">Banmedica</option>
+            <option value="3">Cruz Blanca</option>
+            <option value="4">Masvida</option>
+            <option value="5">Colmena</option>
           </select>
-          <p>{errors.prevision?.message}</p>
+          <p>{errors.prevision_id?.message}</p>
         </div>
         <div className="form-outline mb-4">
           <input {...register("email", {

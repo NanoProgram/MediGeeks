@@ -95,7 +95,7 @@ export const AdmissionDoctor = () => {
                         className="form-select form-select-sm mb-3s"
                         aria-label=".form-select-sm example">
                         <option selected>Especialidad</option>
-                        <option value={1}>Pediatra</option>
+                        <option value="1">Pediatra</option>
                         <option value="2">Banmedica</option>
                         <option value="3">Oftalmologia</option>
                         <option value="4">Psiquiatria</option>
