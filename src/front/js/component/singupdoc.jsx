@@ -19,7 +19,8 @@ export const AdmissionDoctor = () => {
             alert("Las contraseñas no coinciden");
         }
     }
-
+    
+    
 
       const submitBack = async (input) => {
         try { 
@@ -27,7 +28,8 @@ export const AdmissionDoctor = () => {
             const res = await fetch("https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us84.gitpod.io/api/mediGeeks/doctors", {
             method: "POST",
             headers: {
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
+              /*"Authorization": "Bearer token"*/
             },
             body: JSON.stringify(input)
           });
@@ -48,6 +50,7 @@ export const AdmissionDoctor = () => {
     
 
       const verify = (data) => {
+        console.log(data)
         let params = {
           to_email: data.email,
           to_name: data.userName,

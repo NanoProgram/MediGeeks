@@ -12,12 +12,49 @@ from  werkzeug.security import generate_password_hash, check_password_hash
 
 api = Blueprint('api', __name__)
 
+#localStorage.setItem("token", data.token)
+#const token = localStorage.getItem("token")
+#const token = localStorage.setItem("token",)
 
+@api.route('/login', methods =['GET'])
+def login():
+    # creates dictionary of form data
+    auth = request.args
 
+    if not auth or not auth.get('email') or not auth.get('password'):
+        # devuelve 401 si falta algún correo electrónico o contraseña
+        return make_response(
+            'Could not verify',
+            401,
+            {'WWW-Authenticate' : 'Basic realm ="¡Se requiere iniciar sesión !!"'}
+            )
 
+    user = User.query\
+        .filter_by(email = auth.get('email'))\
+        .first()
+
+    if not user:
+        # devuelve 401 si el usuario no existe
+        return make_response(
+            'Could not verify',
+            401,
+            {'WWW-Authenticate' : 'Basic realm ="Usuario o contraseña incorrectos !!"'}
+        )
+
+    if check_password_hash(user.password, auth.get('password')):
+        # genera el token JWT
+        access_token = create_access_token(identity=user.id)
+        return jsonify({ "token": access_token, "user_id": user.id })
+    # devuelve 403 si la contraseña es incorrecta
+    return make_response(
+        'Could not verify',
+        403,
+        {'WWW-Authenticate' : 'Basic realm ="Usuario o contraseña incorrectos !!"'}
+    )
 
 #API USER GET, GET ID and POST
 @api.route('/mediGeeks/users', methods=['GET'])
+@jwt_required()
 def get_users_table():
     user = User.query.all()
     user = list(map(lambda p:p.serialize(),user))
