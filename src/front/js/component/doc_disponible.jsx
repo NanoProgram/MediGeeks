@@ -30,6 +30,7 @@ export const Doc_disponible = () => {
     // Ejemplo: const response = await fetch(`/api/timeslots?date=${date}`);
     //const timeSlots = await response.json();
     //return timeSlots;
+
     return ["08:00-09:00", "09:00-10:00", "10:00-11:00"];
   };
 

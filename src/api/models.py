@@ -107,7 +107,6 @@ class Calendar(db.Model):
     day = db.Column(db.String(120), nullable=False)
     appointment_start_time = db.Column(db.String(120), nullable=False)
     appointment_end_time = db.Column(db.String(120), nullable=False)
-    available = db.Column(db.Boolean(), unique=False, nullable=False)
 
     def serialize(self):
         return {
@@ -118,19 +117,18 @@ class Calendar(db.Model):
             "day": self.day,
             "appointment_start_time": self.appointment_start_time,
             "appointment_end_time": self.appointment_end_time,
-            "available": self.available,
            
         }
 
 class Appointment(db.Model):
     __tablename__='appointment'
     id = db.Column(db.Integer, primary_key=True)
-    doctor_id = db.Column(db.String(100), db.ForeignKey('doctor.id'), nullable=False)
-    speciality_id = db.Column(db.Integer, db.ForeignKey('speciality.id'), nullable=False)
+    doctor_id = db.Column(db.String(100), db.ForeignKey('doctor.id'), nullable=True)
+    speciality_id = db.Column(db.Integer, db.ForeignKey('speciality.id'), nullable=True)
     center_id = db.Column(db.Integer, db.ForeignKey('center.id'), nullable=False)
     calendar_id = db.Column(db.Integer, db.ForeignKey('calendar.id'), nullable=False)
-    available = db.Column(db.Boolean(), unique=False, nullable=False)
-    user_id = db.Column(db.String(100), db.ForeignKey('user.id'), nullable=False)
+    available = db.Column(db.Boolean(), unique=False, nullable=False, default=True)
+    user_id = db.Column(db.String(100), db.ForeignKey('user.id'), nullable=True)
 
     def serialize(self):
         return {
