@@ -3,8 +3,9 @@ import React from "react";
 export const Four = () => {
   return (
     <section id="opinions">
-      <div id="four" style={{ display: "flex", flexDirection: "row" }}>
-        <div style={{ textAlign: "center" }}>
+      <div className="container">
+      <div className="row" id="four" style={{ display: "flex"}}>
+        <div className="col-sm" style={{ textAlign: "center" }}>
           <img
             src="https://xavierferras.com/wp-content/uploads/2019/02/266-Persona.jpg"
             alt="First image"
@@ -24,7 +25,7 @@ export const Four = () => {
           </div>
         </div>
         <br />
-        <div style={{ textAlign: "center" }}>
+        <div className="col-sm" style={{ textAlign: "center" }}>
           <img
             src="https://f.rpp-noticias.io/2019/02/15/753300descarga-11jpg.jpg"
             alt="First image"
@@ -42,7 +43,7 @@ export const Four = () => {
             </h6></div>
         </div>
         <br />
-        <div style={{ textAlign: "center" }}>
+        <div className="col-sm" style={{ textAlign: "center" }}>
           <img
             src="https://www.ui1.es/sites/default/files/blog/images/persona-generada-web.png"
             alt="First image"
@@ -59,6 +60,7 @@ export const Four = () => {
           </div>
         </div>
       </div>
+    </div>
     </section>
   );
 };

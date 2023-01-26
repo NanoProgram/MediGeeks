@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg";
 import { useForm } from "react-hook-form";
 import { sendEmail } from "../service/emailService";
+import { Modal } from "bootstrap";
 
 
 export const Singup = () => {

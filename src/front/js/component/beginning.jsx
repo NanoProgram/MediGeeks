@@ -4,8 +4,12 @@ import { One } from "../component/one.jsx"
 
 export const Inicio = () => {
   return (
+    <div className='container'>
+      <div className='row'>
+<div className='col'>    
     <nav class="navbar bg-body-tertiary">
       <h3 style={{ color: "white" }}>MediGeeks</h3>
+      
       <ul class="nav justify-content-end">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#services" style={{ color: "white" }}>Quienes somos </a>
@@ -30,5 +34,8 @@ export const Inicio = () => {
         </a>
       </ul>
     </nav>
+    </div>
+    </div>
+  </div>
   );
 };

@@ -12,7 +12,7 @@ const cardStyle = {
 
 export const One = () => {
     return (
-    <section id="services" style={{ opacity: 0.8 }}>
+    <section id="services" style={{ opacity: 0.6 }}>
         <div class="card w-75 mb-3 mx-auto"style={cardStyle} >
             <div class="card-body text-center">
                 <h1 class="card-title">Quienes somos</h1>
