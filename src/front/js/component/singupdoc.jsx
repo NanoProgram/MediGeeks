@@ -34,7 +34,7 @@ export const AdmissionDoctor = () => {
           const data = await res.json();
           console.log(data)
           if (data.success) {
-           
+            verify(data)
           } else {
            
           }
@@ -45,10 +45,7 @@ export const AdmissionDoctor = () => {
       }
 
     console.log("errors", errors)
-    function onSubmit(data) {
-        console.log(data)
-        verify(data)
-      }
+    
 
       const verify = (data) => {
         let params = {

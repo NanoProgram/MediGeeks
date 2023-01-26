@@ -2,8 +2,8 @@ import React from 'react'
 
 export const Five = () => {
   return (
-
-    <div className='row' style={{display: "flex" ,justifyContent:"center"}}>
+<div className='container'>
+    <div className='row' style={{display: "flex" ,justifyContent:"center"}} id="contact">
       <div className='col-4'>
       <h2 style={{ textAlign: "center" }}>Contactenos</h2>
       <br />
@@ -12,7 +12,7 @@ export const Five = () => {
         <label for="floatingInput">Nombre</label>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" />
+        <input type="email" class="form-control" id="floatingPassword" placeholder="Password" />
         <label for="floatingPassword">Telefono</label>
       </div>
       <br />
@@ -30,6 +30,6 @@ export const Five = () => {
       </div>
 </div>
     </div>
-
+</div>
   )
 }

@@ -5,34 +5,44 @@ import { Two } from "../component/two.jsx";
 import { Three } from "../component/three.jsx";
 import { Four } from "../component/four.jsx";
 import { Five } from "../component/five.jsx";
-
+import {Footer} from "../component/footer.jsx"
 import "../../styles/principal.css";
 
 export const Principal = () => {
   return (
     <div className=' background container-md' >
         
-        <Inicio />
+        <Inicio />   
         <br />
         <br />
         <br />
-        <One />
+        <br />     
+        <One /> 
         <br />
         <br />
         <br />
-        <Two />
+        <br />
+        <Two /> 
         <br />
         <br />
         <br />
-        <Three />
+        <br />
+        <Three />   
         <br />
         <br />
         <br />
-        <Four />
+        <br />
+        <Four />  
+        <br />
+        <br />
+        <br />
         <br />
         <Five />
         <br />
-        
+        <br />
+        <br />
+        <br />
+        <Footer />
     </div>
   );
 };

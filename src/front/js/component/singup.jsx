@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg";
 import { useForm } from "react-hook-form";
 import { sendEmail } from "../service/emailService";
+import { Modal } from "bootstrap";
 
 
 export const Singup = () => {
@@ -37,10 +38,11 @@ export const Singup = () => {
 
   return (
 
-    <div className="login position-absolute top-50 start-50 translate-middle">
-      <form autoComplete="off" onSubmit={handleSubmit(onSubmit)} >
+<div className="background-image">
+    <div className="login position-absolute top-50 start-50 translate-middle "  >
+      <form autoComplete="off" onSubmit={handleSubmit(onSubmit)} style={{ opacity: 0.8 }}>
         <div className="logo d-flex justify-content-center">
-          <img src={Medigeeks_Logo} />
+          <img src={Medigeeks_Logo} style={{ opacity: 0.5 }}/>
         </div>
         &nbsp;
         <div className="form-outline mb-4">
@@ -51,7 +53,7 @@ export const Singup = () => {
               message: "Nombre no es valido"
             }
           })} placeholder="Nombre Apellido" type="userName" id="form2Example10" class="form-control" />
-          <p>{errors.userName?.message}</p>
+          <p style={{ color: "red" }}>{errors.userName?.message}</p>
         </div>
         <div className="form-outline mb-4">
           <input {...register("rut",
@@ -62,7 +64,7 @@ export const Singup = () => {
                 message: "Rut no es valido"
               }
             })} placeholder="R.U.T." type="" id="form2Example20" className="form-control" />
-          <p>{errors.rut?.message}</p>
+          <p style={{ color: "red" }}>{errors.rut?.message}</p>
         </div>
         <div className="form-outline mb-4">
           <select {...register("prevision", {
@@ -77,7 +79,7 @@ export const Singup = () => {
             <option value="Masvida">Masvida</option>
             <option value="Colmena">Colmena</option>
           </select>
-          <p>{errors.prevision?.message}</p>
+          <p style={{ color: "red" }}>{errors.prevision?.message}</p>
         </div>
         <div className="form-outline mb-4">
           <input {...register("email", {
@@ -87,17 +89,17 @@ export const Singup = () => {
               message: "El email debe ser válido"
             }
           })} placeholder="Email" type="" id="form2Example30" className="form-control" />
-          <p>{errors.email?.message}</p>
+          <p style={{ color: "red" }}>{errors.email?.message}</p>
         </div>
         <div className="form-outline mb-4">
           <input {...register("password", {
             required: "se requiere contraseña",
             pattern: {
               value: /^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$/,
-              message: "La contraseña debe contener al menos 6 caracteres, una mayúscula, una minúscula, un número y un carácter de caso especial"
+              message : "La contraseña debe contener al menos 6 caracteres, una mayúscula, una minúscula, un número y un carácter de caso especial"
             }
           })} placeholder="Contraseña" type="password" id="password" className="form-control" />
-          <p>{errors.password?.message}</p>
+          <p style={{ color: "red" }}>{errors.password?.message}</p>
         </div>
         <div className="form-outline mb-4">
           <input onBlur={samePassword} placeholder="Confirme Contraseña" type="password" id="confirm_password" className="form-control" />
@@ -106,6 +108,6 @@ export const Singup = () => {
           <input type="submit" value="registrarse" />
         </div>
       </form>
-    </div>
+    </div></div>
   );
 };

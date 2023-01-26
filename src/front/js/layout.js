@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./pages/home.jsx";
@@ -14,8 +14,9 @@ import { Footer } from "./component/footer.jsx";
 import { Sidebar_doc } from "./component/Sidebar Doctors.jsx";
 import { AdmissionDoctor } from "./component/singupdoc.jsx";
 import { Recover } from "./component/recoverPassword.jsx";
-import { Principal} from "./component/principal.jsx";
+import { Principal } from "./component/principal.jsx";
 import { Prueba } from "./pages/pruebas.jsx";
+import { ProtectedRoutes } from "./component/protectedRoute.jsx";
 
 //create your first component
 const Layout = () => {
@@ -23,29 +24,48 @@ const Layout = () => {
   // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
   const basename = process.env.BASENAME || "";
 
+  // mover el useState al metodo login del loginService y guardar el usuario obtenido
+  const [user, setUser] = useState({
+    id: 1,
+    email: "test@test.com",
+    name: "test",
+    token: "fdsvsdvsd",
+  });
+
+  const login = async () => {
+    setUser({
+      id: 1,
+      email: "test@test.com",
+      name: "test",
+      token: null,
+    });
+  };
+
   return (
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
-          <Sidebar_doc />
-          <Routes>          
-          <Route element={<Principal />} path="/" />       
-          <Route element={<Recover/>} path="/recoverPassword" />
-          <Route element={<AdmissionDoctor/>} path="/singupdoc" />
-            <Route element={<Singup />} path="/signup" />
-            <Route element={<Prueba />} path="/prueba" />
-            <Route element={<Singup />} path="/singup" />
-            <Route element={<Home />} path="/home" />
-            <Route element={<h1>Not found!</h1>} />
-            <Route element={<Cita />} path="/appointment" />          
-            <Route element={<Cita3 />} path="/appointment-confirmed" />
-            <Route element={<Appointment />} path="/doctor" />
-            <Route element={<Calendardoc />} path="/calendardoc" />
-            <Route element={<Sidebar_doc />} path="/sidebardoc" />
+          <Routes>
+            <Route element={<Principal />} path="/" />
+            <Route element={<Recover />} path="/recoverPassword" />
             <Route element={<Login />} path="/login" />
-            <Route element={<Footer />} path="/footer" />
+            <Route
+              element={<ProtectedRoutes user={user} redirectTo="/principal" />}
+            >
+              <Route element={<Singup />} path="/signup" />
+              <Route element={<Singup />} path="/singup" />
+              <Route element={<AdmissionDoctor />} path="/singupdoc" />
+              <Route element={<Prueba />} path="/prueba" />
+              <Route element={<Home />} path="/home" />
+              <Route element={<h1>Not found!</h1>} />
+              <Route element={<Cita />} path="/appointment" />
+              <Route element={<Cita3 />} path="/appointment-confirmed" />
+              <Route element={<Appointment />} path="/doctor" />
+              <Route element={<Calendardoc />} path="/calendardoc" />
+              <Route element={<Sidebar_doc />} path="/sidebardoc" />
+              <Route element={<Footer />} path="/footer" />
+            </Route>
           </Routes>
-        
         </ScrollToTop>
       </BrowserRouter>
     </div>
