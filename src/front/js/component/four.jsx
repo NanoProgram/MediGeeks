@@ -12,14 +12,14 @@ export const Four = () => {
           />
           <div>
             <h6 style={{ color: "black" }}>
-              Una de las cosas que me gusta de esta API de citas médicas es que es
+              "Una de las cosas que me gusta de esta API de citas médicas es que es
               muy fácil de usar. La interfaz es intuitiva y se pueden hacer citas en
               cuestión de minutos. También me gusta que ofrece una gran variedad de
               especialistas y horarios disponibles, lo que hace que sea fácil
               encontrar una cita que se ajuste a mi agenda. Además, la opción de
               cancelar o reprogramar citas en línea es muy útil. En general, esta
               API ha mejorado significativamente mi experiencia al hacer citas
-              médicas y estoy muy contento de haberla encontrado.
+              médicas y estoy muy contento de haberla encontrado."
             </h6>
           </div>
         </div>

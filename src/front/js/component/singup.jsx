@@ -37,7 +37,7 @@ export const Singup = () => {
 
   return (
 
-    <div className="login position-absolute top-50 start-50 translate-middle">
+    <div className="login position-absolute top-50 start-50 translate-middle ">
       <form autoComplete="off" onSubmit={handleSubmit(onSubmit)} >
         <div className="logo d-flex justify-content-center">
           <img src={Medigeeks_Logo} />

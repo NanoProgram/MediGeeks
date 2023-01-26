@@ -6,7 +6,7 @@ import "../../styles/two.css"
 export const Two = () => {
     return (
 
-        <div className="row">
+        <div className="row" id='nuestros'>
             <div className="col">
                 <div className="card" >
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAMDeyo7haKSUnnQGoUP5IUOfG673bkGYnAel0VQRtdycAeWju-s7Sr3KKD9EZbvr22cs&usqp=CAU" className="card-img-top" alt="..." />
@@ -41,7 +41,7 @@ export const Two = () => {
             </div>
             <div className="col">
                 <div className="card">
-                    <img src="https://assets.bitdegree.org/online-learning-platforms/storage/media/shutterstock_1756215311.o.jpg" className="card-img-top" alt="..." />
+                    <img src="https://www.hospitalserena.cl/wp-content/uploads/2022/01/5-660x440.jpg" className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h5 className="card-title">Accede a tus examenes online</h5>
                         <p className="card-text">

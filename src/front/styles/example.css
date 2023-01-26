@@ -10,3 +10,10 @@
     height: 250px;
     margin: auto;
 }
+
+.background-image {
+    background-image: url('https://www.goredforwomen.org/-/media/Images/Health-Topics/Consumer-Healthcare/man-talking-to-woman-doctor.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
