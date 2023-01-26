@@ -106,12 +106,11 @@ def setup_commands(app):
         for x in range(1, int(count) + 1):
             calendar = Calendar()
             calendar.id = x
-            calendar.year = "año" + str(x)
-            calendar.month = "mes" + str(x)
-            calendar.day = "dia" + str(x)
-            calendar.appointment_start_time = "Apertura" + str(x)
-            calendar.appointment_end_time = "FIN" + str(x)
-            calendar.available = True
+            calendar.year = "2023"
+            calendar.month = "1"
+            calendar.day = "26"
+            calendar.appointment_start_time = "09:00"
+            calendar.appointment_end_time = "10:00"
             calendar.center_id = x
             db.session.add(calendar)
             db.session.commit()
@@ -127,17 +126,52 @@ def setup_commands(app):
             appointment = Appointment()
             appointment.id = x
             appointment.available = True
-            appointment.doctor_id = "Doctor" + str(x)
+            appointment.doctor_id = "Doctor" + str(x) # No Va
             appointment.speciality_id = x
             appointment.center_id = x
-            appointment.calendar_id = x
-            appointment.user_id = "Paciente" + str(x)
+            appointment.calendar_id = x # aqui borrar
             db.session.add(appointment)
             db.session.commit()
             print("Appointment: ", appointment.id, " created.")
 
         print("All test appointment created")
 
+    @app.cli.command("insert-test-doctor-2") # name of our command
+    @click.argument("specialities_count") # argument of out command
+    def insert_test_data(specialities_count):
+        print("Creando test doctor")
+        for i in range(1, int(specialities_count) + 1):
+            for j in range(1, 3):
+                doctor = Doctor()
+                doctor.id = j
+                doctor.email = f"email_doc@{i}-{j}"
+                doctor.name = f"Esp{i}-Doc{j}"
+                doctor.rut = f"rut_prueba{i}-{j}"
+                doctor.password = f"password_prueba{i}-{j}"
+                doctor.speciality_id = i
+                db.session.add(doctor)
+                db.session.commit()
+                print(f"Doctor: {doctor.id} created.")
 
+        print("All test doctors created")
+            
 
-    
+    @app.cli.command("insert-test-doctor-3") # name of our command
+    @click.argument("specialities_count") # argument of out command
+    def insert_test_data(specialities_count):
+        print("Creando test doctor")
+        id_counter = 1
+        for i in range(1, int(specialities_count) + 1):
+            for j in range(1, 4):
+                doctor = Doctor()
+                doctor.id = id_counter
+                doctor.email = f"email_doc@{i}-{j}"
+                doctor.name = f"Esp{i}-Doc{j}"
+                doctor.rut = f"rut_prueba{i}-{j}"
+                doctor.password = f"password_prueba{i}-{j}"
+                doctor.speciality_id = i
+                db.session.add(doctor)
+                db.session.commit()
+                id_counter += 1
+                print(f"Doctor: {doctor.id} created.")
+        print("All test doctors created")

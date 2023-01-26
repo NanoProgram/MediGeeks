@@ -112,7 +112,6 @@ class Calendar(db.Model):
     day = db.Column(db.String(120), nullable=False)
     appointment_start_time = db.Column(db.String(120), nullable=False)
     appointment_end_time = db.Column(db.String(120), nullable=False)
-    available = db.Column(db.Boolean(), unique=False, nullable=False)
 
     def serialize(self):
         return {
@@ -123,7 +122,6 @@ class Calendar(db.Model):
             "day": self.day,
             "appointment_start_time": self.appointment_start_time,
             "appointment_end_time": self.appointment_end_time,
-            "available": self.available,
            
         }
 

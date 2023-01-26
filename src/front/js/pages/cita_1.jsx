@@ -58,7 +58,6 @@ export const Cita = () => {
         </div>
       </div>
       <br />
-      <Doc_disponible />
       <div className="d-flex justify-content-between">
         <Link to="/home">
           <button className="btn btn-primary">Back To home</button>
