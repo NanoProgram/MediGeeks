@@ -14,7 +14,7 @@ import { Footer } from "./component/footer.jsx";
 import { Sidebar_doc } from "./component/Sidebar Doctors.jsx";
 import { AdmissionDoctor } from "./component/singupdoc.jsx";
 import { Recover } from "./component/recoverPassword.jsx";
-import { Principal} from "./component/principal.jsx";
+import { Principal } from "./component/principal.jsx";
 import { Prueba } from "./pages/pruebas.jsx";
 
 //create your first component
@@ -28,16 +28,16 @@ const Layout = () => {
       <BrowserRouter basename={basename}>
         <ScrollToTop>
           <Sidebar_doc />
-          <Routes>          
-          <Route element={<Principal />} path="/" />       
-          <Route element={<Recover/>} path="/recoverPassword" />
-          <Route element={<AdmissionDoctor/>} path="/singupdoc" />
+          <Routes>
+            <Route element={<Principal />} path="/" />
+            <Route element={<Recover />} path="/recoverPassword" />
+            <Route element={<AdmissionDoctor />} path="/singupdoc" />
             <Route element={<Singup />} path="/signup" />
             <Route element={<Prueba />} path="/prueba" />
             <Route element={<Singup />} path="/singup" />
             <Route element={<Home />} path="/home" />
             <Route element={<h1>Not found!</h1>} />
-            <Route element={<Cita />} path="/appointment" />          
+            <Route element={<Cita />} path="/appointment" />
             <Route element={<Cita3 />} path="/appointment-confirmed" />
             <Route element={<Appointment />} path="/doctor" />
             <Route element={<Calendardoc />} path="/calendardoc" />
@@ -45,7 +45,6 @@ const Layout = () => {
             <Route element={<Login />} path="/login" />
             <Route element={<Footer />} path="/footer" />
           </Routes>
-        
         </ScrollToTop>
       </BrowserRouter>
     </div>

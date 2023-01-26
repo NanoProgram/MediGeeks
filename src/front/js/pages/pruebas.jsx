@@ -251,11 +251,64 @@ export const Prueba = () => {
       </select>
       <br />
       <br />
-      <Doc_disponible />
+
       <div className="d-flex justify-content-between">
         <Link to="/home">
           <button className="btn btn-primary">Back To home</button>
         </Link>
+
+        {/*<-- Button trigger modal -->*/}
+        <button
+          type="button"
+          className="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop"
+        >
+          Continuar
+        </button>
+
+        {/*<!-- Modal -->*/}
+        <div
+          className="modal fade"
+          id="staticBackdrop"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h1 className="modal-title fs-5" id="staticBackdropLabel">
+                  Confirmacion de hora
+                </h1>
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div className="modal-body">
+                Si desa confirmar la selecion porfavor{" "}
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Atras
+                </button>
+                <button type="button" className="btn btn-primary">
+                  Confirmar Hora
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <Link to="/appointment-confirmed">
           <button className="btn btn-primary">Continue</button>
         </Link>
