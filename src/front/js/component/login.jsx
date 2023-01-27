@@ -3,30 +3,31 @@ import "../../styles/example.css";
 import { Link } from "react-router-dom";
 import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg";
 import { useForm } from "react-hook-form";
-import { login } from './../service/loginService'
-
+import { login } from "./../service/loginService";
 
 export const Login = () => {
-
-  const { register, formState: { errors }, handleSubmit } = useForm({ mode: "all" });
-
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm({ mode: "all" });
 
   const submitBack = async () => {
     try {
       const email = document.getElementById("email").value;
+      console.log(email);
       const password = document.getElementById("password").value;
-      const data = await login(email, password)
+      const data = await login(email, password);
       if (data.email) {
-        console.log(data)
+        console.log(data);
         alert(data.message);
       }
     } catch (error) {
       console.error("Error:", error);
     }
-  }
+  };
 
   return (
-
     <div className="login position-absolute top-50 start-50 translate-middle">
       <form id="formulario" onSubmit={handleSubmit(submitBack)}>
         <div className="logo d-flex justify-content-center">
@@ -34,41 +35,74 @@ export const Login = () => {
         </div>
         <br></br>
         <div class="form-outline mb-4">
-          <input {...register("email", {
-            required: true,
-            pattern: {
-              value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-              message: "Email no es valido"
-            }
-          })} id="email" class="form-control" placeholder="Dirección de Email" />
+          <input
+            {...register("email", {
+              required: true,
+              pattern: {
+                value:
+                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                message: "Email no es valido",
+              },
+            })}
+            id="email"
+            class="form-control"
+            placeholder="Dirección de Email"
+          />
           <p>{errors.email?.message}</p>
         </div>
         <div class="form-outline mb-4">
-          <input {...register("password", {
-            required: "Se rerquiere de contraseña",
-            pattern: {
-              value: /^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$/,
-              message: "Contraeña no valida"
-            }
-          })} type="password" id="password" class="form-control" placeholder="Contraseña" />
+          <input
+            {...register("password", {
+              required: "Se rerquiere de contraseña",
+              pattern: {
+                value:
+                  /^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$/,
+                message: "Contraeña no valida",
+              },
+            })}
+            type="password"
+            id="password"
+            class="form-control"
+            placeholder="Contraseña"
+          />
           <p>{errors.password?.message}</p>
         </div>
         <div class="row mb-4">
           <div class="col d-flex justify-content-center">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-              <label class="form-check-label" for="form2Example31"> Recordar </label>
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="form2Example31"
+                checked
+              />
+              <label class="form-check-label" for="form2Example31">
+                {" "}
+                Recordar{" "}
+              </label>
             </div>
           </div>
           <div class="col">
-            <Link to="/Forgot"><a href="#!">¿Se te olvidó tu contraseña?</a></Link>
+            <Link to="/Forgot">
+              <a href="#!">¿Se te olvidó tu contraseña?</a>
+            </Link>
           </div>
         </div>
         <div class="col d-flex justify-content-center">
-          <input type="submit" value="Acceder" class="btn btn-primary btn-block mb-4 justify-content-center" />
+          <input
+            type="submit"
+            value="Acceder"
+            class="btn btn-primary btn-block mb-4 justify-content-center"
+          />
         </div>
         <div class="text-center">
-          <p>Not a member? <Link to="/register"><a href="#!">Register</a></Link></p>
+          <p>
+            Not a member?{" "}
+            <Link to="/singup">
+              <a href="#!">Register</a>
+            </Link>
+          </p>
           <p>or sign up with:</p>
           <button type="button" class="btn btn-link btn-floating mx-1">
             <i class="fab fa-google fs-1"></i>

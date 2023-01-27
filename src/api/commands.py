@@ -175,3 +175,28 @@ def setup_commands(app):
                 id_counter += 1
                 print(f"Doctor: {doctor.id} created.")
         print("All test doctors created")
+
+
+    @app.cli.command("insert-prevision-2")
+    def insert_test_data():
+        print("Creando test prevision")
+        valores = [{'id': 2, 'name': 'Banmedica'}, {'id': 3, 'name': 'Cruz Blanca'}, {'id': 4, 'name': 'Masvida'},{'id': 5, 'name': 'Colmena'}]
+        for valor in valores:
+            prevision = Prevision()
+            prevision.id = valor['id']
+            prevision.name = valor['name']
+            db.session.add(prevision)
+        db.session.commit()
+        print("All test prevision created")
+
+    @app.cli.command("insert-speciality-2")
+    def insert_test_data():
+        print("Creando test prevision")
+        valores = [{'id': 1, 'name': 'Pediatria'}, {'id': 2, 'name': 'Medicina General'}, {'id': 3, 'name': 'Oftalmologia'},{'id': 4, 'name': 'Psiquiatria'},{'id': 5, 'name': 'Dentista'}]
+        for valor in valores:
+            speciality = Speciality()
+            speciality.id = valor['id']
+            speciality.name = valor['name']
+            db.session.add(speciality)
+        db.session.commit()
+        print("All test prevision created")

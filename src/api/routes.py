@@ -19,7 +19,7 @@ api = Blueprint('api', __name__)
 @api.route('/login', methods =['GET'])
 def login():
     # creates dictionary of form data
-    auth = request.args
+    auth = request.form
 
     if not auth or not auth.get('email') or not auth.get('password'):
         # devuelve 401 si falta algún correo electrónico o contraseña
@@ -54,7 +54,7 @@ def login():
 
 #API USER GET, GET ID and POST
 @api.route('/mediGeeks/users', methods=['GET'])
-@jwt_required()
+#@jwt_required()
 def get_users_table():
     user = User.query.all()
     user = list(map(lambda p:p.serialize(),user))

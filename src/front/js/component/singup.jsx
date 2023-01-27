@@ -8,10 +8,12 @@ import { useForm } from "react-hook-form";
 import { sendEmail } from "../service/emailService";
 import { Modal } from "bootstrap";
 
-
 export const Singup = () => {
-
-  const { register, formState: { errors }, handleSubmit } = useForm({ mode: "all", });
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm({ mode: "all" });
   const [user, setUser] = useState({});
 
   function samePassword() {
@@ -23,115 +25,151 @@ export const Singup = () => {
   }
 
   const submitBack = async (input) => {
-    try { 
-        console.log(input)
-        const res = await fetch("https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us84.gitpod.io/api/mediGeeks/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(input)
-      });
+    try {
+      console.log(input);
+      const res = await fetch(
+        "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us84.gitpod.io/api/mediGeeks/users",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(input),
+        }
+      );
       const data = await res.json();
-      console.log(data)
-      if (data.success) {
-            alert(data.message);
+      console.log(data);
+      if (data.email) {
+        verify(input);
       } else {
-             alert(data.message);
+        alert(data.message);
       }
     } catch (error) {
       console.error("Error:", error);
     }
-    console.log(JSON.stringify(input))
-  }
-
-  console.log("errors", errors)
-  function onSubmit(data) {
-    console.log(data)
-    verify(data)
-  }
+    console.log(JSON.stringify(input));
+  };
 
   const verify = (data) => {
     let params = {
       to_email: data.email,
       to_name: data.userName,
-      to_link: "www.google.cl"
+      to_link: "www.google.cl",
     };
     sendEmail(params);
   };
 
   return (
-
-<div className="background-image">
-    <div className="login position-absolute top-50 start-50 translate-middle "  >
-      <form autoComplete="off" onSubmit={handleSubmit(onSubmit)} style={{ opacity: 0.8 }}>
-        <div className="logo d-flex justify-content-center">
-          <img src={Medigeeks_Logo} style={{ opacity: 0.5 }}/>
-        </div>
-        &nbsp;
-        <div className="form-outline mb-4">
-          <input {...register("name", {
-            required: "Se requiere nombre y apellido",
-            pattern: {
-              value: /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u,
-              message: "Nombre no es valido"
-            }
-          })} placeholder="Nombre Apellido" type="userName" id="form2Example10" class="form-control" />
-          <p style={{ color: "red" }}>{errors.userName?.message}</p>
-        </div>
-        <div className="form-outline mb-4">
-          <input {...register("rut",
-            {
-              required: "Se requiere RUT",
-              pattern: {
-                value: /\b[0-9|.]{1,10}\-[K|k|0-9]/,
-                message: "Rut no es valido"
-              }
-            })} placeholder="R.U.T." type="" id="form2Example20" className="form-control" />
-          <p style={{ color: "red" }}>{errors.rut?.message}</p>
-        </div>
-        <div className="form-outline mb-4">
-          <select {...register("prevision_id", {
-            required: "Selecione una prevision"
-          })}
-            className="form-select form-select-sm mb-3s"
-            aria-label=".form-select-sm example">
-            <option selected>Prevision</option>
-            <option value="1">Fonasa</option>
-            <option value="2">Banmedica</option>
-            <option value="3">Cruz Blanca</option>
-            <option value="4">Masvida</option>
-            <option value="5">Colmena</option>
-          </select>
-          <p style={{ color: "red" }}>{errors.prevision?.message}</p>
-        </div>
-        <div className="form-outline mb-4">
-          <input {...register("email", {
-            required: "correo electronico es requerido",
-            pattern: {
-              value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-              message: "El email debe ser válido"
-            }
-          })} placeholder="Email" type="" id="form2Example30" className="form-control" />
-          <p style={{ color: "red" }}>{errors.email?.message}</p>
-        </div>
-        <div className="form-outline mb-4">
-          <input {...register("password", {
-            required: "se requiere contraseña",
-            pattern: {
-              value: /^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$/,
-              message : "La contraseña debe contener al menos 6 caracteres, una mayúscula, una minúscula, un número y un carácter de caso especial"
-            }
-          })} placeholder="Contraseña" type="password" id="password" className="form-control" />
-          <p style={{ color: "red" }}>{errors.password?.message}</p>
-        </div>
-        <div className="form-outline mb-4">
-          <input onBlur={samePassword} placeholder="Confirme Contraseña" type="password" id="confirm_password" className="form-control" />
-        </div>
-        <div className="col d-flex justify-content-center">
-          <input type="submit" value="registrarse" />
-        </div>
-      </form>
-    </div></div>
+    <div className="background-image">
+      <div className="login position-absolute top-50 start-50 translate-middle ">
+        <form
+          autoComplete="off"
+          onSubmit={handleSubmit(submitBack)}
+          style={{ opacity: 0.8 }}
+        >
+          <div className="logo d-flex justify-content-center">
+            <img src={Medigeeks_Logo} style={{ opacity: 0.5 }} />
+          </div>
+          &nbsp;
+          <div className="form-outline mb-4">
+            <input
+              {...register("name", {
+                required: "Se requiere nombre y apellido",
+                pattern: {
+                  value:
+                    /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u,
+                  message: "Nombre no es valido",
+                },
+              })}
+              placeholder="Nombre Apellido"
+              type="userName"
+              id="form2Example10"
+              class="form-control"
+            />
+            <p style={{ color: "red" }}>{errors.name?.message}</p>
+          </div>
+          <div className="form-outline mb-4">
+            <input
+              {...register("rut", {
+                required: "Se requiere RUT",
+                pattern: {
+                  value: /\b[0-9|.]{1,10}\-[K|k|0-9]/,
+                  message: "Rut no es valido",
+                },
+              })}
+              placeholder="R.U.T."
+              type=""
+              id="form2Example20"
+              className="form-control"
+            />
+            <p style={{ color: "red" }}>{errors.rut?.message}</p>
+          </div>
+          <div className="form-outline mb-4">
+            <select
+              {...register("prevision_id", {
+                required: "Selecione una prevision",
+              })}
+              className="form-select form-select-sm mb-3s"
+              aria-label=".form-select-sm example"
+            >
+              <option selected>Prevision</option>
+              <option value="1">Fonasa</option>
+              <option value="2">Banmedica</option>
+              <option value="3">Cruz Blanca</option>
+              <option value="4">Masvida</option>
+              <option value="5">Colmena</option>
+            </select>
+            <p style={{ color: "red" }}>{errors.prevision?.message}</p>
+          </div>
+          <div className="form-outline mb-4">
+            <input
+              {...register("email", {
+                required: "correo electronico es requerido",
+                pattern: {
+                  value:
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                  message: "El email debe ser válido",
+                },
+              })}
+              placeholder="Email"
+              type=""
+              id="form2Example30"
+              className="form-control"
+            />
+            <p style={{ color: "red" }}>{errors.email?.message}</p>
+          </div>
+          <div className="form-outline mb-4">
+            <input
+              {...register("password", {
+                required: "se requiere contraseña",
+                pattern: {
+                  value:
+                    /^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$/,
+                  message:
+                    "La contraseña debe contener al menos 6 caracteres, una mayúscula, una minúscula, un número y un carácter de caso especial",
+                },
+              })}
+              placeholder="Contraseña"
+              type="password"
+              id="password"
+              className="form-control"
+            />
+            <p style={{ color: "red" }}>{errors.password?.message}</p>
+          </div>
+          <div className="form-outline mb-4">
+            <input
+              onBlur={samePassword}
+              placeholder="Confirme Contraseña"
+              type="password"
+              id="confirm_password"
+              className="form-control"
+            />
+          </div>
+          <div className="col d-flex justify-content-center">
+            <input type="submit" value="registrarse" />
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };

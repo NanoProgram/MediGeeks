@@ -1,6 +1,6 @@
 export const login = async (email, password) => {
   const res = await fetch(
-    `https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us84.gitpod.io/api/login?email=${email}&password=${password}`,
+    `https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us84.gitpod.io/api/login?email=${email}&password=${password}`,
     {
       method: "GET",
       headers: {
