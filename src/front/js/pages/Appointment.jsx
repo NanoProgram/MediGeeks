@@ -12,7 +12,7 @@ import Calendar from 'react-calendar';
 export const Appointment = () => {
   const [date, setDate] = useState(new Date());
   return (
-    <div className="container container-center">
+    <div className="container container-center" >
       <div className="row justify-content-center g-2 ">
       <div className="col-6 ">
         <MedicalCenter />

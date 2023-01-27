@@ -6,7 +6,7 @@ import "../../styles/calendardoc.css";
 export const Hours = (props) => {
 
 	return (
-		<div className={props.position}>
+		<div className={props.position}  >
             <br></br>
             <br></br>
             <br></br>

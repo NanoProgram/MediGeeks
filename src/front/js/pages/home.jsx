@@ -10,6 +10,8 @@ import {
   faUserDoctor,
   faCalendarDays,
 } from "@fortawesome/free-solid-svg-icons";
+import { Footer } from "../component/footer.jsx";
+import { Sidebar_doc } from "../component/Sidebar Doctors.jsx";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -21,7 +23,8 @@ export const Home = () => {
   const [link, setLink] = useState("www.google.com");
 
   return (
-    <div className="ripple-background circle.xxlarge.shade1">
+    <div className="ripple-background circle.xxlarge.shade1" style={{backgroundColor: "#d6eef7"}}>
+      <Sidebar_doc />
       <div className="container text-center border p-1 fondo ">
         <div className="text-center mt-5">
           <h1>MediGeeks</h1>
@@ -70,6 +73,7 @@ export const Home = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
   const verify = (_) => {

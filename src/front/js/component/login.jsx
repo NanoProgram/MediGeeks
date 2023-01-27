@@ -52,71 +52,73 @@ export const Login = () => {
   };
 */
   return (
-    <div className="login position-absolute top-50 start-50 translate-middle">
-      <form id="formulario" onSubmit={handleSubmit(submitBack)}>
-        <div className="logo d-flex justify-content-center">
-          <img src={Medigeeks_Logo} />
-        </div>
-        <br></br>
-        <div class="form-outline mb-4">
-          <input
-            {...register("email", {
-              required: true,
-              pattern: {
-                value:
-                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                message: "Email no es valido",
-              },
-            })}
-            id="email"
-            class="form-control"
-            placeholder="Dirección de Email"
-          />
-          <p>{errors.email?.message}</p>
-        </div>
-        <div class="form-outline mb-4">
-          <input
-            {...register("password", {
-              required: "Se rerquiere de contraseña",
-              pattern: {
-                value:
-                  /^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$/,
-                message: "Contraeña no valida",
-              },
-            })}
-            type="password"
-            id="password"
-            class="form-control"
-            placeholder="Contraseña"
-          />
-          <p>{errors.password?.message}</p>
-        </div>
-        <div class="row mb-4">
+    <div className="background-image">
+      <div className="login position-absolute top-50 start-50 translate-middle ">
+        <form id="formulario" onSubmit={handleSubmit(submitBack)}>
+          <div className="logo d-flex justify-content-center">
+            <img src={Medigeeks_Logo} />
+          </div>
+          <br></br>
+          <div class="form-outline mb-4">
+            <input
+              {...register("email", {
+                required: true,
+                pattern: {
+                  value:
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                  message: "Email no es valido",
+                },
+              })}
+              id="email"
+              class="form-control"
+              placeholder="Dirección de Email"
+            />
+            <p style={{ color: "red" }}>{errors.email?.message}</p>
+          </div>
+          <div class="form-outline mb-4">
+            <input
+              {...register("password", {
+                required: "Se rerquiere de contraseña",
+                pattern: {
+                  value:
+                    /^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$/,
+                  message: "Contraeña no valida",
+                },
+              })}
+              type="password"
+              id="password"
+              class="form-control"
+              placeholder="Contraseña"
+            />
+            <p style={{ color: "red" }}>{errors.password?.message}</p>
+          </div>
+          <div class="row mb-4">
+            <div class="col d-flex justify-content-center">
+              <div class="form-check"></div>
+            </div>
+            <div style={{ textAlign: "center", alignItems: "center" }}>
+              <Link to="/Forgot">
+                <a href="#!">¿Se te olvidó tu contraseña?</a>
+              </Link>
+            </div>
+          </div>
           <div class="col d-flex justify-content-center">
-            <div class="form-check"></div>
+            <input
+              type="submit"
+              value="Acceder"
+              class="btn btn-primary btn-block mb-4 justify-content-center"
+            />
           </div>
-          <div class="col ">
-            <Link to="/Forgot">
-              <a href="#!">¿Se te olvidó tu contraseña?</a>
-            </Link>
+          <div class="text-center">
+            <p>
+              Not a member?{" "}
+              <Link to="/singup">
+                <a href="#!">Register</a>
+              </Link>
+            </p>
           </div>
-        </div>
-        <div class="col d-flex justify-content-center">
-          <input
-            type="submit"
-            value="Acceder"
-            class="btn btn-primary btn-block mb-4 justify-content-center"
-          />
-        </div>
-        <div class="text-center">
-          <p>
-            Not a member?{" "}
-            <Link to="/singup">
-              <a href="#!">Register</a>
-            </Link>
-          </p>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 };

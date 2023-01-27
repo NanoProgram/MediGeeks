@@ -36,7 +36,7 @@ export const Cita2 = () => {
 
 
   return (
-    <div className="container justify-content-center fondo p-2" >
+    <div className="container justify-content-center fondo p-2" style={{backgroundColor: "#d6eef7"}} >
       <div className="d-flex justify-content-center">
         <div className="p-2">
             <div className="card" style={{ width: '18rem' }}>

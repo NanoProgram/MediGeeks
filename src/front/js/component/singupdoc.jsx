@@ -60,7 +60,7 @@ export const AdmissionDoctor = () => {
       };
 
     return (
-
+        <div className="background-image">
         <div className="login position-absolute top-50 start-50 translate-middle">
             <form autoComplete="off" onSubmit={handleSubmit(submitBack)}>
                 <div className="logo d-flex justify-content-center">
@@ -75,7 +75,7 @@ export const AdmissionDoctor = () => {
                             message: "Nombre no es valido"
                         }
                     })} placeholder="Nombre Apellido" id="form2Example10" class="form-control" type=""/>
-                    <p>{errors.name?.message}</p>
+                    <p style={{ color: "red" }}>{errors.name?.message}</p>
                 </div>
                 <div className="form-outline mb-4">
                     <input {...register("rut",
@@ -86,7 +86,7 @@ export const AdmissionDoctor = () => {
                                 message: "Rut no es valido"
                             }
                         })} placeholder="R.U.T." type="" id="form2Example20" className="form-control" />
-                    <p>{errors.rut?.message}</p>
+                    <p style={{ color: "red" }}>{errors.rut?.message}</p>
                 </div>
                 <div className="form-outline mb-4">
                     <select {...register("speciality_id", {
@@ -101,7 +101,7 @@ export const AdmissionDoctor = () => {
                         <option value="4">Psiquiatria</option>
                         <option value="5">Dentista</option>
                     </select>
-                    <p>{errors.speciality_id?.message}</p>
+                    <p style={{ color: "red" }}>{errors.speciality_id?.message}</p>
                 </div>
                 <div className="form-outline mb-4">
                     <input {...register("email", {
@@ -111,7 +111,7 @@ export const AdmissionDoctor = () => {
                             message: "El email debe ser válido"
                         }
                     })} placeholder="Email" type="" id="form2Example30" className="form-control" />
-                    <p>{errors.email?.message}</p>
+                    <p style={{ color: "red" }}>{errors.email?.message}</p>
                 </div>
                 <div className="form-outline mb-4">
                     <input {...register("password", {
@@ -121,7 +121,7 @@ export const AdmissionDoctor = () => {
                             message: "La contraseña debe contener al menos 6 caracteres, una mayúscula, una minúscula, un número y un carácter de caso especial"
                         }
                     })} placeholder="Contraseña" type="password" id="password" className="form-control" />
-                    <p>{errors.password?.message}</p>
+                    <p style={{ color: "red" }}>{errors.password?.message}</p>
                 </div>
                 <div className="form-outline mb-4">
                     <input onBlur={samePassword} placeholder="Confirme Contraseña" type="password" id="confirm_password" className="form-control" />
@@ -130,6 +130,7 @@ export const AdmissionDoctor = () => {
                     <input type="submit" value="registrarse" />
                 </div>
             </form>
+        </div>
         </div>
     );
 };

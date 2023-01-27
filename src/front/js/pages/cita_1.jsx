@@ -3,6 +3,8 @@ import { Context } from "../store/appContext";
 import "../../styles/cita_1.css";
 import { Link } from "react-router-dom";
 import { Doc_disponible } from "../component/doc_disponible.jsx";
+import { Sidebar_doc } from "../component/Sidebar Doctors.jsx";
+import { Footer } from "../component/footer.jsx";
 
 export const Cita = () => {
   const [loading, setLoading] = useState(true);
@@ -189,7 +191,8 @@ export const Cita = () => {
   };
 
   return (
-    <div className="container-sm fondo p-2">
+    <div className="container-sm fondo p-2" style={{backgroundColor: "#d6eef7"}}>
+     <Sidebar_doc/>
       <div className="text-center">
         <h1 className="center"> MediGeeks</h1>
         <h3> Toma de Hora</h3>
@@ -289,6 +292,7 @@ export const Cita = () => {
           </button>
         </Link>
       </div>
+      <Footer/>
     </div>
   );
 };

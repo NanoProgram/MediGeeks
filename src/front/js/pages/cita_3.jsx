@@ -2,10 +2,13 @@ import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/cita_1.css";
 import { Link } from "react-router-dom";
+import { Sidebar_doc } from "../component/Sidebar Doctors.jsx";
+import { Footer } from "../component/footer.jsx";
 
 export const Cita3 = () => {
   return (
-    <div className="container fondo p-2">
+    <div className="container fondo p-2"style={{backgroundColor: "#d6eef7"}} >
+      <Sidebar_doc/>
       <div className="container d-flex justify-content-center">
         <div className="card border-primary mb-3" style={{ width: "18rem" }}>
           <div className="card-header">Hora agendada</div>
@@ -30,6 +33,7 @@ export const Cita3 = () => {
       <Link to="/home">
         <button className="btn btn-primary">Finalizar</button>
       </Link>
+      <Footer/>
     </div>
   );
 };

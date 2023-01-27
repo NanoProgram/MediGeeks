@@ -6,7 +6,7 @@ import { Calendar } from "../pages/Calendardoc.jsx";
 
 export const Month = (props) => {
   return (
-    <div className={props.position}>
+    <div className={props.position} >
       <div className="text-center bg-info">
         <strong>Enero 2023</strong>
       </div>

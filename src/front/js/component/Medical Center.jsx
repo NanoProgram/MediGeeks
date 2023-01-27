@@ -6,7 +6,7 @@ import { Calendar } from "../pages/Calendardoc.jsx";
 
 export const MedicalCenter = (props) => {
   return (
-    <div className={props.position}>
+    <div className={props.position} >
       <table className="table table-warning table-striped text-center">
         <thead>
           <tr>
