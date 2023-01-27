@@ -15,7 +15,6 @@ import { Sidebar_doc } from "./component/Sidebar Doctors.jsx";
 import { AdmissionDoctor } from "./component/singupdoc.jsx";
 import { Recover } from "./component/recoverPassword.jsx";
 import { Principal } from "./component/principal.jsx";
-import { Prueba } from "./pages/pruebas.jsx";
 import { ProtectedRoutes } from "./component/protectedRoute.jsx";
 
 //create your first component
@@ -37,7 +36,7 @@ const Layout = () => {
       id: 1,
       email: "test@test.com",
       name: "test",
-      token: null,
+      token: true,
     });
   };
 
@@ -50,22 +49,19 @@ const Layout = () => {
             <Route element={<Recover />} path="/recoverPassword" />
             <Route element={<Login />} path="/login" />
             <Route element={<Forgot />} path="/forgot" />
-
+            <Route element={<Singup />} path="/singup" />
+            <Route element={<AdmissionDoctor />} path="/singupdoc" />
+            <Route element={<Home />} path="/home" />
+            <Route element={<h1>Not found!</h1>} />
+            <Route element={<Cita />} path="/appointment" />
+            <Route element={<Cita3 />} path="/appointment-confirmed" />
+            <Route element={<Appointment />} path="/doctor" />
+            <Route element={<Calendardoc />} path="/calendardoc" />
+            <Route element={<Sidebar_doc />} path="/sidebardoc" />
+            <Route element={<Footer />} path="/footer" />
             <Route
-              element={<ProtectedRoutes user={user} redirectTo="/principal" />}
-            >
-              <Route element={<Singup />} path="/singup" />
-              <Route element={<AdmissionDoctor />} path="/singupdoc" />
-              <Route element={<Prueba />} path="/prueba" />
-              <Route element={<Home />} path="/home" />
-              <Route element={<h1>Not found!</h1>} />
-              <Route element={<Cita />} path="/appointment" />
-              <Route element={<Cita3 />} path="/appointment-confirmed" />
-              <Route element={<Appointment />} path="/doctor" />
-              <Route element={<Calendardoc />} path="/calendardoc" />
-              <Route element={<Sidebar_doc />} path="/sidebardoc" />
-              <Route element={<Footer />} path="/footer" />
-            </Route>
+              element={<ProtectedRoutes user={user} redirectTo="/" />}
+            ></Route>
           </Routes>
         </ScrollToTop>
       </BrowserRouter>

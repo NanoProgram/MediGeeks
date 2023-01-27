@@ -136,46 +136,7 @@ def setup_commands(app):
 
         print("All test appointment created")
 
-    @app.cli.command("insert-test-doctor-2") # name of our command
-    @click.argument("specialities_count") # argument of out command
-    def insert_test_data(specialities_count):
-        print("Creando test doctor")
-        for i in range(1, int(specialities_count) + 1):
-            for j in range(1, 3):
-                doctor = Doctor()
-                doctor.id = j
-                doctor.email = f"email_doc@{i}-{j}"
-                doctor.name = f"Esp{i}-Doc{j}"
-                doctor.rut = f"rut_prueba{i}-{j}"
-                doctor.password = f"password_prueba{i}-{j}"
-                doctor.speciality_id = i
-                db.session.add(doctor)
-                db.session.commit()
-                print(f"Doctor: {doctor.id} created.")
-
-        print("All test doctors created")
             
-
-    @app.cli.command("insert-test-doctor-3") # name of our command
-    @click.argument("specialities_count") # argument of out command
-    def insert_test_data(specialities_count):
-        print("Creando test doctor")
-        id_counter = 1
-        for i in range(1, int(specialities_count) + 1):
-            for j in range(1, 4):
-                doctor = Doctor()
-                doctor.id = id_counter
-                doctor.email = f"email_doc@{i}-{j}"
-                doctor.name = f"Esp{i}-Doc{j}"
-                doctor.rut = f"rut_prueba{i}-{j}"
-                doctor.password = f"password_prueba{i}-{j}"
-                doctor.speciality_id = i
-                db.session.add(doctor)
-                db.session.commit()
-                id_counter += 1
-                print(f"Doctor: {doctor.id} created.")
-        print("All test doctors created")
-
 
     @app.cli.command("insert-prevision-2")
     def insert_test_data():
@@ -200,3 +161,88 @@ def setup_commands(app):
             db.session.add(speciality)
         db.session.commit()
         print("All test prevision created")
+
+    @app.cli.command("insert-center") # name of our command
+    def insert_test_data():
+        print("Creando test center")
+        valores = [{'id': 1, 'name': 'VidaMas', 'commune':'Providencia', 'direction':'Barcelona 2116'}, 
+                    {'id': 2, 'name': 'Red Salud', 'commune':'Maipu', 'direction':'Alberto Llona 1770'}]
+        for valor in valores:
+            center = Center()
+            center.id = valor['id']
+            center.name = valor['name']
+            center.commune = valor['commune']
+            center.direction = valor['direction']
+            center.start_of_service_hours = "09:00"
+            center.end_of_service_hours = "18:00"
+            db.session.add(center)
+            db.session.commit()
+            print("Center: ", center.id, " created.")
+        print("All test center created")
+
+    @app.cli.command("insert-doctor") # name of our command
+    def insert_test_data():
+        print("Creando test doctor")
+        valores = [{'id': '1', 'email':'juan@gmail.com', 'name': 'Juan Toro', 'rut':'15.369.258-5', 'speciality_id':1}, 
+                    {'id': '2', 'email':'roberto@gmail.com', 'name': 'Roberto Toro', 'rut':'15.363.258-5', 'speciality_id':1},
+                    {'id': '3', 'email':'carlos@gmail.com', 'name': 'Carlos Toro', 'rut':'15.369.458-5', 'speciality_id':2},
+                    {'id': '4', 'email':'Nicolas@gmail.com', 'name': 'Nicolas Toro', 'rut':'15.367.258-5', 'speciality_id':2},]
+        for valor in valores:
+            doctor = Doctor()
+            doctor.id = valor['id']
+            doctor.email = valor['email']
+            doctor.name = valor['name']
+            doctor.rut = valor['rut']
+            doctor.password = "clavesegura"
+            doctor.speciality_id = valor['speciality_id']
+            db.session.add(doctor)
+            db.session.commit()
+            print("Doctor: ", doctor.id, " created.")
+
+        print("All test doctor created")
+
+    @app.cli.command("insert-calendar") # name of our command
+    def insert_test_data():
+        print("Creando test calendar")
+        valores = [{'id': 9, 'appointment_start_time':'15.00', 'appointment_end_time': '16.00', 'center_id':1, },]
+        for valor in valores:
+            calendar = Calendar()
+            calendar.id = valor['id']
+            calendar.year = "2023"
+            calendar.month = "1"
+            calendar.day = "30"
+            calendar.appointment_start_time = valor['appointment_start_time']
+            calendar.appointment_end_time = valor['appointment_end_time']
+            calendar.center_id = valor['center_id']
+            db.session.add(calendar)
+            db.session.commit()
+            print("Calendar: ", calendar.id, " created.")
+
+        print("All test calendar created")
+
+    @app.cli.command("insert-appointment") # name of our command
+    def insert_test_data():
+        print("Creando test appointment")
+        valores = [#{'id': 1, 'doctor_id':'1', 'speciality_id': 1, 'center_id':1,'calendar_id':1, }, 
+                    #{'id': 2, 'doctor_id':'1', 'speciality_id': 1, 'center_id':1,'calendar_id':2, },
+                    #{'id': 3, 'doctor_id':'1', 'speciality_id': 1, 'center_id':1,'calendar_id':3,},
+                    #{'id': 4, 'doctor_id':'2', 'speciality_id': 1, 'center_id':1,'calendar_id':4, },
+                    #{'id': 5, 'doctor_id':'2', 'speciality_id': 1, 'center_id':1,'calendar_id':5, }, 
+                    #{'id': 6, 'doctor_id':'3', 'speciality_id': 2, 'center_id':2,'calendar_id':6, },
+                    #{'id': 7, 'doctor_id':'3', 'speciality_id': 2, 'center_id':2,'calendar_id':7, },
+                    #{'id': 8, 'doctor_id':'4', 'speciality_id': 2, 'center_id':2,'calendar_id':8, },
+                    {'id': 9, 'doctor_id':'4', 'speciality_id': 2, 'center_id':2,'calendar_id':9, },]
+        for valor in valores:
+            appointment = Appointment()
+            appointment.id = valor['id']
+            appointment.available = True
+            appointment.doctor_id = valor['doctor_id']
+            appointment.speciality_id = valor['speciality_id']
+            appointment.center_id = valor['center_id']
+            appointment.calendar_id = valor['calendar_id']
+            appointment.user_id = "8e8a72fc-9aaf-4dd8-8288-113858ecde6c"
+            db.session.add(appointment)
+            db.session.commit()
+            print("Appointment: ", appointment.id, " created.")
+
+        print("All test appointment created")

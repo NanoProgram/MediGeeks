@@ -16,7 +16,51 @@ api = Blueprint('api', __name__)
 #const token = localStorage.getItem("token")
 #const token = localStorage.setItem("token",)
 
-@api.route('/login', methods =['GET'])
+import json
+
+@api.route('/login', methods =['POST'])
+def login():
+    # creates dictionary of form data
+    auth = request.json
+
+    if not auth or not auth.get('email') or not auth.get('password'):
+        # devuelve 401 si falta algún correo electrónico o contraseña
+        return make_response(
+            'Could not verify',
+            401,
+            {'WWW-Authenticate' : 'Basic realm ="¡Se requiere iniciar sesión !!"'}
+            )
+
+    user = User.query\
+        .filter_by(email = auth.get('email'))\
+        .first()
+
+    if not user:
+        # devuelve 401 si el usuario no existe
+        return make_response(
+            'Could not verify',
+            401,
+            {'WWW-Authenticate' : 'Basic realm ="Usuario o contraseña incorrectos !!"'}
+        )
+
+    if check_password_hash(user.password, auth.get('password')):
+        # genera el token JWT
+        access_token = create_access_token(identity=user.id)
+        return json.dumps({ "token": access_token, "user_id": user.id }), 200
+    # devuelve 403 si la contraseña es incorrecta
+    return make_response(
+        'Could not verify',
+        403,
+        {'WWW-Authenticate' : 'Basic realm ="Usuario o contraseña incorrectos !!"'}
+    )
+
+
+
+
+
+
+
+"""@api.route('/login', methods =['GET'])
 def login():
     # creates dictionary of form data
     auth = request.form
@@ -51,7 +95,7 @@ def login():
         403,
         {'WWW-Authenticate' : 'Basic realm ="Usuario o contraseña incorrectos !!"'}
     )
-
+"""
 #API USER GET, GET ID and POST
 @api.route('/mediGeeks/users', methods=['GET'])
 #@jwt_required()
@@ -203,6 +247,18 @@ def get_appointment():
     appointment = Appointment.query.all()
     appointment = list(map(lambda p:p.serialize(),appointment))
     return jsonify(appointment), 200
+
+@api.route('/mediGeeks/appointments/calendar_id', methods=['PUT'])
+def update_appointment(calendar_id):
+    appointment = Appointment.query.get(calendar_id)
+    if not appointment:
+        return jsonify({'message': 'Appointment not found'}), 404
+
+    data = request.get_json()
+    appointment.user_id = data['user_id']
+    appointment.available = data['available']
+    db.session.commit()
+    return jsonify(appointment.serialize()), 200
 
 
 

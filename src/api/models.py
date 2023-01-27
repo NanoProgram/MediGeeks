@@ -133,7 +133,7 @@ class Appointment(db.Model):
     center_id = db.Column(db.Integer, db.ForeignKey('center.id'), nullable=False)
     calendar_id = db.Column(db.Integer, db.ForeignKey('calendar.id'), nullable=False)
     available = db.Column(db.Boolean(), unique=False, nullable=False)
-    user_id = db.Column(db.String(260), db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.String(260), db.ForeignKey('user.id'), nullable=True)
 
     def serialize(self):
         return {

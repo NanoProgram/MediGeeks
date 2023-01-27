@@ -13,6 +13,30 @@ export const Login = () => {
   } = useForm({ mode: "all" });
 
   const submitBack = async () => {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    fetch(
+      "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us84.gitpod.io/api/login?email=${email}&password=${password}",
+      {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+        headers: { "Content-Type": "application/json" },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.token) {
+          // guardar el token en el almacenamiento local o en el estado de la aplicación
+          localStorage.setItem("token", data.token);
+          console.log("llegamos aqui");
+        } else {
+          // manejar el error de autenticación
+        }
+      })
+      .catch((error) => console.log(error));
+  };
+  /*
+  const submitBack = async () => {
     try {
       const email = document.getElementById("email").value;
       console.log(email);
@@ -26,7 +50,7 @@ export const Login = () => {
       console.error("Error:", error);
     }
   };
-
+*/
   return (
     <div className="login position-absolute top-50 start-50 translate-middle">
       <form id="formulario" onSubmit={handleSubmit(submitBack)}>
@@ -69,21 +93,9 @@ export const Login = () => {
         </div>
         <div class="row mb-4">
           <div class="col d-flex justify-content-center">
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="form2Example31"
-                checked
-              />
-              <label class="form-check-label" for="form2Example31">
-                {" "}
-                Recordar{" "}
-              </label>
-            </div>
+            <div class="form-check"></div>
           </div>
-          <div class="col">
+          <div class="col ">
             <Link to="/Forgot">
               <a href="#!">¿Se te olvidó tu contraseña?</a>
             </Link>
@@ -103,10 +115,6 @@ export const Login = () => {
               <a href="#!">Register</a>
             </Link>
           </p>
-          <p>or sign up with:</p>
-          <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-google fs-1"></i>
-          </button>
         </div>
       </form>
     </div>
