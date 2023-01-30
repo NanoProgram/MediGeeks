@@ -28,7 +28,7 @@ export const Login = () => {
         if (data.token) {
           // guardar el token en el almacenamiento local o en el estado de la aplicación
           localStorage.setItem("token", data.token);
-          console.log("llegamos aqui");
+          console.log("Logueado correctamente");
         } else {
           // manejar el error de autenticación
         }
@@ -111,9 +111,9 @@ export const Login = () => {
           </div>
           <div class="text-center">
             <p>
-              Not a member?{" "}
+              No eres usuario?{" "}
               <Link to="/singup">
-                <a href="#!">Register</a>
+                <a href="#!">pincha aqui!</a>
               </Link>
             </p>
           </div>

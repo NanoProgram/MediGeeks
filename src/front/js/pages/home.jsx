@@ -14,7 +14,6 @@ import { Footer } from "../component/footer.jsx";
 import { Sidebar_doc } from "../component/Sidebar Doctors.jsx";
 
 export const Home = () => {
-  const { store, actions } = useContext(Context);
   const [email, setEmail] = useState("");
   const [user, setUser] = useState({
     email: "mail@mail.com",
@@ -23,7 +22,10 @@ export const Home = () => {
   const [link, setLink] = useState("www.google.com");
 
   return (
-    <div className="ripple-background circle.xxlarge.shade1" style={{backgroundColor: "#d6eef7"}}>
+    <div
+      className="ripple-background circle.xxlarge.shade1"
+      style={{ backgroundColor: "#d6eef7" }}
+    >
       <Sidebar_doc />
       <div className="container text-center border p-1 fondo ">
         <div className="text-center mt-5">

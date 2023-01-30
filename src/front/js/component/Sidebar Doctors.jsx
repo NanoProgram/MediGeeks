@@ -44,14 +44,14 @@ export const Sidebar_doc = () => {
             </Link>
           </div>
           <div className="d-flex justify-content-center">
-            <Link to="/cita">
+            <Link to="/appointment">
               <button type="button" className="btn btn-danger button">
                 Reserva Hora
               </button>
             </Link>
           </div>
           <div className="d-flex justify-content-center">
-            <Link to="/calendar">
+            <Link to="/doctor">
               <button type="button" className="btn btn-danger button">
                 Calendario Interno
               </button>

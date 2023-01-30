@@ -68,7 +68,7 @@ export const Singup = () => {
           style={{ opacity: 0.8 }}
         >
           <div className="logo d-flex justify-content-center">
-            <img src={Medigeeks_Logo} style={{ opacity: 0.5 }} />
+            <img src={Medigeeks_Logo} />
           </div>
           &nbsp;
           <div className="form-outline mb-4">

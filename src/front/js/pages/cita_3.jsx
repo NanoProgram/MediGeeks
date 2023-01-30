@@ -4,11 +4,12 @@ import "../../styles/cita_1.css";
 import { Link } from "react-router-dom";
 import { Sidebar_doc } from "../component/Sidebar Doctors.jsx";
 import { Footer } from "../component/footer.jsx";
+import GoogleMaps from "simple-react-google-maps";
 
 export const Cita3 = () => {
   return (
-    <div className="container fondo p-2"style={{backgroundColor: "#d6eef7"}} >
-      <Sidebar_doc/>
+    <div className="container fondo p-2" style={{ backgroundColor: "#d6eef7" }}>
+      <Sidebar_doc />
       <div className="container d-flex justify-content-center">
         <div className="card border-primary mb-3" style={{ width: "18rem" }}>
           <div className="card-header">Hora agendada</div>
@@ -23,17 +24,21 @@ export const Cita3 = () => {
       </div>
 
       <div className="d-flex justify-content-center">
-        <img
-          src="https://nz.rs-cdn.com/images/nwszh-7ob16/blog/efd2c6c3f83c9987f8ff3669c2e602bb__7132/zoom668x511z100000cw668.png?etag=748c81bfdc8f69f870be957ba8f22fde"
-          className="img-thumbnail"
-          alt=""
+        <GoogleMaps
+          apiKey={"AIzaSyB-zFY4ZH0nkE8BZiRH94iFGWJyFgK1MPg"}
+          style={{ height: "500px", width: "500px" }}
+          zoom={15}
+          center={{
+            lat: -33.4104594,
+            lng: -70.568482,
+          }}
         />
       </div>
 
       <Link to="/home">
         <button className="btn btn-primary">Finalizar</button>
       </Link>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

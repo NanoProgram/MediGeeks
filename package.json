@@ -92,6 +92,7 @@
 		"react-hook-form": "^7.42.1",
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^6.3.0",
-		"reactstrap": "^9.1.5"
+		"reactstrap": "^9.1.5",
+		"simple-react-google-maps": "^1.1.2"
 	}
 }

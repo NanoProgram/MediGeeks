@@ -56,10 +56,6 @@ def login():
 
 
 
-
-
-
-
 """@api.route('/login', methods =['GET'])
 def login():
     # creates dictionary of form data
@@ -234,20 +230,21 @@ def get_speciality():
     speciality = list(map(lambda p:p.serialize(),speciality))
     return jsonify(speciality), 200 
 
-#API speciality GET
+#API Calendar GET
 @api.route('/mediGeeks/calendar', methods=['GET'])
 def get_calendar():
     calendar = Calendar.query.all()
     calendar = list(map(lambda p:p.serialize(),calendar))
     return jsonify(calendar), 200
 
-#API speciality GET
+#API Appointment GET
 @api.route('/mediGeeks/appointments', methods=['GET'])
 def get_appointment():
     appointment = Appointment.query.all()
     appointment = list(map(lambda p:p.serialize(),appointment))
     return jsonify(appointment), 200
 
+#API Appointment PUT
 @api.route('/mediGeeks/appointments/calendar_id', methods=['PUT'])
 def update_appointment(calendar_id):
     appointment = Appointment.query.get(calendar_id)

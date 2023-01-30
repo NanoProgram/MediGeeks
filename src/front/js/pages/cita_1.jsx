@@ -2,13 +2,13 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/cita_1.css";
 import { Link } from "react-router-dom";
-import { Doc_disponible } from "../component/doc_disponible.jsx";
 import { Sidebar_doc } from "../component/Sidebar Doctors.jsx";
 import { Footer } from "../component/footer.jsx";
 
 export const Cita = () => {
   const [loading, setLoading] = useState(true);
   const [loading2, setLoading2] = useState(true);
+  const [loading3, setLoading3] = useState(true);
   const [specialities, setSpecialities] = useState([]);
   const [doctor, setDoctor] = useState([]);
   const [centros, setCentro] = useState([]);
@@ -18,7 +18,7 @@ export const Cita = () => {
   const [hours, setHours] = useState([]);
   const [calendarID, setCalendarID] = useState([]);
 
-  //---------------Centro Medico------------------
+  //---------------Consulta Centro Medico------------------
   useEffect(() => {
     async function fetchData() {
       try {
@@ -38,7 +38,7 @@ export const Cita = () => {
     console.log(event.target.value);
     setCenterId(event.target.value);
   };
-  //-------------Especialidad----------------
+  //-------------Consulta Especialidad del centro----------------
   useEffect(() => {
     setLoading(true);
     setLoading2(true);
@@ -81,7 +81,7 @@ export const Cita = () => {
     setEspecialidadID(event.target.value);
   };
 
-  //------------------Doctor------------------
+  //------------------Consulta Doctor del Centro de la Especialidad------------------
   useEffect(() => {
     setLoading2(true);
     async function fetchData() {
@@ -125,8 +125,9 @@ export const Cita = () => {
     console.log(event.target.value);
     setDocID(event.target.value);
   };
-  //------------Calendar--------------------
+  //------------Consulta del Calendario para le doc seleccionado--------------------
   useEffect(() => {
+    setLoading3(true);
     async function fetchData() {
       try {
         const response = await fetch(
@@ -158,6 +159,7 @@ export const Cita = () => {
         );
         setHours(horasDisponibles);
         console.log(horasDisponibles);
+        setLoading3(false);
       } catch (error) {
         console.error(error);
       }
@@ -168,6 +170,8 @@ export const Cita = () => {
     console.log(event.target.value);
     setCalendarID(event.target.value);
   };
+
+  //---------------- PUT para la Hora medica---------------------
   const saveData = async (selecthoraID) => {
     const user_id = "USER PROBANDO";
     const available = false;
@@ -191,8 +195,11 @@ export const Cita = () => {
   };
 
   return (
-    <div className="container-sm fondo p-2" style={{backgroundColor: "#d6eef7"}}>
-     <Sidebar_doc/>
+    <div
+      className="container-sm fondo p-2"
+      style={{ backgroundColor: "#d6eef7" }}
+    >
+      <Sidebar_doc />
       <div className="text-center">
         <h1 className="center"> MediGeeks</h1>
         <h3> Toma de Hora</h3>
@@ -242,40 +249,51 @@ export const Cita = () => {
           )}
 
           <br />
-
-          <select
-            className="form-select form-select-sm mb-3s m-1"
-            aria-label=".form-select-sm example"
-            style={{ width: "250px" }}
-          >
-            <option selected>Mes</option>
-            {hours.map((hora) => (
-              <option value={hora.id}>{hora.month}</option>
-            ))}
-          </select>
-          <select
-            className="form-select form-select-sm mb-3s m-1"
-            aria-label=".form-select-sm example"
-            style={{ width: "250px" }}
-          >
-            <option selected>Dia</option>
-            {hours.map((hora) => (
-              <option value={hora.id}>{hora.day}</option>
-            ))}
-          </select>
-          <select
-            className="form-select form-select-sm mb-3s m-1"
-            aria-label=".form-select-sm example"
-            style={{ width: "250px" }}
-            onChange={selectHora}
-          >
-            <option selected>Horas</option>
-            {hours.map((hora) => (
-              <option value={hora.id}>
-                {hora.appointment_start_time}-{hora.appointment_end_time}
-              </option>
-            ))}
-          </select>
+          {loading3 ? (
+            <h6> Cargando...</h6>
+          ) : (
+            <select
+              className="form-select form-select-sm mb-3s m-1"
+              aria-label=".form-select-sm example"
+              style={{ width: "250px" }}
+            >
+              <option selected>Mes</option>
+              {hours.map((hora) => (
+                <option value={hora.id}>{hora.month}</option>
+              ))}
+            </select>
+          )}
+          {loading3 ? (
+            <h6> Cargando...</h6>
+          ) : (
+            <select
+              className="form-select form-select-sm mb-3s m-1"
+              aria-label=".form-select-sm example"
+              style={{ width: "250px" }}
+            >
+              <option selected>Dia</option>
+              {hours.map((hora) => (
+                <option value={hora.id}>{hora.day}</option>
+              ))}
+            </select>
+          )}
+          {loading3 ? (
+            <h6> Cargando...</h6>
+          ) : (
+            <select
+              className="form-select form-select-sm mb-3s m-1"
+              aria-label=".form-select-sm example"
+              style={{ width: "250px" }}
+              onChange={selectHora}
+            >
+              <option selected>Horas</option>
+              {hours.map((hora) => (
+                <option value={hora.id}>
+                  {hora.appointment_start_time}-{hora.appointment_end_time}
+                </option>
+              ))}
+            </select>
+          )}
         </div>
       </div>
       <br />
@@ -292,7 +310,7 @@ export const Cita = () => {
           </button>
         </Link>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
