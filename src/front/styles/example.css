@@ -16,9 +16,16 @@
   
   
   .background-image {
-    background-image: url('https://sanjuandedios.pe/clinicaarequipa/assets/images/bg-sctFormH.jpg');
+    background-image: url('https://img.freepik.com/vector-gratis/diseno-plantilla-papel-tapiz-medica-abstracta_53876-61803.jpg?auto=format&h=200');
     background-size: cover;
     width: 100%;
     height: 100%;
     position: absolute;
+  }
+
+  .form-control {
+    background-color:white(122, 228, 247);
+    border-radius: 30px;
+    color: white;
+    padding: 10px 20px;
   }

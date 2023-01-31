@@ -166,7 +166,7 @@ export const Singup = () => {
             />
           </div>
           <div className="col d-flex justify-content-center">
-            <input type="submit" value="registrarse" />
+            <input type="submit" value="registrarse" class="btn btn-primary rounded-pill"/>
           </div>
         </form>
       </div>

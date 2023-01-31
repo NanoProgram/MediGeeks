@@ -35,22 +35,7 @@ export const Login = () => {
       })
       .catch((error) => console.log(error));
   };
-  /*
-  const submitBack = async () => {
-    try {
-      const email = document.getElementById("email").value;
-      console.log(email);
-      const password = document.getElementById("password").value;
-      const data = await login(email, password);
-      if (data.email) {
-        console.log(data);
-        alert(data.message);
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-*/
+ 
   return (
     <div className="background-image">
       <div className="login position-absolute top-50 start-50 translate-middle ">
@@ -59,8 +44,9 @@ export const Login = () => {
             <img src={Medigeeks_Logo} />
           </div>
           <br></br>
-          <div class="form-outline mb-4">
-            <input
+          <div class="form-outline mb-4 ">  
+           
+            <input 
               {...register("email", {
                 required: true,
                 pattern: {
@@ -106,7 +92,7 @@ export const Login = () => {
             <input
               type="submit"
               value="Acceder"
-              class="btn btn-primary btn-block mb-4 justify-content-center"
+              class="btn btn-primary btn-block mb-4 justify-content-center "
             />
           </div>
           <div class="text-center">
