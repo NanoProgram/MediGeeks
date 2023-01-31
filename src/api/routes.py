@@ -245,12 +245,11 @@ def get_appointment():
     return jsonify(appointment), 200
 
 #API Appointment PUT
-@api.route('/mediGeeks/appointments/calendar_id', methods=['PUT'])
+@api.route('/mediGeeks/appointments/<int:calendar_id>', methods=['PUT'])
 def update_appointment(calendar_id):
     appointment = Appointment.query.get(calendar_id)
     if not appointment:
         return jsonify({'message': 'Appointment not found'}), 404
-
     data = request.get_json()
     appointment.user_id = data['user_id']
     appointment.available = data['available']

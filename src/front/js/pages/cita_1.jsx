@@ -166,19 +166,21 @@ export const Cita = () => {
     }
     fetchData();
   }, [docID]);
+
   const selectHora = (event) => {
-    console.log(event.target.value);
     setCalendarID(event.target.value);
+    console.log(event.target.value);
+    console.log(calendarID);
   };
 
   //---------------- PUT para la Hora medica---------------------
-  const saveData = async (selecthoraID) => {
-    const user_id = "USER PROBANDO";
+  const saveData = async () => {
+    const user_id = "c6fab944-d3e4-48fc-b735-5ac99ebc408a";
     const available = false;
     const data = { user_id, available };
     try {
       const response = await fetch(
-        `https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us84.gitpod.io/api/mediGeeks/appointments${selecthoraID}`,
+        `https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us84.gitpod.io/api/mediGeeks/appointments/${calendarID}`,
         {
           method: "PUT",
           body: JSON.stringify(data),
