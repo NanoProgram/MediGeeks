@@ -23,7 +23,7 @@ export const One = () => {
                     <br />
                     Nuestra misión es brindar soluciones de vanguardia y servicios excepcionales a nuestros clientes, ayudándoles a alcanzar sus objetivos y superar sus desafíos. Estamos comprometidos a ser un socio confiable para nuestros clientes y una empresa respetada en la industria.</h5>
                 <br />
-                <a href="#contact" class="btn btn-primary">Contactenos</a>
+                <a href="#contact" class="btn btn-primary rounded-pill">Contactenos</a>
             </div>
         </div>
     </section>

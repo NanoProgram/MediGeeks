@@ -17,7 +17,7 @@ export const Two = () => {
                         </p>
                         <div style={{ textAlign: 'center' }}>
                             <a href="/singup">
-                                <button className="btn btn-primary me-2" type="button">registrarse</button>
+                                <button className="btn btn-primary me-2 rounded-pill " type="button">registrarse</button>
                             </a>
                         </div>
                     </div>
@@ -33,7 +33,7 @@ export const Two = () => {
                         </p>
                         <div style={{ textAlign: 'center' }}>
                             <a href="/singup">
-                                <button className="btn btn-primary me-2" type="button">registrarse</button>
+                                <button className="btn btn-primary me-2 rounded-pill" type="button">registrarse</button>
                             </a>
                         </div>
                     </div>
@@ -49,7 +49,7 @@ export const Two = () => {
                         </p>
                         <div style={{ textAlign: 'center' }}>
                             <a href="/singup">
-                                <button className="btn btn-primary me-2" type="button">registrarse</button>
+                                <button className="btn btn-primary me-2 rounded-pill " type="button">registrarse</button>
                             </a>
                         </div>
                     </div>

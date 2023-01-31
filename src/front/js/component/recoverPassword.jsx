@@ -44,7 +44,7 @@ export const Recover = () => {
                     &nbsp;
                     <div className="col d-flex justify-content-center">
                         <button type="submit" onClick={samePassword}
-                            className="btn btn-primary btn-block mb-4 justify-content-center">Recuperar contraseña</button>
+                            className="btn btn-primary btn-block mb-4 justify-content-center rounded-pill">Recuperar contraseña</button>
                     </div>
                 </form>
             </div>
