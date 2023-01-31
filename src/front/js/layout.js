@@ -25,21 +25,21 @@ const Layout = () => {
 
   // mover el useState al metodo login del loginService y guardar el usuario obtenido
   const [user, setUser] = useState({
-    id: 1,
+    id: "1",
     email: "test@test.com",
     name: "test",
-    token: "fdsvsdvsd",
+    token: null,
   });
-
+  /*
   const login = async () => {
     setUser({
       id: 1,
       email: "test@test.com",
       name: "test",
-      token: true,
+      token: false,
     });
   };
-
+*/
   return (
     <div>
       <BrowserRouter basename={basename}>
@@ -59,9 +59,9 @@ const Layout = () => {
             <Route element={<Calendardoc />} path="/calendardoc" />
             <Route element={<Sidebar_doc />} path="/sidebardoc" />
             <Route element={<Footer />} path="/footer" />
-            <Route
-              element={<ProtectedRoutes user={user} redirectTo="/" />}
-            ></Route>
+            <Route element={<ProtectedRoutes user={user} redirectTo="/" />}>
+              <Route element={<Appointment />} path="/doctor" />
+            </Route>
           </Routes>
         </ScrollToTop>
       </BrowserRouter>

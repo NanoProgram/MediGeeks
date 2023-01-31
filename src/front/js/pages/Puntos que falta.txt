@@ -1,0 +1,27 @@
+transiciones del registro al login y guardar datos, prioridad, es el flojo,
+que se regstra loguea y hace lo que tiene que hacer, tomar hora etc, sin importar el estilo....
+
+
+validaciones estan OK del front y back
+
+orotgrafia de la presentacion 
+
+eliminar codigo comentado 
+
+limpiar lo que no se usa, codigo limpio, solo dejar lo que se use
+
+fronted, falto usar el useContex y patronFlux, ayudan a manejar estados glabales
+
+vistas, conlos requerimientos del proyecto estamos ok
+
+falta la transicion del usuiario al login y singup
+
+falta la recuperacion de contraseña
+
+backend, autenticacion de logout
+
+jwt de los endpoints para bloquear los users no deseados
+
+CRUD esta Ok
+
+fondo a las pantallas, mirarlo bien en bluejeans para la presentacion
