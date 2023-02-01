@@ -94,13 +94,14 @@ def login():
 """
 #API USER GET, GET ID and POST
 @api.route('/mediGeeks/users', methods=['GET'])
-#@jwt_required()
+@jwt_required()
 def get_users_table():
     user = User.query.all()
     user = list(map(lambda p:p.serialize(),user))
     return jsonify(user), 200 
 
 @api.route('/mediGeeks/users/<int:id>', methods=['GET'])
+@jwt_required()
 def get_users_table_id(id):
     user = User.query.filter_by(id=id).first()
     if user:
@@ -139,38 +140,16 @@ def create_user():
             db.session.commit()
             return jsonify(new_user.serialize()), 201
 
-"""@api.route('/mediGeeks/users', methods=['POST'])
-def add_new_user():
-    request_body = request.get_json()
-    name = request_body.get("name")
-    email = request_body.get("email")
-    rut = request_body.get("rut")
-    password = request_body.get("password")
-    errors = {}
-    if not name or not re.match(r"^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]+(?: [a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]+)*$", name):
-        errors["name"] = "Name should only contain letters, spaces and some accented characters"
-    if not rut or not re.match(r"\b[0-9|.]{1,10}\-[K|k|0-9]", rut):
-        errors["rut"] = "Rut no es valido"
-    if not email or not re.match(r"^(([^<>()[\],;:\s@']+(\.[^<>()[\],;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$", email):
-        errors["email"] = "Invalid email address"
-    if not password or not re.match(r"^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$", password):
-        errors["password"] = "Contraseña debe contener al menos 6 caracteres, Una mayuscula, Una Minuscula, Un Numero y Un Caracter Especial"
-    if errors:
-        return jsonify(errors), 400
-    else:
-        new_user = User(**request_body)
-        db.session.add(new_user)
-        db.session.commit()
-        return jsonify(new_user.serialize()), 201"""
-
 #API DOCTOR GET, GET ID and POST
 @api.route('/mediGeeks/doctors', methods=['GET'])
+@jwt_required()
 def get_doctor_table():
     doctor = Doctor.query.all()
     doctor = list(map(lambda p:p.serialize(),doctor))
     return jsonify(doctor), 200
 
 @api.route('/mediGeeks/doctors/<int:id>', methods=['GET'])
+@jwt_required()
 def get_doctor_table_id(id):
     doctor = Doctor.query.filter_by(id=id).first()
     if doctor:
@@ -211,6 +190,7 @@ def add_new_doctor():
 
 #API CENTRO GET
 @api.route('/mediGeeks/centers', methods=['GET'])
+@jwt_required()
 def get_center_table():
     center = Center.query.all()
     center = list(map(lambda p:p.serialize(),center))
@@ -218,6 +198,7 @@ def get_center_table():
 
 #API PREVISION GET
 @api.route('/mediGeeks/previsions', methods=['GET'])
+@jwt_required()
 def get_prevision():
     prevision = Prevision.query.all()
     prevision = list(map(lambda p:p.serialize(),prevision))
@@ -225,6 +206,7 @@ def get_prevision():
 
 #API speciality GET
 @api.route('/mediGeeks/specialitys', methods=['GET'])
+@jwt_required()
 def get_speciality():
     speciality = Speciality.query.all()
     speciality = list(map(lambda p:p.serialize(),speciality))
@@ -232,6 +214,7 @@ def get_speciality():
 
 #API Calendar GET
 @api.route('/mediGeeks/calendar', methods=['GET'])
+@jwt_required()
 def get_calendar():
     calendar = Calendar.query.all()
     calendar = list(map(lambda p:p.serialize(),calendar))
@@ -239,6 +222,7 @@ def get_calendar():
 
 #API Appointment GET
 @api.route('/mediGeeks/appointments', methods=['GET'])
+@jwt_required()
 def get_appointment():
     appointment = Appointment.query.all()
     appointment = list(map(lambda p:p.serialize(),appointment))
@@ -246,6 +230,7 @@ def get_appointment():
 
 #API Appointment PUT
 @api.route('/mediGeeks/appointments/<int:calendar_id>', methods=['PUT'])
+@jwt_required()
 def update_appointment(calendar_id):
     appointment = Appointment.query.get(calendar_id)
     if not appointment:

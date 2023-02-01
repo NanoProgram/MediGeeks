@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import "../../styles/example.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg";
 import { useForm } from "react-hook-form";
 import { login } from "./../service/loginService";
 
 export const Login = () => {
+  const navigate = useNavigate();
   const {
     register,
     formState: { errors },
@@ -16,7 +17,7 @@ export const Login = () => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     fetch(
-      "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us84.gitpod.io/api/login?email=${email}&password=${password}",
+      "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us85.gitpod.io/api/login?email=${email}&password=${password}",
       {
         method: "POST",
         body: JSON.stringify({ email, password }),
@@ -29,28 +30,14 @@ export const Login = () => {
           // guardar el token en el almacenamiento local o en el estado de la aplicación
           localStorage.setItem("token", data.token);
           console.log("Logueado correctamente");
+          navigate("/home");
         } else {
           // manejar el error de autenticación
         }
       })
       .catch((error) => console.log(error));
   };
-  /*
-  const submitBack = async () => {
-    try {
-      const email = document.getElementById("email").value;
-      console.log(email);
-      const password = document.getElementById("password").value;
-      const data = await login(email, password);
-      if (data.email) {
-        console.log(data);
-        alert(data.message);
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-*/
+
   return (
     <div className="background-image">
       <div className="login position-absolute top-50 start-50 translate-middle ">
