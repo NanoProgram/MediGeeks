@@ -9,7 +9,7 @@ export const Sidebar_doc = () => {
   return (
     <>
       <button
-        className="btn btn-warning"
+        className="btn btn-warning rounded-pill"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasExample"
@@ -35,10 +35,10 @@ export const Sidebar_doc = () => {
             aria-label="Close"
           ></button>
         </div>
-        <div className="offcanvas-body">
-          <div className="d-flex justify-content-center">
+        <div className="offcanvas-body ">
+          <div className="d-flex justify-content-center ">
             <Link to="/home">
-              <button type="button" className="btn btn-danger button">
+              <button type="button" className="btn btn-danger button ">
                 Home
               </button>
             </Link>
