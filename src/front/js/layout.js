@@ -30,7 +30,7 @@ const Layout = () => {
     name: "test",
     token: null,
   });
-  /*
+  
   const login = async () => {
     setUser({
       id: 1,
@@ -39,7 +39,7 @@ const Layout = () => {
       token: false,
     });
   };
-*/
+
   return (
     <div>
       <BrowserRouter basename={basename}>
