@@ -328,11 +328,11 @@ export const Cita = () => {
 
       <div className="d-flex justify-content-between">
         <Link to="/home">
-          <button className="btn btn-primary">Back To home</button>
+          <button className="btn btn-primary rounded-pill">Back To home</button>
         </Link>
 
         <Link to="/appointment-confirmed">
-          <button className="btn btn-primary" onClick={saveData}>
+          <button className="btn btn-primary rounded-pill" onClick={saveData}>
             Continue
           </button>
         </Link>

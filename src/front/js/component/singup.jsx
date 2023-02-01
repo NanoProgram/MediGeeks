@@ -60,8 +60,9 @@ export const Singup = () => {
   };
 
   return (
+
     <div className="background-image">
-      <div className="login position-absolute top-50 start-50 translate-middle ">
+      <div className="login position-absolute top-50 start-50 translate-middle container-md">
         <form
           autoComplete="off"
           onSubmit={handleSubmit(submitBack)}
@@ -71,7 +72,7 @@ export const Singup = () => {
             <img src={Medigeeks_Logo} />
           </div>
           &nbsp;
-          <div className="form-outline mb-4">
+          <div className="form-outline mb-4 ">
             <input
               {...register("name", {
                 required: "Se requiere nombre y apellido",
@@ -84,7 +85,7 @@ export const Singup = () => {
               placeholder="Nombre Apellido"
               type="userName"
               id="form2Example10"
-              class="form-control"
+              class="form-control text-center"
             />
             <p style={{ color: "red" }}>{errors.name?.message}</p>
           </div>
@@ -100,7 +101,7 @@ export const Singup = () => {
               placeholder="R.U.T."
               type=""
               id="form2Example20"
-              className="form-control"
+              className="form-control text-center"
             />
             <p style={{ color: "red" }}>{errors.rut?.message}</p>
           </div>
@@ -109,15 +110,15 @@ export const Singup = () => {
               {...register("prevision_id", {
                 required: "Selecione una prevision",
               })}
-              className="form-select form-select-sm mb-3s"
+              className="form-select form-select-sm mb-3s text-center"
               aria-label=".form-select-sm example"
             >
-              <option selected>Prevision</option>
-              <option value="1">Fonasa</option>
-              <option value="2">Banmedica</option>
-              <option value="3">Cruz Blanca</option>
-              <option value="4">Masvida</option>
-              <option value="5">Colmena</option>
+              <option   selected>Prevision</option>
+              <option  value="1">Fonasa</option>
+              <option  value="2">Banmedica</option>
+              <option  value="3">Cruz Blanca</option>
+              <option  value="4">Masvida</option>
+              <option  value="5">Colmena</option>
             </select>
             <p style={{ color: "red" }}>{errors.prevision?.message}</p>
           </div>
@@ -134,7 +135,7 @@ export const Singup = () => {
               placeholder="Email"
               type=""
               id="form2Example30"
-              className="form-control"
+              className="form-control text-center"
             />
             <p style={{ color: "red" }}>{errors.email?.message}</p>
           </div>
@@ -152,7 +153,7 @@ export const Singup = () => {
               placeholder="Contraseña"
               type="password"
               id="password"
-              className="form-control"
+              className="form-control text-center"
             />
             <p style={{ color: "red" }}>{errors.password?.message}</p>
           </div>
@@ -162,11 +163,11 @@ export const Singup = () => {
               placeholder="Confirme Contraseña"
               type="password"
               id="confirm_password"
-              className="form-control"
+              className="form-control text-center"
             />
           </div>
           <div className="col d-flex justify-content-center">
-            <input type="submit" value="registrarse" />
+            <input type="submit" value="registrarse" class="btn btn-primary rounded-pill"/>
           </div>
         </form>
       </div>

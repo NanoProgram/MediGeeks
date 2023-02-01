@@ -27,10 +27,10 @@ export const Inicio = () => {
           <a class="nav-link active" aria-current="page" href="#contact" style={{ color: "white" }}>Contactenos</a>
         </li>
         <a href="/login">
-          <button className="btn btn-primary me-2" type="button">Ingresar</button>
+          <button className="btn btn-primary me-2 rounded-pill" type="button">Ingresar</button>
         </a>
         <a href="/singup">
-          <button className="btn btn-primary me-2 " type="button">registrarse</button>
+          <button className="btn btn-primary me-2 rounded-pill" type="button">registrarse</button>
         </a>
       </ul>
     </nav>

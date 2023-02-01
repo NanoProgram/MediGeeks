@@ -26,7 +26,7 @@ export const Five = () => {
       </div>
       <br />
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <button type="button" class="btn btn-primary">Enviar</button>
+        <button type="button" class="btn btn-primary rounded-pill ">Enviar</button>
       </div>
 </div>
     </div>

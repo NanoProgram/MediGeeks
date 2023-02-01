@@ -28,7 +28,7 @@ export const Appointment = () => {
       
       <div className="d-flex justify-content-end">
         <Link to="/">
-          <button className="btn btn-primary">Finalizar</button>
+          <button className="btn btn-primary rounded-pill">Finalizar</button>
         </Link>
         </div>
     </div>

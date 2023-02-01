@@ -37,7 +37,6 @@ export const Login = () => {
       })
       .catch((error) => console.log(error));
   };
-
   return (
     <div className="background-image">
       <div className="login position-absolute top-50 start-50 translate-middle ">
@@ -46,8 +45,9 @@ export const Login = () => {
             <img src={Medigeeks_Logo} />
           </div>
           <br></br>
-          <div class="form-outline mb-4">
-            <input
+          <div class="form-outline mb-4 ">  
+           
+            <input 
               {...register("email", {
                 required: true,
                 pattern: {
@@ -57,7 +57,7 @@ export const Login = () => {
                 },
               })}
               id="email"
-              class="form-control"
+              class="form-control text-center"
               placeholder="Dirección de Email"
             />
             <p style={{ color: "red" }}>{errors.email?.message}</p>
@@ -74,7 +74,7 @@ export const Login = () => {
               })}
               type="password"
               id="password"
-              class="form-control"
+              class="form-control text-center"
               placeholder="Contraseña"
             />
             <p style={{ color: "red" }}>{errors.password?.message}</p>
@@ -93,7 +93,7 @@ export const Login = () => {
             <input
               type="submit"
               value="Acceder"
-              class="btn btn-primary btn-block mb-4 justify-content-center"
+              class="btn btn-primary btn-block mb-4 justify-content-center rounded-pill "
             />
           </div>
           <div class="text-center">
