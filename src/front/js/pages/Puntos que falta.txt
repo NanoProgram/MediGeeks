@@ -25,3 +25,12 @@ jwt de los endpoints para bloquear los users no deseados
 CRUD esta Ok
 
 fondo a las pantallas, mirarlo bien en bluejeans para la presentacion
+
+
+01 de Febrero
+falta como requisitos del proyecto
+-securitizacion de vistas 
+-usar patron Flux (useContex)
+-Recuperar contraseña
+-validaciones de contraseñas al hacer el singup, que no peromita enviar el formulario
+-al registro poner para que envie a pagina de inicio cuando se pinche el boton 
