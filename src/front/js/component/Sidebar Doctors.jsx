@@ -2,10 +2,18 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/sidebar.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg";
 
 export const Sidebar_doc = () => {
+  const { store, actions } = useContext(Context);
+  const navigate = useNavigate();
+
+  const logout = () => {
+    actions.logout();
+    navigate("/");
+  };
+
   return (
     <>
       <button
@@ -58,11 +66,13 @@ export const Sidebar_doc = () => {
             </Link>
           </div>
           <div className="d-flex justify-content-center">
-            <Link to="/">
-              <button type="button" className="btn btn-danger button">
-                Cerrar Sesión
-              </button>
-            </Link>
+            <button
+              type="button"
+              className="btn btn-danger button"
+              onClick={logout}
+            >
+              Cerrar Sesión
+            </button>
           </div>
         </div>
       </div>

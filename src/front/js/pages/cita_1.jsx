@@ -17,6 +17,7 @@ export const Cita = () => {
   const [docID, setDocID] = useState([]);
   const [hours, setHours] = useState([]);
   const [calendarID, setCalendarID] = useState([]);
+  const { store, actions } = useContext(Context);
 
   //---------------Consulta Centro Medico------------------
   useEffect(() => {
@@ -199,7 +200,7 @@ export const Cita = () => {
 
   //---------------- PUT para la Hora medica---------------------
   const saveData = async () => {
-    const user_id = "c6fab944-d3e4-48fc-b735-5ac99ebc408a";
+    const user_id = localStorage.getItem("user_id");
     const available = false;
     const data = { user_id, available };
     try {

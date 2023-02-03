@@ -30,7 +30,7 @@ const Layout = () => {
     name: "test",
     token: null,
   });
-  
+
   const login = async () => {
     setUser({
       id: 1,
@@ -39,34 +39,51 @@ const Layout = () => {
       token: false,
     });
   };
+  if (
+    localStorage.getItem("token") == null &&
+    localStorage.getItem("user_id") == null
+  )
+    return (
+      <div>
+        <BrowserRouter basename={basename}>
+          <ScrollToTop>
+            <Routes>
+              <Route element={<Principal />} path="/" />
+              <Route element={<Login />} path="/login" />
+              <Route element={<Singup />} path="/singup" />
+              <Route element={<h1>Not found!</h1>} path="/*" />
+            </Routes>
+          </ScrollToTop>
+        </BrowserRouter>
+      </div>
+    );
+  else {
+    return (
+      <div>
+        <BrowserRouter basename={basename}>
+          <ScrollToTop>
+            <Routes>
+              <Route element={<Recover />} path="/recoverPassword" />
+              <Route element={<Forgot />} path="/forgot" />
 
-  return (
-    <div>
-      <BrowserRouter basename={basename}>
-        <ScrollToTop>
-          <Routes>
-            <Route element={<Principal />} path="/" />
-            <Route element={<Recover />} path="/recoverPassword" />
-            <Route element={<Login />} path="/login" />
-            <Route element={<Forgot />} path="/forgot" />
-            <Route element={<Singup />} path="/singup" />
-            <Route element={<AdmissionDoctor />} path="/singupdoc" />
-            <Route element={<Home />} path="/home" />
-            <Route element={<h1>Not found!</h1>} />
-            <Route element={<Cita />} path="/appointment" />
-            <Route element={<Cita3 />} path="/appointment-confirmed" />
-            <Route element={<Appointment />} path="/doctor" />
-            <Route element={<Calendardoc />} path="/calendardoc" />
-            <Route element={<Sidebar_doc />} path="/sidebardoc" />
-            <Route element={<Footer />} path="/footer" />
-            <Route element={<ProtectedRoutes user={user} redirectTo="/" />}>
+              <Route element={<AdmissionDoctor />} path="/singupdoc" />
+              <Route element={<Home />} path="/home" />
+              <Route element={<h1>Not found!</h1>} path="/*" />
+              <Route element={<Cita />} path="/appointment" />
+              <Route element={<Cita3 />} path="/appointment-confirmed" />
               <Route element={<Appointment />} path="/doctor" />
-            </Route>
-          </Routes>
-        </ScrollToTop>
-      </BrowserRouter>
-    </div>
-  );
+              <Route element={<Calendardoc />} path="/calendardoc" />
+              <Route element={<Sidebar_doc />} path="/sidebardoc" />
+              <Route element={<Footer />} path="/footer" />
+              <Route element={<ProtectedRoutes user={user} redirectTo="/" />}>
+                <Route element={<Appointment />} path="/doctor" />
+              </Route>
+            </Routes>
+          </ScrollToTop>
+        </BrowserRouter>
+      </div>
+    );
+  }
 };
 
 export default injectContext(Layout);

@@ -4,9 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg";
 import { useForm } from "react-hook-form";
 import { login } from "./../service/loginService";
+import { Context } from "../store/appContext";
 
 export const Login = () => {
   const navigate = useNavigate();
+  const { store, actions } = useContext(Context);
   const {
     register,
     formState: { errors },
@@ -16,26 +18,13 @@ export const Login = () => {
   const submitBack = async () => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    fetch(
-      "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us85.gitpod.io/api/login?email=${email}&password=${password}",
-      {
-        method: "POST",
-        body: JSON.stringify({ email, password }),
-        headers: { "Content-Type": "application/json" },
-      }
+    await actions.login(email, password);
+    if (
+      localStorage.getItem("token") != null &&
+      localStorage.getItem("user_id") != null
     )
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.token) {
-          // guardar el token en el almacenamiento local o en el estado de la aplicación
-          localStorage.setItem("token", data.token);
-          console.log("Logueado correctamente");
-          navigate("/home");
-        } else {
-          // manejar el error de autenticación
-        }
-      })
-      .catch((error) => console.log(error));
+      navigate("/home");
+    else alert("Contraseña o usuario incorrecto");
   };
   return (
     <div className="background-image">
@@ -45,9 +34,8 @@ export const Login = () => {
             <img src={Medigeeks_Logo} />
           </div>
           <br></br>
-          <div class="form-outline mb-4 ">  
-           
-            <input 
+          <div class="form-outline mb-4 ">
+            <input
               {...register("email", {
                 required: true,
                 pattern: {
