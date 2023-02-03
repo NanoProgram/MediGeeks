@@ -34,3 +34,4 @@ falta como requisitos del proyecto
 -Recuperar contraseña
 -validaciones de contraseñas al hacer el singup, que no peromita enviar el formulario
 -al registro poner para que envie a pagina de inicio cuando se pinche el boton 
+-Validar toma de hora para que muestre solo 1 dia 
