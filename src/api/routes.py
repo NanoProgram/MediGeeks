@@ -100,7 +100,7 @@ def get_users_table():
     user = list(map(lambda p:p.serialize(),user))
     return jsonify(user), 200 
 
-@api.route('/mediGeeks/users/<int:id>', methods=['GET'])
+@api.route('/mediGeeks/users/<id>', methods=['GET'])
 @jwt_required()
 def get_users_table_id(id):
     user = User.query.filter_by(id=id).first()
@@ -240,6 +240,26 @@ def update_appointment(calendar_id):
     appointment.available = data['available']
     db.session.commit()
     return jsonify(appointment.serialize()), 200
+
+@api.route('/mediGeeks/users/<int:user_id>', methods=['PUT'])
+def update_validate(user_id):
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({'message': 'User not found'}), 404
+    data = request.get_json()
+    appointment.verified = data['verified']
+    db.session.commit()
+    return jsonify(user.serialize()), 200
+
+@api.route('/mediGeeks/users/<int:user_id>', methods=['PUT'])
+def update_password(user_id):
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({'message': 'User not found'}), 404
+    data = request.get_json()
+    appointment.password = data['password']
+    db.session.commit()
+    return jsonify(user.serialize()), 200
 
 
 
