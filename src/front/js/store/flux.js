@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     actions: {
       login: async (email, password) => {
         await fetch(
-          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us85.gitpod.io/api/login?email=${email}&password=${password}",
+          "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/login?email=${email}&password=${password}",
           {
             method: "POST",
             body: JSON.stringify({ email, password }),

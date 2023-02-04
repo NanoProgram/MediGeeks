@@ -2,13 +2,15 @@ import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/example.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg";
 import { useForm } from "react-hook-form";
 import { sendEmail } from "../service/emailService";
 import { Modal } from "bootstrap";
 
+
 export const Singup = () => {
+  const navigate = useNavigate();
   const {
     register,
     formState: { errors },
@@ -41,6 +43,7 @@ export const Singup = () => {
       console.log(data);
       if (data.email) {
         verify(input);
+        navigate("/login");
       } else {
         alert(data.message);
       }

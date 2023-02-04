@@ -1,14 +1,8 @@
 """empty message
 
-<<<<<<<< HEAD:migrations/versions/3df32acfc8e7_.py
-Revision ID: 3df32acfc8e7
+Revision ID: c2d256719416
 Revises: 
-Create Date: 2023-01-25 19:47:43.325381
-========
-Revision ID: faa4c8d417e0
-Revises: 
-Create Date: 2023-01-25 18:32:57.050599
->>>>>>>> 37457dc (fetch funcionando hasta horas):migrations/versions/faa4c8d417e0_.py
+Create Date: 2023-02-03 23:32:40.997211
 
 """
 from alembic import op
@@ -16,11 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-<<<<<<<< HEAD:migrations/versions/3df32acfc8e7_.py
-revision = '3df32acfc8e7'
-========
-revision = 'faa4c8d417e0'
->>>>>>>> 37457dc (fetch funcionando hasta horas):migrations/versions/faa4c8d417e0_.py
+revision = 'c2d256719416'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -89,21 +79,12 @@ def upgrade():
     )
     op.create_table('appointment',
     sa.Column('id', sa.Integer(), nullable=False),
-<<<<<<<< HEAD:migrations/versions/3df32acfc8e7_.py
     sa.Column('doctor_id', sa.String(length=260), nullable=False),
     sa.Column('speciality_id', sa.Integer(), nullable=False),
     sa.Column('center_id', sa.Integer(), nullable=False),
     sa.Column('calendar_id', sa.Integer(), nullable=False),
     sa.Column('available', sa.Boolean(), nullable=False),
-    sa.Column('user_id', sa.String(length=260), nullable=False),
-========
-    sa.Column('doctor_id', sa.String(length=100), nullable=True),
-    sa.Column('speciality_id', sa.Integer(), nullable=True),
-    sa.Column('center_id', sa.Integer(), nullable=False),
-    sa.Column('calendar_id', sa.Integer(), nullable=False),
-    sa.Column('available', sa.Boolean(), nullable=False),
-    sa.Column('user_id', sa.String(length=100), nullable=True),
->>>>>>>> 37457dc (fetch funcionando hasta horas):migrations/versions/faa4c8d417e0_.py
+    sa.Column('user_id', sa.String(length=260), nullable=True),
     sa.ForeignKeyConstraint(['calendar_id'], ['calendar.id'], ),
     sa.ForeignKeyConstraint(['center_id'], ['center.id'], ),
     sa.ForeignKeyConstraint(['doctor_id'], ['doctor.id'], ),

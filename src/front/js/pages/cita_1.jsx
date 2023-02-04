@@ -18,13 +18,15 @@ export const Cita = () => {
   const [hours, setHours] = useState([]);
   const [calendarID, setCalendarID] = useState([]);
   const { store, actions } = useContext(Context);
+  const uniqueDays = [...new Set(hours.map((item) => item.day))];
+  const uniqueMonths = [...new Set(hours.map((item) => item.month))];
 
   //---------------Consulta Centro Medico------------------
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await fetch(
-          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us85.gitpod.io/api/mediGeeks/centers",
+          "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/centers",
           {
             method: "GET",
             headers: {
@@ -52,7 +54,7 @@ export const Cita = () => {
     async function fetchData() {
       try {
         const response = await fetch(
-          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us85.gitpod.io/api/mediGeeks/appointments",
+          "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/appointments",
           {
             method: "GET",
             headers: {
@@ -66,7 +68,7 @@ export const Cita = () => {
           .map((speciality) => speciality.speciality_id);
         console.log(espcialidades);
         const response2 = await fetch(
-          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us85.gitpod.io/api/mediGeeks/specialitys",
+          "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/specialitys",
           {
             method: "GET",
             headers: {
@@ -100,7 +102,7 @@ export const Cita = () => {
     async function fetchData() {
       try {
         const response = await fetch(
-          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us85.gitpod.io/api/mediGeeks/appointments",
+          "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/appointments",
           {
             method: "GET",
             headers: {
@@ -118,7 +120,7 @@ export const Cita = () => {
           .map((appointment) => appointment.doctor_id);
         console.log(doctores);
         const response3 = await fetch(
-          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us85.gitpod.io/api/mediGeeks/doctors",
+          "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/doctors",
           {
             method: "GET",
             headers: {
@@ -150,7 +152,7 @@ export const Cita = () => {
     async function fetchData() {
       try {
         const response = await fetch(
-          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us85.gitpod.io/api/mediGeeks/appointments",
+          "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/appointments",
           {
             method: "GET",
             headers: {
@@ -170,7 +172,7 @@ export const Cita = () => {
           .map((calendar) => calendar.calendar_id);
         console.log(calendars);
         const response3 = await fetch(
-          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us85.gitpod.io/api/mediGeeks/calendar",
+          "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/calendar",
           {
             method: "GET",
             headers: {
@@ -205,7 +207,7 @@ export const Cita = () => {
     const data = { user_id, available };
     try {
       const response = await fetch(
-        `https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us85.gitpod.io/api/mediGeeks/appointments/${calendarID}`,
+        `https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/appointments/${calendarID}`,
         {
           method: "PUT",
           body: JSON.stringify(data),
@@ -277,6 +279,7 @@ export const Cita = () => {
           )}
 
           <br />
+
           {loading3 ? (
             <h6> Cargando...</h6>
           ) : (
@@ -286,11 +289,12 @@ export const Cita = () => {
               style={{ width: "250px" }}
             >
               <option selected>Mes</option>
-              {hours.map((hora) => (
-                <option value={hora.id}>{hora.month}</option>
+              {uniqueMonths.map((month) => (
+                <option value={month}>{month}</option>
               ))}
             </select>
           )}
+
           {loading3 ? (
             <h6> Cargando...</h6>
           ) : (
@@ -299,12 +303,13 @@ export const Cita = () => {
               aria-label=".form-select-sm example"
               style={{ width: "250px" }}
             >
-              <option selected>Dia</option>
-              {hours.map((hora) => (
-                <option value={hora.id}>{hora.day}</option>
+              <option selected>Día</option>
+              {uniqueDays.map((day) => (
+                <option value={day}>{day}</option>
               ))}
             </select>
           )}
+
           {loading3 ? (
             <h6> Cargando...</h6>
           ) : (

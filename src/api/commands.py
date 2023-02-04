@@ -204,7 +204,14 @@ def setup_commands(app):
     @app.cli.command("insert-calendar") # name of our command
     def insert_test_data():
         print("Creando test calendar")
-        valores = [{'id': 9, 'appointment_start_time':'15.00', 'appointment_end_time': '16.00', 'center_id':1, },]
+        valores = [{'id': 1, 'appointment_start_time':'15.00', 'appointment_end_time': '16.00', 'center_id':1, },
+         {'id': 2, 'appointment_start_time':'12.00', 'appointment_end_time': '13.00', 'center_id':1, },
+         {'id': 3, 'appointment_start_time':'11.00', 'appointment_end_time': '12.00', 'center_id':1, },
+         {'id': 4, 'appointment_start_time':'17.00', 'appointment_end_time': '18.00', 'center_id':1, },
+         {'id': 5, 'appointment_start_time':'15.00', 'appointment_end_time': '16.00', 'center_id':2, },
+         {'id': 6, 'appointment_start_time':'14.00', 'appointment_end_time': '15.00', 'center_id':2, },
+         {'id': 7, 'appointment_start_time':'11.00', 'appointment_end_time': '12.00', 'center_id':2, },
+         {'id': 8, 'appointment_start_time':'09.00', 'appointment_end_time': '10.00', 'center_id':2, }]
         for valor in valores:
             calendar = Calendar()
             calendar.id = valor['id']
@@ -223,15 +230,14 @@ def setup_commands(app):
     @app.cli.command("insert-appointment") # name of our command
     def insert_test_data():
         print("Creando test appointment")
-        valores = [#{'id': 1, 'doctor_id':'1', 'speciality_id': 1, 'center_id':1,'calendar_id':1, }, 
-                    #{'id': 2, 'doctor_id':'1', 'speciality_id': 1, 'center_id':1,'calendar_id':2, },
-                    #{'id': 3, 'doctor_id':'1', 'speciality_id': 1, 'center_id':1,'calendar_id':3,},
-                    #{'id': 4, 'doctor_id':'2', 'speciality_id': 1, 'center_id':1,'calendar_id':4, },
-                    #{'id': 5, 'doctor_id':'2', 'speciality_id': 1, 'center_id':1,'calendar_id':5, }, 
-                    #{'id': 6, 'doctor_id':'3', 'speciality_id': 2, 'center_id':2,'calendar_id':6, },
-                    #{'id': 7, 'doctor_id':'3', 'speciality_id': 2, 'center_id':2,'calendar_id':7, },
-                    #{'id': 8, 'doctor_id':'4', 'speciality_id': 2, 'center_id':2,'calendar_id':8, },
-                    {'id': 9, 'doctor_id':'4', 'speciality_id': 2, 'center_id':2,'calendar_id':9, },]
+        valores = [{'id': 1, 'doctor_id':'1', 'speciality_id': 1, 'center_id':1,'calendar_id':1, }, 
+                    {'id': 2, 'doctor_id':'1', 'speciality_id': 1, 'center_id':1,'calendar_id':2, },
+                    {'id': 3, 'doctor_id':'1', 'speciality_id': 1, 'center_id':1,'calendar_id':3,},
+                    {'id': 4, 'doctor_id':'2', 'speciality_id': 1, 'center_id':1,'calendar_id':4, },
+                    {'id': 5, 'doctor_id':'2', 'speciality_id': 2, 'center_id':2,'calendar_id':5, }, 
+                    {'id': 6, 'doctor_id':'3', 'speciality_id': 2, 'center_id':2,'calendar_id':6, },
+                    {'id': 7, 'doctor_id':'3', 'speciality_id': 2, 'center_id':2,'calendar_id':7, },
+                    {'id': 8, 'doctor_id':'4', 'speciality_id': 2, 'center_id':2,'calendar_id':8, },]
         for valor in valores:
             appointment = Appointment()
             appointment.id = valor['id']
@@ -240,7 +246,6 @@ def setup_commands(app):
             appointment.speciality_id = valor['speciality_id']
             appointment.center_id = valor['center_id']
             appointment.calendar_id = valor['calendar_id']
-            appointment.user_id = "8e8a72fc-9aaf-4dd8-8288-113858ecde6c"
             db.session.add(appointment)
             db.session.commit()
             print("Appointment: ", appointment.id, " created.")
