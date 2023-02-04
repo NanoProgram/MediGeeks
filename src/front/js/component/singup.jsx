@@ -56,7 +56,7 @@ export const Singup = () => {
   const verify = (data) => {
     let params = {
       to_email: data.email,
-      to_name: data.userName,
+      to_name: data.name,
       to_link: "www.google.cl",
     };
     sendEmail(params);
