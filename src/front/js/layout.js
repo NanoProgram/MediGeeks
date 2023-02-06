@@ -8,7 +8,7 @@ import { Appointment } from "./pages/Appointment.jsx";
 import { Calendardoc } from "./pages/Calendardoc.jsx";
 import { Login } from "./component/login.jsx";
 import { Singup } from "./component/singup.jsx";
-import { Forgot } from "./component/Forgot.jsx";
+import { Forgot } from "./component/forgot.jsx";
 import injectContext from "./store/appContext";
 import { Footer } from "./component/footer.jsx";
 import { Sidebar_doc } from "./component/Sidebar Doctors.jsx";
@@ -16,6 +16,7 @@ import { AdmissionDoctor } from "./component/singupdoc.jsx";
 import { Recover } from "./component/recoverPassword.jsx";
 import { Principal } from "./component/principal.jsx";
 import { ProtectedRoutes } from "./component/protectedRoute.jsx";
+
 
 //create your first component
 const Layout = () => {
@@ -52,6 +53,8 @@ const Layout = () => {
               <Route element={<Login />} path="/login" />
               <Route element={<Singup />} path="/singup" />
               <Route element={<h1>Not found!</h1>} path="/*" />
+              <Route element={<Recover />} path="/recoverPassword" />
+           <Route element={<Forgot />} path="/forgot" />
             </Routes>
           </ScrollToTop>
         </BrowserRouter>
@@ -63,8 +66,8 @@ const Layout = () => {
         <BrowserRouter basename={basename}>
           <ScrollToTop>
             <Routes>
-              <Route element={<Recover />} path="/recoverPassword" />
-              <Route element={<Forgot />} path="/forgot" />
+              
+              
 
               <Route element={<AdmissionDoctor />} path="/singupdoc" />
               <Route element={<Home />} path="/home" />
