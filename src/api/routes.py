@@ -241,23 +241,23 @@ def update_appointment(calendar_id):
     db.session.commit()
     return jsonify(appointment.serialize()), 200
 
-@api.route('/mediGeeks/users/<int:user_id>', methods=['PUT'])
+@api.route('/mediGeeks/users/<user_id>', methods=['PUT'])
 def update_validate(user_id):
     user = User.query.get(user_id)
     if not user:
         return jsonify({'message': 'User not found'}), 404
     data = request.get_json()
-    appointment.verified = data['verified']
+    user.verified = data['verified']
     db.session.commit()
     return jsonify(user.serialize()), 200
 
-@api.route('/mediGeeks/users/<int:user_id>', methods=['PUT'])
+@api.route('/mediGeeks/changePassword/users/<user_id>', methods=['PUT'])
 def update_password(user_id):
     user = User.query.get(user_id)
     if not user:
         return jsonify({'message': 'User not found'}), 404
     data = request.get_json()
-    appointment.password = data['password']
+    user.password = generate_password_hash(data['password']) 
     db.session.commit()
     return jsonify(user.serialize()), 200
 

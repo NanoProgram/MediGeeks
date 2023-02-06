@@ -38,13 +38,13 @@ export const Forgot = () => {
     }
   }
 
-  const submitBack = async (input) => {
+  const changePassword = async (input) => {
     try {
       console.log(input);
       const res = await fetch(
-        "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/users",
+        "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/changePassword/users/" + id,
         {
-          method: "POST",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
@@ -53,33 +53,20 @@ export const Forgot = () => {
       );
       const data = await res.json();
       console.log(data);
-      if (data.email) {
-        verify(input);
-        navigate("/login");
-      } else {
-        alert(data.message);
-      }
+      navigate("/login");
     } catch (error) {
       console.error("Error:", error);
     }
     console.log(JSON.stringify(input));
   };
 
-  const verify = (data) => {
-    let params = {
-      to_email: data.email,
-      to_name: data.name,
-      to_link: "www.google.cl",
-    };
-    sendEmail(params);
-  };
 
   return (
     <div className="background-image">
       <div className="login position-absolute top-50 start-50 translate-middle">
         <form
           autoComplete="off"
-          onSubmit={handleSubmit(submitBack)}
+          onSubmit={handleSubmit(changePassword)}
           style={{ opacity: 0.8 }}
         >
           <div className="logo d-flex justify-content-center">
