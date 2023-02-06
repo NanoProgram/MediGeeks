@@ -261,6 +261,13 @@ def update_password(user_id):
     db.session.commit()
     return jsonify(user.serialize()), 200
 
+@api.route('/mediGeeks/users/validate/<user_id>', methods=['GET'])
+def validate_userId(user_id):
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({'validate': False}), 404
+    return jsonify({'validate': True}), 200
+
 
 
 

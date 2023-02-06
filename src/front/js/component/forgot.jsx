@@ -1,18 +1,34 @@
 import "../../styles/example.css";
-import { Link, useNavigate } from "react-router-dom";
-import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg"
+import { Link, useNavigate, useParams } from "react-router-dom";
+import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg";
 import { useForm } from "react-hook-form";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect} from "react";
 
 export const Forgot = () => {
-
   const navigate = useNavigate();
+  const {id} = useParams()
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm({ mode: "all" });
   const [user, setUser] = useState({});
+  const [show, setShow] = useState(false);
+
+  const validateUser = async () =>  {
+    console.log(id)
+    const res = await fetch(
+      "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/users/validate/" + id,
+      
+    );
+    const data = await res.json();
+    if (data.validate) setShow(true) 
+
+  }
+
+  useEffect(() => {
+    if (id != null) validateUser()
+  }, []);
 
   function samePassword() {
     let password = document.getElementById("password").value;
@@ -58,7 +74,6 @@ export const Forgot = () => {
     sendEmail(params);
   };
 
-
   return (
     <div className="background-image">
       <div className="login position-absolute top-50 start-50 translate-middle">
@@ -71,7 +86,7 @@ export const Forgot = () => {
             <img src={Medigeeks_Logo} />
           </div>
           <br />
-          <div class="form-outline mb-4">
+          {show ? <div class="form-outline mb-4">
             <input
               {...register("password", {
                 required: "se requiere contraseña",
@@ -88,8 +103,8 @@ export const Forgot = () => {
               className="form-control text-center"
             />
             <p style={{ color: "red" }}>{errors.password?.message}</p>
-          </div>
-          <div class="form-outline mb-4">
+          </div>: <div></div>}
+          { show ? <div class="form-outline mb-4">
             <input
               onBlur={samePassword}
               placeholder="Confirme Contraseña"
@@ -97,10 +112,14 @@ export const Forgot = () => {
               id="confirm_password"
               className="form-control text-center"
             />
-          </div>
-          <div className="col d-flex justify-content-center">
-            <input type="submit" value="Confirmar" class="btn btn-primary rounded-pill" />
-          </div>
+          </div>: <div></div>}
+          {show ? <div className="col d-flex justify-content-center">
+            <input
+              type="submit"
+              value="Confirmar"
+              class="btn btn-primary rounded-pill"
+            />
+          </div>: <div></div>}
         </form>
       </div>
     </div>

@@ -54,8 +54,8 @@ const Layout = () => {
               <Route element={<Singup />} path="/singup" />
               <Route element={<h1>Not found!</h1>} path="/*" />
               <Route element={<Recover />} path="/recoverPassword" />
-           <Route element={<Forgot />} path="/forgot" />
            <Route element={<Validate />} path="/validate" />
+           <Route element={<Forgot />} path="/forgot/:id" />
             </Routes>
           </ScrollToTop>
         </BrowserRouter>

@@ -57,7 +57,7 @@ export const Singup = () => {
     let params = {
       to_email: data.email,
       to_name: data.name,
-      to_link: "www.google.cl",
+      to_link: 'https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/users',
     };
     sendEmail(params);
   };
