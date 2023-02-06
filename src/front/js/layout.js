@@ -16,7 +16,7 @@ import { AdmissionDoctor } from "./component/singupdoc.jsx";
 import { Recover } from "./component/recoverPassword.jsx";
 import { Principal } from "./component/principal.jsx";
 import { ProtectedRoutes } from "./component/protectedRoute.jsx";
-
+import { Validate } from "./component/validate.jsx";
 
 //create your first component
 const Layout = () => {
@@ -55,6 +55,7 @@ const Layout = () => {
               <Route element={<h1>Not found!</h1>} path="/*" />
               <Route element={<Recover />} path="/recoverPassword" />
            <Route element={<Forgot />} path="/forgot" />
+           <Route element={<Validate />} path="/validate" />
             </Routes>
           </ScrollToTop>
         </BrowserRouter>
