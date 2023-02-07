@@ -1,26 +1,47 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/example.css";
-import { Link } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg";
 import { useForm } from "react-hook-form";
+import { sendEmail } from "../service/emailService";
 
 export const Recover = () => {
 
     const { register, formState: { errors }, handleSubmit } = useForm({ mode: "all", });
-    function samePassword() {
-        let password = document.getElementById("password").value;
-        let confirm_password = document.getElementById("confirm_password").value;
-        if (password != confirm_password) {
-            alert("Las contraseñas no coinciden");
-        }
-    }
+    const navigate = useNavigate();
 
-    console.log("errors", errors)
+    const validateEmail = async (input) =>  {
+        console.log(input)
+        const res = await fetch(
+          "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/search/users/" + input.email,
+          
+        );
+        const data = await res.json();
+        console.log(data)
+        if (data.email) {
+            verify(data);
+            navigate("/");
+          } else {
+            alert(data.message);
+          }
+    
+      }
+
+      const verify = (data) => {
+        let params = {
+          to_email: data.email,
+          to_name: data.name,
+          to_link: 'https://3000-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/forgot/' + data.id,
+        };
+        sendEmail(params);
+      };
+    
+    
     return (
         <div className="background-image">
             <div className="login position-absolute top-50 start-50 translate-middle">
-                <form autoComplete="off" onSubmit={handleSubmit((data) => console.log(data))} >
+                <form autoComplete="off" onSubmit={handleSubmit(validateEmail)} >
                     <div className="logo d-flex justify-content-center">
                         <img src={Medigeeks_Logo} />
                     </div>
@@ -37,14 +58,15 @@ export const Recover = () => {
                                 value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                                 message: "El email debe ser válido"
                             }
-                        })} placeholder="Escribe tu Email" type="" id="form2Example30" className="form-control" />
+                        })} placeholder="Escribe tu Email" type="" id="email" className="form-control" />
                         <p style={{ color: "red" }}>{errors.email?.message}</p>
                     </div>
                     &nbsp;
                     &nbsp;
                     <div className="col d-flex justify-content-center">
-                        <button type="submit" onClick={samePassword}
-                            className="btn btn-primary btn-block mb-4 justify-content-center rounded-pill">Recuperar contraseña</button>
+                        <input type="submit" 
+                            className="btn btn-primary btn-block mb-4 justify-content-center rounded-pill"
+                            value="Recuperar Contraseña"/>
                     </div>
                 </form>
             </div>

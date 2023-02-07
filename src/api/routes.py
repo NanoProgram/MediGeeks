@@ -268,7 +268,13 @@ def validate_userId(user_id):
         return jsonify({'validate': False}), 404
     return jsonify({'validate': True}), 200
 
-
+@api.route('/mediGeeks/search/users/<email>', methods=['GET'])
+def get_users_table_email(email):
+    user = User.query.filter_by(email=email).first()
+    if user:
+        return jsonify(user.serialize()), 200
+    else:
+        return "Usuario no existe", 404
 
 
 
