@@ -31,7 +31,7 @@ fondo a las pantallas, mirarlo bien en bluejeans para la presentacion
 falta como requisitos del proyecto
 -securitizacion de vistas - Listo
 -usar patron Flux (useContex) - listo
--Recuperar contraseña 
+-Recuperar contraseña listo
 -Validación usuario
 -agregar la dirección al maps y terinar con los datos de la consulta
 -validaciones de contraseñas al hacer el singup, que no peromita enviar el formulario
