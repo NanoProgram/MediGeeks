@@ -2,6 +2,8 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       user_id: null,
+      calendarID: null,
+      dataIds: null,
     },
     actions: {
       login: async (email, password) => {
@@ -33,6 +35,47 @@ const getState = ({ getStore, getActions, setStore }) => {
         localStorage.clear();
         setStore({ user_id: null });
       },
+      saveData: async (calendarID) => {
+        const user_id = localStorage.getItem("user_id");
+        const available = false;
+        const data = { user_id, available };
+        try {
+          const response = await fetch(
+            `https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/appointments/${calendarID}`,
+            {
+              method: "PUT",
+              body: JSON.stringify(data),
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + localStorage.getItem("token"),
+              },
+            }
+          );
+          const json = await response.json();
+          setStore({ calendarID: calendarID });
+          console.log(json);
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      },
+      center: async (calendarID) => {
+        try {
+          const response = await fetch(
+            `https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/appointments/${calendarID}` ,
+            {
+              method: "GET",
+              headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+              },
+            }
+          );
+          const data = await response.json();
+          console.log(data);
+          setStore({ dataIds: data }); 
+        } catch (error) {
+          console.error(error);
+        }
+      }
     },
   };
 };

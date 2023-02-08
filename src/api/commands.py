@@ -204,14 +204,22 @@ def setup_commands(app):
     @app.cli.command("insert-calendar") # name of our command
     def insert_test_data():
         print("Creando test calendar")
-        valores = [{'id': 1, 'appointment_start_time':'15.00', 'appointment_end_time': '16.00', 'center_id':1, },
+        valores = [{'id': 13, 'appointment_start_time':'13.00', 'appointment_end_time': '14.00', 'center_id':1, },
+         {'id': 14, 'appointment_start_time':'14.00', 'appointment_end_time': '15.00', 'center_id':1, },
+         {'id': 15, 'appointment_start_time':'09.00', 'appointment_end_time': '10.00', 'center_id':2, },
+         {'id': 17, 'appointment_start_time':'11.00', 'appointment_end_time': '12.00', 'center_id':2, },
+         {'id': 18, 'appointment_start_time':'13.00', 'appointment_end_time': '14.00', 'center_id':2, },
+         {'id': 19, 'appointment_start_time':'14.00', 'appointment_end_time': '15.00', 'center_id':2, },
+         {'id': 20, 'appointment_start_time':'15.00', 'appointment_end_time': '16.00', 'center_id':2, },
+         {'id': 21, 'appointment_start_time':'16.00', 'appointment_end_time': '17.00', 'center_id':2, }]
+        """[{'id': 1, 'appointment_start_time':'15.00', 'appointment_end_time': '16.00', 'center_id':1, },
          {'id': 2, 'appointment_start_time':'12.00', 'appointment_end_time': '13.00', 'center_id':1, },
          {'id': 3, 'appointment_start_time':'11.00', 'appointment_end_time': '12.00', 'center_id':1, },
          {'id': 4, 'appointment_start_time':'17.00', 'appointment_end_time': '18.00', 'center_id':1, },
          {'id': 5, 'appointment_start_time':'15.00', 'appointment_end_time': '16.00', 'center_id':2, },
          {'id': 6, 'appointment_start_time':'14.00', 'appointment_end_time': '15.00', 'center_id':2, },
          {'id': 7, 'appointment_start_time':'11.00', 'appointment_end_time': '12.00', 'center_id':2, },
-         {'id': 8, 'appointment_start_time':'09.00', 'appointment_end_time': '10.00', 'center_id':2, }]
+         {'id': 8, 'appointment_start_time':'09.00', 'appointment_end_time': '10.00', 'center_id':2, }]"""
         for valor in valores:
             calendar = Calendar()
             calendar.id = valor['id']
@@ -230,14 +238,12 @@ def setup_commands(app):
     @app.cli.command("insert-appointment") # name of our command
     def insert_test_data():
         print("Creando test appointment")
-        valores = [{'id': 1, 'doctor_id':'1', 'speciality_id': 1, 'center_id':1,'calendar_id':1, }, 
-                    {'id': 2, 'doctor_id':'1', 'speciality_id': 1, 'center_id':1,'calendar_id':2, },
-                    {'id': 3, 'doctor_id':'1', 'speciality_id': 1, 'center_id':1,'calendar_id':3,},
-                    {'id': 4, 'doctor_id':'2', 'speciality_id': 1, 'center_id':1,'calendar_id':4, },
-                    {'id': 5, 'doctor_id':'2', 'speciality_id': 2, 'center_id':2,'calendar_id':5, }, 
-                    {'id': 6, 'doctor_id':'3', 'speciality_id': 2, 'center_id':2,'calendar_id':6, },
-                    {'id': 7, 'doctor_id':'3', 'speciality_id': 2, 'center_id':2,'calendar_id':7, },
-                    {'id': 8, 'doctor_id':'4', 'speciality_id': 2, 'center_id':2,'calendar_id':8, },]
+        valores = [
+                    {'id': 17, 'doctor_id':'4', 'speciality_id': 2, 'center_id':2,'calendar_id':17, },
+                    {'id': 18, 'doctor_id':'4', 'speciality_id': 2, 'center_id':2,'calendar_id':18, },
+                    {'id': 19, 'doctor_id':'4', 'speciality_id': 2, 'center_id':2,'calendar_id':19, },
+                    {'id': 20, 'doctor_id':'4', 'speciality_id': 2, 'center_id':2,'calendar_id':20, },
+                    {'id': 21, 'doctor_id':'4', 'speciality_id': 2, 'center_id':2,'calendar_id':21, },]
         for valor in valores:
             appointment = Appointment()
             appointment.id = valor['id']

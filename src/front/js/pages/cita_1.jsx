@@ -205,7 +205,9 @@ export const Cita = () => {
     const user_id = localStorage.getItem("user_id");
     const available = false;
     const data = { user_id, available };
-    try {
+    await actions.saveData (calendarID);
+    await actions.center (calendarID);
+    /*try {
       const response = await fetch(
         `https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/appointments/${calendarID}`,
         {
@@ -221,7 +223,7 @@ export const Cita = () => {
       console.log(json);
     } catch (error) {
       console.error("Error:", error);
-    }
+    }*/
   };
 
   return (

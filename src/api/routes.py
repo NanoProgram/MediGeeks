@@ -227,6 +227,7 @@ def get_appointment():
     appointment = Appointment.query.all()
     appointment = list(map(lambda p:p.serialize(),appointment))
     return jsonify(appointment), 200
+    
 
 #API Appointment PUT
 @api.route('/mediGeeks/appointments/<int:calendar_id>', methods=['PUT'])
@@ -267,6 +268,15 @@ def validate_userId(user_id):
     if not user:
         return jsonify({'validate': False}), 404
     return jsonify({'validate': True}), 200
+
+@api.route('/mediGeeks/appointments/<calendar_id>', methods=['GET'])
+def get_data(calendar_id):
+    appointment = Appointment.query.filter_by(calendar_id=calendar_id).first()
+    if appointment:
+        return jsonify(appointment.serialize()), 200
+    else:
+        return "Cita no existe", 404
+
 
 @api.route('/mediGeeks/search/users/<email>', methods=['GET'])
 def get_users_table_email(email):
