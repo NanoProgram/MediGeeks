@@ -1,7 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Context } from "../store/appContext";
 import "../../styles/example.css";
-import { Link } from "react-router-dom";
 import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg";
 import { useForm } from "react-hook-form";
 import { sendEmail } from "../service/emailService";
@@ -164,7 +162,11 @@ export const AdmissionDoctor = () => {
             />
           </div>
           <div className="col d-flex justify-content-center">
-            <input type="submit" value="registrarse" />
+            <input
+              type="submit"
+              value="registrarse"
+              class="btn btn-primary rounded-pill"
+            />
           </div>
         </form>
       </div>

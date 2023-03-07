@@ -12,7 +12,7 @@ export const Four = () => {
               style={{ borderRadius: "50%", width: "100px", height: "100px", marginRight: "5%" }}
             />
             <div>
-              <h6 style={{ color: "white" }}>
+              <h6>
                 "Una de las cosas que me gusta de esta API de citas médicas es que es
                 muy fácil de usar. La interfaz es intuitiva y se pueden hacer citas en
                 cuestión de minutos. También me gusta que ofrece una gran variedad de
@@ -32,7 +32,7 @@ export const Four = () => {
               style={{ borderRadius: "50%", width: "100px", height: "100px", marginRight: "10%" }}
             />
             <div>
-              <h6 style={{ color: "white" }}>
+              <h6>
                 "La API de citas médicas ha sido una verdadera bendición para mí.
                 Ahora puedo programar mis citas médicas de manera rápida y fácil
                 desde la comidad de mi casa,
@@ -51,7 +51,7 @@ export const Four = () => {
               style={{ borderRadius: "50%", width: "100px", height: "100px", marginRight: "5%" }}
             />
             <div>
-              <h6 style={{ color: "white" }}>
+              <h6>
                 "Quiero expresar mi más sincero agradecimiento por la maravillosa
                 experiencia que he tenido con la API de citas médicas. La facilidad
                 de uso y la accesibilidad han sido incomparables, y estoy agradecido
