@@ -26,7 +26,7 @@ export const Cita = () => {
     async function fetchData() {
       try {
         const response = await fetch(
-          "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/centers",
+          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/centers",
           {
             method: "GET",
             headers: {
@@ -54,7 +54,7 @@ export const Cita = () => {
     async function fetchData() {
       try {
         const response = await fetch(
-          "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/appointments",
+          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/appointments",
           {
             method: "GET",
             headers: {
@@ -68,7 +68,7 @@ export const Cita = () => {
           .map((speciality) => speciality.speciality_id);
         console.log(espcialidades);
         const response2 = await fetch(
-          "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/specialitys",
+          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/specialitys",
           {
             method: "GET",
             headers: {
@@ -102,7 +102,7 @@ export const Cita = () => {
     async function fetchData() {
       try {
         const response = await fetch(
-          "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/appointments",
+          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/appointments",
           {
             method: "GET",
             headers: {
@@ -120,7 +120,7 @@ export const Cita = () => {
           .map((appointment) => appointment.doctor_id);
         console.log(doctores);
         const response3 = await fetch(
-          "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/doctors",
+          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/doctors",
           {
             method: "GET",
             headers: {
@@ -152,7 +152,7 @@ export const Cita = () => {
     async function fetchData() {
       try {
         const response = await fetch(
-          "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/appointments",
+          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/appointments",
           {
             method: "GET",
             headers: {
@@ -172,7 +172,7 @@ export const Cita = () => {
           .map((calendar) => calendar.calendar_id);
         console.log(calendars);
         const response3 = await fetch(
-          "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/calendar",
+          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/calendar",
           {
             method: "GET",
             headers: {
@@ -205,8 +205,8 @@ export const Cita = () => {
     const user_id = localStorage.getItem("user_id");
     const available = false;
     const data = { user_id, available };
-    await actions.saveData (calendarID);
-    await actions.center (calendarID);
+    await actions.saveData(calendarID);
+    await actions.center(calendarID);
     /*try {
       const response = await fetch(
         `https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/appointments/${calendarID}`,

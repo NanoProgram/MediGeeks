@@ -72,7 +72,7 @@ export const Login = () => {
               <div class="form-check"></div>
             </div>
             <div style={{ textAlign: "center", alignItems: "center" }}>
-              <Link to="/Forgot">
+              <Link to="/recoverPassword">
                 <a href="#!">¿Se te olvidó tu contraseña?</a>
               </Link>
             </div>

@@ -1,11 +1,10 @@
 import "../../styles/example.css";
 import { Link, useNavigate } from "react-router-dom";
-import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg"
+import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg";
 import { useForm } from "react-hook-form";
 import React, { useContext, useState } from "react";
 
 export const Validate = () => {
-
   const navigate = useNavigate();
   const {
     register,
@@ -26,7 +25,7 @@ export const Validate = () => {
     try {
       console.log(input);
       const res = await fetch(
-        "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/users",
+        "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/users",
         {
           method: "POST",
           headers: {
@@ -58,7 +57,6 @@ export const Validate = () => {
     sendEmail(params);
   };
 
-
   return (
     <div className="background-image">
       <div className="login position-absolute top-50 start-50 translate-middle">
@@ -75,10 +73,15 @@ export const Validate = () => {
           <br />
           <br />
           <div className="col d-flex justify-content-center">
-            <input type="submit" value="Validar" class="btn btn-primary rounded-pill" style={{
-        padding: "30px 60px", 
-        fontSize: "18px"
-      }}/>
+            <input
+              type="submit"
+              value="Validar"
+              class="btn btn-primary rounded-pill"
+              style={{
+                padding: "30px 60px",
+                fontSize: "18px",
+              }}
+            />
           </div>
         </form>
       </div>

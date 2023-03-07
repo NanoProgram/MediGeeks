@@ -52,6 +52,7 @@ export const Home = () => {
                 <div className="   p-2  rounded-3" id="esp_11">
                   <FontAwesomeIcon icon={faCalendarDays} size="5x" />
                   <h4>Consulta de hora</h4>
+                  <p>Proximamente</p>
                 </div>
               </button>
             </Link>

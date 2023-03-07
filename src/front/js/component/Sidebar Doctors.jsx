@@ -58,13 +58,13 @@ export const Sidebar_doc = () => {
               </button>
             </Link>
           </div>
-          <div className="d-flex justify-content-center">
+          {/*<div className="d-flex justify-content-center">
             <Link to="/doctor">
               <button type="button" className="btn btn-danger button">
                 Calendario Interno
               </button>
             </Link>
-          </div>
+          </div>*/}
           <div className="d-flex justify-content-center">
             <button
               type="button"

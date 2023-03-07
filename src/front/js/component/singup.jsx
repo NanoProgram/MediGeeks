@@ -8,7 +8,6 @@ import { useForm } from "react-hook-form";
 import { sendEmail } from "../service/emailService";
 import { Modal } from "bootstrap";
 
-
 export const Singup = () => {
   const navigate = useNavigate();
   const {
@@ -30,7 +29,7 @@ export const Singup = () => {
     try {
       console.log(input);
       const res = await fetch(
-        "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/users",
+        "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/users",
         {
           method: "POST",
           headers: {
@@ -57,13 +56,13 @@ export const Singup = () => {
     let params = {
       to_email: data.email,
       to_name: data.name,
-      to_link: 'https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/users',
+      to_link:
+        "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/users",
     };
     sendEmail(params);
   };
 
   return (
-
     <div className="background-image">
       <div className="login position-absolute top-50 start-50 translate-middle container-md">
         <form
@@ -116,12 +115,12 @@ export const Singup = () => {
               className="form-select form-select-sm mb-3s text-center"
               aria-label=".form-select-sm example"
             >
-              <option   selected>Prevision</option>
-              <option  value="1">Fonasa</option>
-              <option  value="2">Banmedica</option>
-              <option  value="3">Cruz Blanca</option>
-              <option  value="4">Masvida</option>
-              <option  value="5">Colmena</option>
+              <option selected>Prevision</option>
+              <option value="1">Fonasa</option>
+              <option value="2">Banmedica</option>
+              <option value="3">Cruz Blanca</option>
+              <option value="4">Masvida</option>
+              <option value="5">Colmena</option>
             </select>
             <p style={{ color: "red" }}>{errors.prevision?.message}</p>
           </div>
@@ -170,7 +169,11 @@ export const Singup = () => {
             />
           </div>
           <div className="col d-flex justify-content-center">
-            <input type="submit" value="registrarse" class="btn btn-primary rounded-pill"/>
+            <input
+              type="submit"
+              value="registrarse"
+              class="btn btn-primary rounded-pill"
+            />
           </div>
         </form>
       </div>

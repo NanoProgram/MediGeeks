@@ -2,11 +2,11 @@ import "../../styles/example.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg";
 import { useForm } from "react-hook-form";
-import React, { useContext, useState, useEffect} from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 export const Forgot = () => {
   const navigate = useNavigate();
-  const {id} = useParams()
+  const { id } = useParams();
   const {
     register,
     formState: { errors },
@@ -15,19 +15,18 @@ export const Forgot = () => {
   const [user, setUser] = useState({});
   const [show, setShow] = useState(false);
 
-  const validateUser = async () =>  {
-    console.log(id)
+  const validateUser = async () => {
+    console.log(id);
     const res = await fetch(
-      "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/users/validate/" + id,
-      
+      "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/users/validate/" +
+        id
     );
     const data = await res.json();
-    if (data.validate) setShow(true) 
-
-  }
+    if (data.validate) setShow(true);
+  };
 
   useEffect(() => {
-    if (id != null) validateUser()
+    if (id != null) validateUser();
   }, []);
 
   function samePassword() {
@@ -42,7 +41,8 @@ export const Forgot = () => {
     try {
       console.log(input);
       const res = await fetch(
-        "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/changePassword/users/" + id,
+        "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/changePassword/users/" +
+          id,
         {
           method: "PUT",
           headers: {
@@ -60,7 +60,6 @@ export const Forgot = () => {
     console.log(JSON.stringify(input));
   };
 
-
   return (
     <div className="background-image">
       <div className="login position-absolute top-50 start-50 translate-middle">
@@ -73,40 +72,52 @@ export const Forgot = () => {
             <img src={Medigeeks_Logo} />
           </div>
           <br />
-          {show ? <div class="form-outline mb-4">
-            <input
-              {...register("password", {
-                required: "se requiere contraseña",
-                pattern: {
-                  value:
-                    /^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$/,
-                  message:
-                    "La contraseña debe contener al menos 6 caracteres, una mayúscula, una minúscula, un número y un carácter de caso especial",
-                },
-              })}
-              placeholder="Contraseña"
-              type="password"
-              id="password"
-              className="form-control text-center"
-            />
-            <p style={{ color: "red" }}>{errors.password?.message}</p>
-          </div>: <div></div>}
-          { show ? <div class="form-outline mb-4">
-            <input
-              onBlur={samePassword}
-              placeholder="Confirme Contraseña"
-              type="password"
-              id="confirm_password"
-              className="form-control text-center"
-            />
-          </div>: <div></div>}
-          {show ? <div className="col d-flex justify-content-center">
-            <input
-              type="submit"
-              value="Confirmar"
-              class="btn btn-primary rounded-pill"
-            />
-          </div>: <div></div>}
+          {show ? (
+            <div class="form-outline mb-4">
+              <input
+                {...register("password", {
+                  required: "se requiere contraseña",
+                  pattern: {
+                    value:
+                      /^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$/,
+                    message:
+                      "La contraseña debe contener al menos 6 caracteres, una mayúscula, una minúscula, un número y un carácter de caso especial",
+                  },
+                })}
+                placeholder="Contraseña"
+                type="password"
+                id="password"
+                className="form-control text-center"
+              />
+              <p style={{ color: "red" }}>{errors.password?.message}</p>
+            </div>
+          ) : (
+            <div></div>
+          )}
+          {show ? (
+            <div class="form-outline mb-4">
+              <input
+                onBlur={samePassword}
+                placeholder="Confirme Contraseña"
+                type="password"
+                id="confirm_password"
+                className="form-control text-center"
+              />
+            </div>
+          ) : (
+            <div></div>
+          )}
+          {show ? (
+            <div className="col d-flex justify-content-center">
+              <input
+                type="submit"
+                value="Confirmar"
+                class="btn btn-primary rounded-pill"
+              />
+            </div>
+          ) : (
+            <div></div>
+          )}
         </form>
       </div>
     </div>

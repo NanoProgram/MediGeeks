@@ -8,7 +8,8 @@ const getState = ({ getStore, getActions, setStore }) => {
     actions: {
       login: async (email, password) => {
         await fetch(
-          "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/login?email=${email}&password=${password}",
+          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/login?email=${email}&password=${password}",
+
           {
             method: "POST",
             body: JSON.stringify({ email, password }),
@@ -41,7 +42,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         const data = { user_id, available };
         try {
           const response = await fetch(
-            `https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/appointments/${calendarID}`,
+            `https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/appointments/${calendarID}`,
             {
               method: "PUT",
               body: JSON.stringify(data),
@@ -61,7 +62,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       center: async (calendarID) => {
         try {
           const response = await fetch(
-            `https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/appointments/${calendarID}` ,
+            `https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/appointments/${calendarID}`,
             {
               method: "GET",
               headers: {
@@ -71,11 +72,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           );
           const data = await response.json();
           console.log(data);
-          setStore({ dataIds: data }); 
+          setStore({ dataIds: data });
         } catch (error) {
           console.error(error);
         }
-      }
+      },
     },
   };
 };
