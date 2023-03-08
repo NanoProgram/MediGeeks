@@ -29,7 +29,7 @@ export const Singup = () => {
     try {
       console.log(input);
       const res = await fetch(
-        "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us89b.gitpod.io/api/mediGeeks/users",
+        "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us89b.gitpod.io/api/mediGeeks/users",
         {
           method: "POST",
           headers: {
@@ -56,8 +56,7 @@ export const Singup = () => {
     let params = {
       to_email: data.email,
       to_name: data.name,
-      to_link:
-        "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us89b.gitpod.io/api/mediGeeks/users",
+      to_link: 'https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us89b.gitpod.io/api/mediGeeks/users',
     };
     sendEmail(params);
   };

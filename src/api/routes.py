@@ -18,7 +18,66 @@ api = Blueprint('api', __name__)
 
 import json
 
-@api.route('/login', methods =['POST'])
+@api.route('/login', methods=['POST'])
+def login():
+    # creates dictionary of form data
+    auth = request.json
+
+    if not auth or not auth.get('email') or not auth.get('password'):
+        # devuelve 401 si falta algún correo electrónico o contraseña
+        return make_response(
+            'Could not verify',
+            401,
+            {'WWW-Authenticate': 'Basic realm="¡Se requiere iniciar sesión !!"'}
+        )
+
+    # busca en la tabla User
+    user = User.query \
+        .filter_by(email=auth.get('email')) \
+        .first()
+
+    # busca en la tabla Doctor si no se encontró en User
+    if not user:
+        doctor = Doctor.query \
+            .filter_by(email=auth.get('email')) \
+            .first()
+
+        # devuelve 401 si el usuario o doctor no existe
+        if not doctor:
+            return make_response(
+                'Could not verify',
+                401,
+                {'WWW-Authenticate': 'Basic realm="Usuario o contraseña incorrectos !!"'}
+            )
+
+        # verifica la contraseña del doctor
+        if check_password_hash(doctor.password, auth.get('password')):
+            # genera el token JWT para el doctor
+            access_token = create_access_token(identity=doctor.id)
+            return json.dumps({'token': access_token, 'user_id': doctor.id}), 200
+
+        # devuelve 403 si la contraseña del doctor es incorrecta
+        return make_response(
+            'Could not verify',
+            403,
+            {'WWW-Authenticate': 'Basic realm="Usuario o contraseña incorrectos !!"'}
+        )
+
+    # verifica la contraseña del usuario
+    if check_password_hash(user.password, auth.get('password')):
+        # genera el token JWT para el usuario
+        access_token = create_access_token(identity=user.id)
+        return json.dumps({'token': access_token, 'user_id': user.id}), 200
+
+    # devuelve 403 si la contraseña del usuario es incorrecta
+    return make_response(
+        'Could not verify',
+        403,
+        {'WWW-Authenticate': 'Basic realm="Usuario o contraseña incorrectos !!"'}
+    )
+
+
+"""@api.route('/login', methods =['POST'])
 def login():
     # creates dictionary of form data
     auth = request.json
@@ -52,7 +111,7 @@ def login():
         'Could not verify',
         403,
         {'WWW-Authenticate' : 'Basic realm ="Usuario o contraseña incorrectos !!"'}
-    )
+    )"""
 
 
 
@@ -220,6 +279,19 @@ def get_calendar():
     calendar = list(map(lambda p:p.serialize(),calendar))
     return jsonify(calendar), 200
 
+@api.route('/mediGeeks/date', methods=['GET'])
+@jwt_required()
+def get_date():
+    day = request.args.get('day')
+    month = request.args.get('month')
+    print(f"Searching for appointments on day {day} of {month}")
+    calendar = Calendar.query.filter_by(day=day, month=month).all()
+    if not calendar:
+        print("No appointments found for the specified date.")
+    calendar_ids = [appointment.id for appointment in calendar]
+    print(f"Found {len(calendar_ids)} appointments with ids {calendar_ids}")
+    return jsonify(calendar_ids), 200
+
 #API Appointment GET
 @api.route('/mediGeeks/appointments', methods=['GET'])
 @jwt_required()
@@ -227,6 +299,15 @@ def get_appointment():
     appointment = Appointment.query.all()
     appointment = list(map(lambda p:p.serialize(),appointment))
     return jsonify(appointment), 200
+
+@api.route('/mediGeeks/hours/<int:id>', methods=['GET'])
+@jwt_required()
+def get_hours(id):
+    print(f"Searching for appointments with calendar_id {id} and doctor_id 'null'...")
+    appointments = Appointment.query.filter_by(calendar_id=id).all()
+    appointments = [appointment.id for appointment in appointments if appointment.doctor_id == 'null']
+    print(f"Found {len(appointments)} appointments!")
+    return jsonify(appointments), 200
     
 
 #API Appointment PUT

@@ -8,24 +8,15 @@ import { Month } from "../component/Month.jsx";
 import { Hours } from "../component/Hours.jsx";
 import { Link } from "react-router-dom";
 import Calendar from 'react-calendar';
+import DatePicker from 'react-date-picker'
+import { Cita2 } from "./cita_2.jsx";
 
 export const Appointment = () => {
-  const [date, setDate] = useState(new Date());
+
+
   return (
     <div className="container container-center" >
-      <div className="row justify-content-center g-2 ">
-      <div className="col-6 ">
-        <MedicalCenter />
-      </div>
-      <div className="col-6 ">
-      <Calendar value={date} onChange={setDate}/>
-      </div>
-
-
-      </div>
-
-      <Hours />
-      
+      <Cita2 />
       <div className="d-flex justify-content-end">
         <Link to="/">
           <button className="btn btn-primary rounded-pill">Finalizar</button>

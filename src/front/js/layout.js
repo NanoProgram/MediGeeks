@@ -17,6 +17,7 @@ import { Recover } from "./component/recoverPassword.jsx";
 import { Principal } from "./component/principal.jsx";
 import { ProtectedRoutes } from "./component/protectedRoute.jsx";
 import { Validate } from "./component/validate.jsx";
+import { Dateview} from "./component/Dateview.jsx";
 
 //create your first component
 const Layout = () => {
@@ -56,6 +57,7 @@ const Layout = () => {
               <Route element={<Recover />} path="/recoverPassword" />
            <Route element={<Validate />} path="/validate" />
            <Route element={<Forgot />} path="/forgot/:id" />
+           <Route element={<AdmissionDoctor />} path="/singupdoc" />
             </Routes>
           </ScrollToTop>
         </BrowserRouter>
@@ -70,7 +72,7 @@ const Layout = () => {
               
               
 
-              <Route element={<AdmissionDoctor />} path="/singupdoc" />
+              
               <Route element={<Home />} path="/home" />
               <Route element={<h1>Not found!</h1>} path="/*" />
               <Route element={<Cita />} path="/appointment" />
@@ -79,8 +81,10 @@ const Layout = () => {
               <Route element={<Calendardoc />} path="/calendardoc" />
               <Route element={<Sidebar_doc />} path="/sidebardoc" />
               <Route element={<Footer />} path="/footer" />
+              <Route element={<Dateview />} path="/view" />
               <Route element={<ProtectedRoutes user={user} redirectTo="/" />}>
                 <Route element={<Appointment />} path="/doctor" />
+                <Route element={<Dateview />} path="/view" />
               </Route>
             </Routes>
           </ScrollToTop>

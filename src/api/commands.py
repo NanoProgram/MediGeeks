@@ -287,7 +287,7 @@ def setup_commands(app):
         for valor in valores:
             appointment = Appointment()
             appointment.id = valor['id']
-            appointment.available = True
+            appointment.available = False
             appointment.doctor_id = valor['doctor_id']
             appointment.speciality_id = valor['speciality_id']
             appointment.center_id = valor['center_id']

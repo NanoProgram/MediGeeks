@@ -254,7 +254,7 @@ export const Cita = () => {
 
     /*try {
       const response = await fetch(
-        `https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/appointments/${calendarID}`,
+        `https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us89b.gitpod.io/api/mediGeeks/appointments/${calendarID}`,
         {
           method: "PUT",
           body: JSON.stringify(data),

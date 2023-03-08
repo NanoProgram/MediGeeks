@@ -13,42 +13,47 @@ import "react-date-picker/dist/DatePicker.css"
 
 
 export const Cita2 = () => {
-  const [date, setDate] = useState(new Date());
-  const [value, onChange] = useState(new Date());
+  
 
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [availableTimeSlots, setAvailableTimeSlots] = useState([]);
 
   const handleDateSelection = async date => {
-      setSelectedDate(date);
-      const timeSlots = await fetchTimeSlotsFromDB(date);
-      setAvailableTimeSlots(timeSlots);
+    setSelectedDate(date);
+    const selectedDay = date.getDate().toString().padStart(2, '0');
+    const selectedMonth = date.toLocaleString('default', { month: 'long' });
+    const timeSlots = await fetchTimeSlotsFromDB(selectedDate, selectedDay, selectedMonth.toUpperCase());
+    setAvailableTimeSlots(timeSlots);
+    console.log(selectedMonth);
+    console.log(selectedDay);
   }
-
-  const fetchTimeSlotsFromDB = async date => {
-      // Aquí podrías hacer una petición a una base de datos para obtener los rangos horarios disponibles para la fecha seleccionada
-      // Utilizando el paquete fetch o cualquier otro para hacer peticiones HTTP
-      // Ejemplo: const response = await fetch(`/api/timeslots?date=${date}`);
-      //const timeSlots = await response.json();
-      //return timeSlots;
-      return ["08:00-09:00", "09:00-10:00", "10:00-11:00"];
-  }
+  
+ const fetchTimeSlotsFromDB = async (selectedDate, selectedDay, selectedMonth) => {
+    try {
+      const response = await fetch(
+        `https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us89b.gitpod.io/api/mediGeeks/date?day=${selectedDay.toString()}&month=${selectedMonth.charAt(0).toUpperCase()}${selectedMonth.slice(1).toLowerCase()}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
+      );
+      const data = await response.json();
+      const dataAsArray = Object.values(data);
+      const ids = dataAsArray.map(item => item.id);
+      console.log(ids);
+      return data;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  };
 
 
   return (
     <div className="container justify-content-center fondo p-2" style={{backgroundColor: "#d6eef7"}} >
       <div className="d-flex justify-content-center">
-        <div className="p-2">
-            <div className="card" style={{ width: '18rem' }}>
-                <img src={rigoImageUrl} className="card-img-top" alt="Card image"  />
-                <div className="card-body">
-                    <h5 className="card-title">Doc1</h5>
-                    <p className="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the card's content.
-                    </p>
-            </div>
-        </div>
-        </div>
         <div className="p-2">
         <DatePicker
             className="react-date-picker__input react-date-picker__input--custom-bg"

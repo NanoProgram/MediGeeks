@@ -1,63 +1,63 @@
 import React, { useContext, useState } from "react";
 import "../../styles/example.css";
+import { Link, useNavigate } from "react-router-dom";
 import Medigeeks_Logo from "../../img/Medigeeks_Logo.jpg";
 import { useForm } from "react-hook-form";
 import { sendEmail } from "../service/emailService";
 
 export const AdmissionDoctor = () => {
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm({ mode: "all" });
-  const [user, setUser] = useState({});
 
-  function samePassword() {
-    let password = document.getElementById("password").value;
-    let confirm_password = document.getElementById("confirm_password").value;
-    if (password != confirm_password) {
-      alert("Las contraseñas no coinciden");
-    }
-  }
-
-  const submitBack = async (input) => {
-    try {
-      console.log(input);
-      const res = await fetch(
-        "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/doctors",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            /*"Authorization": "Bearer token"*/
-          },
-          body: JSON.stringify(input),
+    const { register, formState: { errors }, handleSubmit } = useForm({ mode: "all", });
+    const [user, setUser] = useState({});
+    const navigate = useNavigate();
+    
+    
+    function samePassword() {
+        let password = document.getElementById("password").value;
+        let confirm_password = document.getElementById("confirm_password").value;
+        if (password != confirm_password) {
+            alert("Las contraseñas no coinciden");
         }
-      );
-      const data = await res.json();
-      console.log(data);
-      if (data.success) {
-        verify(data);
-      } else {
-        alert(data.message);
-      }
-    } catch (error) {
-      console.error("Error:", error);
     }
-    console.log(JSON.stringify(input));
-  };
+    
+    
 
-  console.log("errors", errors);
+      const submitBack = async (input) => {
+        try { 
+            console.log(input)
+            const res = await fetch("https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us89b.gitpod.io/api/mediGeeks/doctors", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(input)
+          });
+          const data = await res.json();
+          console.log(data)
+          if (data.email) {
+            verify(input)
+            navigate("/login");
+          } else {
+                 alert(data.message);
+          }
+        } catch (error) {
+          console.error("Error:", error);
+        }
+        console.log(JSON.stringify(input))
+      }
 
-  const verify = (data) => {
-    console.log(data);
-    let params = {
-      to_email: data.email,
-      to_name: data.userName,
-      to_link: "www.google.cl",
-    };
-    sendEmail(params);
-  };
+    console.log("errors", errors)
+    
+
+      const verify = (data) => {
+        console.log(data)
+        let params = {
+          to_email: data.email,
+          to_name: data.name,
+          to_link: 'https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us89b.gitpod.io/api/mediGeeks/doctors',
+        };
+        sendEmail(params);
+      };
 
   return (
     <div className="background-image">
