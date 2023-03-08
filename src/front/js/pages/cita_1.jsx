@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Sidebar_doc } from "../component/Sidebar Doctors.jsx";
 import { Footer } from "../component/footer.jsx";
 
+
 export const Cita = () => {
   const [loading, setLoading] = useState(true);
   const [loading2, setLoading2] = useState(true);
@@ -16,17 +17,22 @@ export const Cita = () => {
   const [especialidadID, setEspecialidadID] = useState([]);
   const [docID, setDocID] = useState([]);
   const [hours, setHours] = useState([]);
-  const [calendarID, setCalendarID] = useState([]);
+  const [calendarID, setCalendarID] = useState(null);
   const { store, actions } = useContext(Context);
   const uniqueDays = [...new Set(hours.map((item) => item.day))];
   const uniqueMonths = [...new Set(hours.map((item) => item.month))];
+
+
+
+
+
 
   //---------------Consulta Centro Medico------------------
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await fetch(
-          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/centers",
+          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us89b.gitpod.io/api/mediGeeks/centers",
           {
             method: "GET",
             headers: {
@@ -46,6 +52,7 @@ export const Cita = () => {
   const selectedCentro = (event) => {
     console.log(event.target.value);
     setCenterId(event.target.value);
+
   };
   //-------------Consulta Especialidad del centro----------------
   useEffect(() => {
@@ -54,7 +61,7 @@ export const Cita = () => {
     async function fetchData() {
       try {
         const response = await fetch(
-          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/appointments",
+          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us89b.gitpod.io/api/mediGeeks/appointments",
           {
             method: "GET",
             headers: {
@@ -68,7 +75,7 @@ export const Cita = () => {
           .map((speciality) => speciality.speciality_id);
         console.log(espcialidades);
         const response2 = await fetch(
-          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/specialitys",
+          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us89b.gitpod.io/api/mediGeeks/specialitys",
           {
             method: "GET",
             headers: {
@@ -102,7 +109,7 @@ export const Cita = () => {
     async function fetchData() {
       try {
         const response = await fetch(
-          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/appointments",
+          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us89b.gitpod.io/api/mediGeeks/appointments",
           {
             method: "GET",
             headers: {
@@ -120,7 +127,7 @@ export const Cita = () => {
           .map((appointment) => appointment.doctor_id);
         console.log(doctores);
         const response3 = await fetch(
-          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/doctors",
+          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us89b.gitpod.io/api/mediGeeks/doctors",
           {
             method: "GET",
             headers: {
@@ -152,7 +159,7 @@ export const Cita = () => {
     async function fetchData() {
       try {
         const response = await fetch(
-          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/appointments",
+          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us89b.gitpod.io/api/mediGeeks/appointments",
           {
             method: "GET",
             headers: {
@@ -172,7 +179,7 @@ export const Cita = () => {
           .map((calendar) => calendar.calendar_id);
         console.log(calendars);
         const response3 = await fetch(
-          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/calendar",
+          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us89b.gitpod.io/api/mediGeeks/calendar",
           {
             method: "GET",
             headers: {
@@ -196,9 +203,45 @@ export const Cita = () => {
 
   const selectHora = (event) => {
     setCalendarID(event.target.value);
-    console.log(event.target.value);
-    console.log(calendarID);
   };
+
+  useEffect(() => {
+    if (calendarID) {
+      const parsedCenterID = parseInt(centerID);
+      const parsedEspecialidadID = parseInt(especialidadID);
+      const parsedCalendarID = parseInt(calendarID);
+      const nuevoObjeto = {
+        doctor: doctor.find(function (usuario) {
+          return usuario.id === docID;
+        }).name,
+        centro: centros.find(function (usuario) {
+          return usuario.id === parsedCenterID;
+        }).name,
+        especialidad: specialities.find(function (usuario) {
+          return usuario.id === parsedEspecialidadID;
+        }).name,
+        hora: hours.find(function (usuario) {
+          return usuario.id === parsedCalendarID;
+        }).appointment_start_time,
+        dia: hours.find(function (usuario) {
+          return usuario.id === parsedCalendarID;
+        }).day,
+        mes: hours.find(function (usuario) {
+          return usuario.id === parsedCalendarID;
+        }).month,
+        lat: centros.find(function (usuario) {
+          return usuario.id === parsedCenterID;
+        }).lat,
+        lng: centros.find(function (usuario) {
+          return usuario.id === parsedCenterID;
+        }).lng
+      };
+      console.log(nuevoObjeto);
+      actions.setComprobante(nuevoObjeto);
+      localStorage.setItem('comprobante', JSON.stringify(nuevoObjeto));
+    }
+  }, [calendarID]);
+
 
   //---------------- PUT para la Hora medica---------------------
   const saveData = async () => {
@@ -207,6 +250,8 @@ export const Cita = () => {
     const data = { user_id, available };
     await actions.saveData(calendarID);
     await actions.center(calendarID);
+
+
     /*try {
       const response = await fetch(
         `https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/appointments/${calendarID}`,

@@ -88,6 +88,8 @@ class Center(db.Model):
     direction = db.Column(db.String(120), nullable=False)
     start_of_service_hours = db.Column(db.String(120), nullable=False)
     end_of_service_hours = db.Column(db.String(120), nullable=False)
+    lat = db.Column(db.String(120), nullable = False)
+    lng = db.Column(db.String(120), nullable = False)
 
     def serialize(self):
         return {
@@ -97,6 +99,8 @@ class Center(db.Model):
             "direction": self.direction,
             "start_of_service_hours": self.start_of_service_hours,
             "end_of_service_hours": self.end_of_service_hours,
+            "lat": self.lat,
+            "lng": self.lng,
            
         }
     

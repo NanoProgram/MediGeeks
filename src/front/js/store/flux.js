@@ -4,11 +4,19 @@ const getState = ({ getStore, getActions, setStore }) => {
       user_id: null,
       calendarID: null,
       dataIds: null,
+      comprobante: {
+        doctor: null,
+        centro: null,
+        especialidad: null,
+        hora: null,
+        dia: null,
+        mes: null,
+      },
     },
     actions: {
       login: async (email, password) => {
         await fetch(
-          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/login?email=${email}&password=${password}",
+          "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us89b.gitpod.io/api/login?email=${email}&password=${password}",
 
           {
             method: "POST",
@@ -42,7 +50,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         const data = { user_id, available };
         try {
           const response = await fetch(
-            `https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/appointments/${calendarID}`,
+            `https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us89b.gitpod.io/api/mediGeeks/appointments/${calendarID}`,
             {
               method: "PUT",
               body: JSON.stringify(data),
@@ -62,7 +70,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       center: async (calendarID) => {
         try {
           const response = await fetch(
-            `https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/appointments/${calendarID}`,
+            `https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us89b.gitpod.io/api/mediGeeks/appointments/${calendarID}`,
             {
               method: "GET",
               headers: {
@@ -76,6 +84,10 @@ const getState = ({ getStore, getActions, setStore }) => {
         } catch (error) {
           console.error(error);
         }
+      },
+      setComprobante: async (comprobante) => {
+        await setStore({ comprobante });
+        console.log(comprobante);
       },
     },
   };

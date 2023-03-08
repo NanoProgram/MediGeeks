@@ -165,9 +165,12 @@ def setup_commands(app):
     @app.cli.command("insert-center") # name of our command
     def insert_test_data():
         print("Creando test center")
-        valores = [{'id': 1, 'name': 'VidaMas', 'commune':'Providencia', 'direction':'Barcelona 2116'}, 
-                    {'id': 2, 'name': 'MediCkine', 'commune':'Maipu', 'direction':'Alberto Llona 1770'},
-                    {'id': 3, 'name': 'San Victor', 'commune':'Peñaflor', 'direction':'San Martín 150'}]
+        valores = [#{'id': 1, 'name': 'VidaMas', 'commune':'Providencia', 'direction':'Barcelona 2116'}, 
+                    #{'id': 2, 'name': 'MediCkine', 'commune':'Maipu', 'direction':'Alberto Llona 1770'},
+                    #{'id': 3, 'name': 'San Victor', 'commune':'Peñaflor', 'direction':'San Martín 150'},
+                    {'id': 1, 'name': 'MediCenter', 'commune':'Santiago', 'direction':'Huerfanos #799', 'lat':'-33.4387523', 'lng':'-70.6479961'},
+                    {'id': 2, 'name': 'Centro Medico Bannen', 'commune':'Santiago', 'direction':'Valentín Letelier 1349', 'lat':'-33.4434033', 'lng':'-70.6550669'},
+                    {'id': 3, 'name': 'Centro Médico y Dental Ñuñoa Salud', 'commune':'Ñuñoa', 'direction':'Av. Irarrázaval 2821', 'lat':'-33.4549378', 'lng':'-70.6016491'}]
         for valor in valores:
             center = Center()
             center.id = valor['id']
@@ -176,22 +179,26 @@ def setup_commands(app):
             center.direction = valor['direction']
             center.start_of_service_hours = "09:00"
             center.end_of_service_hours = "18:00"
+            center.lat =valor['lat']
+            center.lng =valor['lng']
             db.session.add(center)
             db.session.commit()
             print("Center: ", center.id, " created.")
         print("All test center created")
 
+   
     @app.cli.command("insert-doctor") # name of our command
     def insert_test_data():
         print("Creando test doctor")
-        valores = [#{'id': '1', 'email':'juan@gmail.com', 'name': 'Juan Toro', 'rut':'15.369.258-5', 'speciality_id':1}, 
-                    #{'id': '2', 'email':'roberto@gmail.com', 'name': 'Roberto Canales', 'rut':'15.363.258-5', 'speciality_id':1},
-                   # {'id': '3', 'email':'carlos@gmail.com', 'name': 'Ramon Bravo', 'rut':'15.369.458-5', 'speciality_id':2},
-                    #{'id': '4', 'email':'Nicolas@gmail.com', 'name': 'Nicolas Oñate', 'rut':'15.367.258-5', 'speciality_id':2},
+        valores = [{'id': '1', 'email':'juan@gmail.com', 'name': 'Juan Toro', 'rut':'15.369.258-5', 'speciality_id':1}, 
+                    {'id': '2', 'email':'roberto@gmail.com', 'name': 'Roberto Canales', 'rut':'15.363.258-5', 'speciality_id':1},
+                    {'id': '3', 'email':'carlos@gmail.com', 'name': 'Ramon Bravo', 'rut':'15.369.458-5', 'speciality_id':2},
+                    {'id': '4', 'email':'Nicolas@gmail.com', 'name': 'Nicolas Oñate', 'rut':'15.367.258-5', 'speciality_id':2},
                     {'id': '5', 'email':'Diego@gmail.com', 'name': 'Diego Carrasco', 'rut':'11.364.678-5', 'speciality_id':3},
                     {'id': '6', 'email':'Mirko@gmail.com', 'name': 'Mirko Martinez', 'rut':'14.367.254-5', 'speciality_id':3},
                     {'id': '7', 'email':'Pablo@gmail.com', 'name': 'Pablo Duran', 'rut':'16.767.258-5', 'speciality_id':4},
-                    {'id': '8', 'email':'Emilio@gmail.com', 'name': 'Emilio Martinez', 'rut':'12.367.258-5', 'speciality_id':4},]
+                    {'id': '8', 'email':'Emilio@gmail.com', 'name': 'Emilio Martinez', 'rut':'12.367.258-5', 'speciality_id':4},
+                    {'id': 'null', 'email':'null', 'name': 'null', 'rut':'null', 'speciality_id':2}]
         for valor in valores:
             doctor = Doctor()
             doctor.id = valor['id']
@@ -238,7 +245,7 @@ def setup_commands(app):
             calendar = Calendar()
             calendar.id = valor['id']
             calendar.year = "2023"
-            calendar.month = "Febrero"
+            calendar.month = "Marzo"
             calendar.day = valor['day']
             calendar.appointment_start_time = valor['appointment_start_time']
             calendar.appointment_end_time = valor['appointment_end_time']
@@ -252,16 +259,16 @@ def setup_commands(app):
     @app.cli.command("insert-appointment") # name of our command
     def insert_test_data():
         print("Creando test appointment")
-        valores = [#{'id': 1, 'doctor_id':'1', 'speciality_id': 1, 'center_id':1,'calendar_id':1, },
-                    #{'id': 2, 'doctor_id':'1', 'speciality_id': 1, 'center_id':1,'calendar_id':2, },
-                    #{'id': 3, 'doctor_id':'2', 'speciality_id': 2, 'center_id':1,'calendar_id':3, },
-                    #{'id': 4, 'doctor_id':'2', 'speciality_id': 2, 'center_id':1,'calendar_id':4, },
-                    #{'id': 5, 'doctor_id':'3', 'speciality_id': 3, 'center_id':1,'calendar_id':5, },
-                    #{'id': 6, 'doctor_id':'3', 'speciality_id': 3, 'center_id':1,'calendar_id':6, },
-                    #{'id': 7, 'doctor_id':'4', 'speciality_id': 4, 'center_id':1,'calendar_id':7, },
-                    #{'id': 8, 'doctor_id':'4', 'speciality_id': 4, 'center_id':1,'calendar_id':8, },
-                    #{'id': 9, 'doctor_id':'5', 'speciality_id': 5, 'center_id':2,'calendar_id':9, },
-                    #{'id': 10, 'doctor_id':'5', 'speciality_id': 5, 'center_id':2,'calendar_id':10, },
+        valores = [{'id': 1, 'doctor_id':'1', 'speciality_id': 1, 'center_id':1,'calendar_id':1, },
+                    {'id': 2, 'doctor_id':'1', 'speciality_id': 1, 'center_id':1,'calendar_id':2, },
+                    {'id': 3, 'doctor_id':'2', 'speciality_id': 2, 'center_id':1,'calendar_id':3, },
+                    {'id': 4, 'doctor_id':'2', 'speciality_id': 2, 'center_id':1,'calendar_id':4, },
+                    {'id': 5, 'doctor_id':'3', 'speciality_id': 3, 'center_id':1,'calendar_id':5, },
+                    {'id': 6, 'doctor_id':'3', 'speciality_id': 3, 'center_id':1,'calendar_id':6, },
+                    {'id': 7, 'doctor_id':'4', 'speciality_id': 4, 'center_id':1,'calendar_id':7, },
+                    {'id': 8, 'doctor_id':'4', 'speciality_id': 4, 'center_id':1,'calendar_id':8, },
+                    {'id': 9, 'doctor_id':'5', 'speciality_id': 5, 'center_id':2,'calendar_id':9, },
+                    {'id': 10, 'doctor_id':'5', 'speciality_id': 5, 'center_id':2,'calendar_id':10, },
                     {'id': 11, 'doctor_id':'6', 'speciality_id': 1, 'center_id':2,'calendar_id':11, },
                     {'id': 12, 'doctor_id':'6', 'speciality_id': 1, 'center_id':2,'calendar_id':12, },
                     {'id': 13, 'doctor_id':'7', 'speciality_id': 2, 'center_id':2,'calendar_id':13, },
