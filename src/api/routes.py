@@ -308,6 +308,28 @@ def get_hours(id):
     appointments = [appointment.id for appointment in appointments if appointment.doctor_id == 'null']
     print(f"Found {len(appointments)} appointments!")
     return jsonify(appointments), 200
+
+@api.route('/mediGeeks/info/<int:id>', methods=['GET'])
+@jwt_required()
+def get_calendar_info(id):
+    print(f"Searching for appointments with calendar_id")
+    calendars = Calendar.query.filter_by(id=id).all()
+    calendar_info = []
+    for calendar in calendars:
+        calendar_info.append({
+            "appointment_start_time": calendar.appointment_start_time,
+            "center_id": calendar.center_id
+        })
+    print(f"Found {len(calendars)} calendars!")
+    return jsonify(calendar_info), 200
+
+@api.route('/mediGeeks/centersname/<int:id>', methods=['GET'])
+@jwt_required()
+def get_center_name(id):
+    center = Center.query.filter_by(id=id).first()
+    if center is None:
+        return jsonify({"message": "Center not found"}), 404
+    return jsonify({"id": center.id, "name": center.name}), 200
     
 
 #API Appointment PUT
