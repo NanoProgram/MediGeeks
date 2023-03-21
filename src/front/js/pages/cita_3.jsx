@@ -18,42 +18,50 @@ export const Cita3 = () => {
 
 
   return (
-    <div className="container fondo p-2" style={{ backgroundColor: "#d6eef7" }}>
+    <div
+      className="ripple-background circle.xxlarge.shade1"
+      style={{ backgroundColor: "#d6eef7" }}
+    >
       <Sidebar_doc />
-      <div className="container d-flex justify-content-center">
-        <div className="card border-primary mb-3" style={{ width: "18rem" }}>
-          <div className="card-header">Hora Agendada</div>
-          <div className="card-body text-primary">
-            {store.comprobante && (
-              <p className="card-title">
-                Estimado <br />
-                Su hora de <b>{valor.especialidad}</b> ha sido reservada exitosamente con <b>{valor.doctor}</b> para el dia <b>{valor.dia}</b> de <b>{valor.mes}</b>  en <b>{valor.centro}</b>
-              </p>
-            )}
+      <div className="container" style={{ backgroundColor: "#d6eef7" }}>
+
+        <div className="container d-flex justify-content-center">
+          <div className="card border-primary mb-3" style={{ width: "18rem" }}>
+            <div className="card-header">Hora Agendada</div>
+            <div className="card-body text-primary">
+              {store.comprobante && (
+                <p className="card-title">
+                  Estimado <br />
+                  Su hora de <b>{valor.especialidad}</b> ha sido reservada exitosamente con <b>{valor.doctor}</b> para el dia <b>{valor.dia}</b> de <b>{valor.mes}</b>  en <b>{valor.centro} </b>
+                  ubicado en <b>{valor.direccion}, {valor.comuna}</b>
+                </p>
+              )}
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="d-flex justify-content-center">
-        <GoogleMaps
-          apiKey={"AIzaSyB-zFY4ZH0nkE8BZiRH94iFGWJyFgK1MPg"}
-          style={{ height: "500px", width: "500px" }}
-          zoom={16}
-          center={{
-            lat: Number(valor.lat),
-            lng: Number(valor.lng),
-          }}
-          markers={{
-            lat: Number(valor.lat),
-            lng: Number(valor.lng),
-          }}
-        />
+        <div className="d-flex justify-content-center">
+          <GoogleMaps
+            apiKey={"AIzaSyB-zFY4ZH0nkE8BZiRH94iFGWJyFgK1MPg"}
+            style={{ height: "500px", width: "500px" }}
+            zoom={16}
+            center={{
+              lat: Number(valor.lat),
+              lng: Number(valor.lng),
+            }}
+            markers={{
+              lat: Number(valor.lat),
+              lng: Number(valor.lng),
+            }}
+          />
+        </div>
+        <div className="d-flex justify-content-end">
+          <Link to="/home">
+            <button className="btn btn-primary ">Finalizar</button>
+          </Link>
+        </div>
+        <Footer />
       </div>
-
-      <Link to="/home">
-        <button className="btn btn-primary">Finalizar</button>
-      </Link>
-      <Footer />
-    </div>
+    </div >
   );
 };

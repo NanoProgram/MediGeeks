@@ -234,7 +234,14 @@ export const Cita = () => {
         }).lat,
         lng: centros.find(function (usuario) {
           return usuario.id === parsedCenterID;
-        }).lng
+        }).lng,
+        direccion: centros.find(function (usuario) {
+          return usuario.id === parsedCenterID;
+        }).direction,
+        comuna: centros.find(function (usuario) {
+          return usuario.id === parsedCenterID;
+        }).commune
+
       };
       console.log(nuevoObjeto);
       actions.setComprobante(nuevoObjeto);
@@ -273,124 +280,130 @@ export const Cita = () => {
 
   return (
     <div
-      className="container-sm fondo p-2"
+      className="ripple-background circle.xxlarge.shade1"
       style={{ backgroundColor: "#d6eef7" }}
     >
       <Sidebar_doc />
-      <div className="text-center">
-        <h1 className="center"> MediGeeks</h1>
-        <h3> Toma de Hora</h3>
-      </div>
-      <div className="d-flex justify-content-center">
-        <div className="m-3">
-          <select
-            className="form-select form-select-sm mb-3s m-1"
-            aria-label=".form-select-sm example"
-            style={{ width: "250px" }}
-            onChange={selectedCentro}
-          >
-            <option selected>Centro Medico</option>
-            {centros.map((centro) => (
-              <option value={centro.id}>{centro.name}</option>
-            ))}
-          </select>
-          {loading ? (
-            <h6> Cargando...</h6>
-          ) : (
-            <select
-              className="form-select form-select-sm mb-3s m-1"
-              aria-label=".form-select-sm example"
-              style={{ width: "250px" }}
-              onChange={selectedEspecialidad}
-            >
-              <option selected>Especialidad</option>
-              {specialities.map((speciality) => (
-                <option value={speciality.id}>{speciality.name}</option>
-              ))}
-            </select>
-          )}
-          {loading2 ? (
-            <h6> Cargando...</h6>
-          ) : (
-            <select
-              className="form-select form-select-sm mb-3s m-1"
-              aria-label=".form-select-sm example"
-              style={{ width: "250px" }}
-              onChange={selectedDoc}
-            >
-              <option selected>Doctor</option>
-              {doctor.map((doctors) => (
-                <option value={doctors.id}>{doctors.name}</option>
-              ))}
-            </select>
-          )}
+      <div
+        className="container fondo"
+        style={{ backgroundColor: "#d6eef7" }}
+      >
 
-          <br />
-
-          {loading3 ? (
-            <h6> Cargando...</h6>
-          ) : (
-            <select
-              className="form-select form-select-sm mb-3s m-1"
-              aria-label=".form-select-sm example"
-              style={{ width: "250px" }}
-            >
-              <option selected>Mes</option>
-              {uniqueMonths.map((month) => (
-                <option value={month}>{month}</option>
-              ))}
-            </select>
-          )}
-
-          {loading3 ? (
-            <h6> Cargando...</h6>
-          ) : (
-            <select
-              className="form-select form-select-sm mb-3s m-1"
-              aria-label=".form-select-sm example"
-              style={{ width: "250px" }}
-            >
-              <option selected>Día</option>
-              {uniqueDays.map((day) => (
-                <option value={day}>{day}</option>
-              ))}
-            </select>
-          )}
-
-          {loading3 ? (
-            <h6> Cargando...</h6>
-          ) : (
-            <select
-              className="form-select form-select-sm mb-3s m-1"
-              aria-label=".form-select-sm example"
-              style={{ width: "250px" }}
-              onChange={selectHora}
-            >
-              <option selected>Horas</option>
-              {hours.map((hora) => (
-                <option value={hora.id}>
-                  {hora.appointment_start_time}-{hora.appointment_end_time}
-                </option>
-              ))}
-            </select>
-          )}
+        <div className="text-center">
+          <h1 className="center"> MediGeeks</h1>
+          <h3> Toma de Hora</h3>
         </div>
-      </div>
-      <br />
-      <br />
+        <div className="d-flex justify-content-center">
+          <div className="m-3">
+            <select
+              className="form-select form-select-sm mb-3s m-1"
+              aria-label=".form-select-sm example"
+              style={{ width: "250px" }}
+              onChange={selectedCentro}
+            >
+              <option selected>Centro Medico</option>
+              {centros.map((centro) => (
+                <option value={centro.id}>{centro.name}</option>
+              ))}
+            </select>
+            {loading ? (
+              <h6> Cargando...</h6>
+            ) : (
+              <select
+                className="form-select form-select-sm mb-3s m-1"
+                aria-label=".form-select-sm example"
+                style={{ width: "250px" }}
+                onChange={selectedEspecialidad}
+              >
+                <option selected>Especialidad</option>
+                {specialities.map((speciality) => (
+                  <option value={speciality.id}>{speciality.name}</option>
+                ))}
+              </select>
+            )}
+            {loading2 ? (
+              <h6> Cargando...</h6>
+            ) : (
+              <select
+                className="form-select form-select-sm mb-3s m-1"
+                aria-label=".form-select-sm example"
+                style={{ width: "250px" }}
+                onChange={selectedDoc}
+              >
+                <option selected>Doctor</option>
+                {doctor.map((doctors) => (
+                  <option value={doctors.id}>{doctors.name}</option>
+                ))}
+              </select>
+            )}
 
-      <div className="d-flex justify-content-between">
-        <Link to="/home">
-          <button className="btn btn-primary rounded-pill">Back To home</button>
-        </Link>
+            <br />
 
-        <Link to="/appointment-confirmed">
-          <button className="btn btn-primary rounded-pill" onClick={saveData}>
-            Continue
-          </button>
-        </Link>
+            {loading3 ? (
+              <h6> Cargando...</h6>
+            ) : (
+              <select
+                className="form-select form-select-sm mb-3s m-1"
+                aria-label=".form-select-sm example"
+                style={{ width: "250px" }}
+              >
+                <option selected>Mes</option>
+                {uniqueMonths.map((month) => (
+                  <option value={month}>{month}</option>
+                ))}
+              </select>
+            )}
+
+            {loading3 ? (
+              <h6> Cargando...</h6>
+            ) : (
+              <select
+                className="form-select form-select-sm mb-3s m-1"
+                aria-label=".form-select-sm example"
+                style={{ width: "250px" }}
+              >
+                <option selected>Día</option>
+                {uniqueDays.map((day) => (
+                  <option value={day}>{day}</option>
+                ))}
+              </select>
+            )}
+
+            {loading3 ? (
+              <h6> Cargando...</h6>
+            ) : (
+              <select
+                className="form-select form-select-sm mb-3s m-1"
+                aria-label=".form-select-sm example"
+                style={{ width: "250px" }}
+                onChange={selectHora}
+              >
+                <option selected>Horas</option>
+                {hours.map((hora) => (
+                  <option value={hora.id}>
+                    {hora.appointment_start_time}-{hora.appointment_end_time}
+                  </option>
+                ))}
+              </select>
+            )}
+          </div>
+        </div>
+        <br />
+        <br />
+
+        <div className="d-flex justify-content-between">
+          <Link to="/home">
+            <button className="btn btn-primary rounded-pill">Inicio</button>
+          </Link>
+
+          <Link to="/appointment-confirmed">
+            <button className="btn btn-primary rounded-pill" onClick={saveData}>
+              Continue
+            </button>
+          </Link>
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 };

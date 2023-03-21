@@ -17,8 +17,8 @@ export const Recover = () => {
   const validateEmail = async (input) => {
     console.log(input);
     const res = await fetch(
-      "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/api/mediGeeks/search/users/" +
-        input.email
+      "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us89b.gitpod.io/api/mediGeeks/search/users/" +
+      input.email
     );
     const data = await res.json();
     console.log(data);
@@ -35,7 +35,7 @@ export const Recover = () => {
       to_email: data.email,
       to_name: data.name,
       to_link:
-        "https://3000-nanoprogram-medigeeks-qieayu3bvm3.ws-us86.gitpod.io/forgot/" +
+        "https://3000-nanoprogram-medigeeks-qieayu3bvm3.ws-us89b.gitpod.io/forgot/" +
         data.id,
     };
     sendEmail(params);

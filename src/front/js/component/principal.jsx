@@ -10,7 +10,7 @@ import "../../styles/principal.css";
 
 export const Principal = () => {
   return (
-    <div className=' background container' >
+    <div className=' background' >
 
       <Inicio />
       <br />
