@@ -25,7 +25,7 @@ export const AdmissionDoctor = () => {
       const submitBack = async (input) => {
         try { 
             console.log(input)
-            const res = await fetch("https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us89b.gitpod.io/api/mediGeeks/doctors", {
+            const res = await fetch("https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us98.gitpod.io/api/mediGeeks/doctors", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -54,7 +54,7 @@ export const AdmissionDoctor = () => {
         let params = {
           to_email: data.email,
           to_name: data.name,
-          to_link: 'https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us89b.gitpod.io/api/mediGeeks/doctors',
+          to_link: 'https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us98.gitpod.io/api/mediGeeks/doctors',
         };
         sendEmail(params);
       };
