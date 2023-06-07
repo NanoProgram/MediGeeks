@@ -18,7 +18,7 @@ export const Forgot = () => {
   const validateUser = async () => {
     console.log(id);
     const res = await fetch(
-      "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us89b.gitpod.io/api/mediGeeks/users/validate/" +
+      "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us98.gitpod.io/api/mediGeeks/users/validate/" +
       id
     );
     const data = await res.json();
@@ -41,7 +41,7 @@ export const Forgot = () => {
     try {
       console.log(input);
       const res = await fetch(
-        "https://3001-nanoprogram-medigeeks-qieayu3bvm3.ws-us89b.gitpod.io/api/mediGeeks/changePassword/users/" +
+        "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us98.gitpod.io/api/mediGeeks/changePassword/users/" +
         id,
         {
           method: "PUT",
