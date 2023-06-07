@@ -39,7 +39,7 @@ export const Cita2 = () => {
   const fetchTimeSlotsFromDB = async (selectedDate, selectedDay, selectedMonth) => {
     try {
       const response = await fetch(
-        `https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us89b.gitpod.io/api/mediGeeks/date?day=${selectedDay.toString()}&month=${selectedMonth.charAt(0).toUpperCase()}${selectedMonth.slice(1).toLowerCase()}`,
+        `https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us98.gitpod.io/api/mediGeeks/date?day=${selectedDay.toString()}&month=${selectedMonth.charAt(0).toUpperCase()}${selectedMonth.slice(1).toLowerCase()}`,
         {
           method: "GET",
           headers: {
@@ -55,7 +55,7 @@ export const Cita2 = () => {
       // Fetching additional data using the ids obtained from the first fetch
       const appointments = await Promise.all(
         ids.map(async id => {
-          const appointmentResponse = await fetch(`https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us89b.gitpod.io/api/mediGeeks/hours/${id}`, {
+          const appointmentResponse = await fetch(`https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us98.gitpod.io/api/mediGeeks/hours/${id}`, {
             method: "GET",
             headers: {
               Authorization: "Bearer " + localStorage.getItem("token"),
@@ -64,7 +64,7 @@ export const Cita2 = () => {
           const appointmentData = await appointmentResponse.json();
           console.log('appointmentData:', appointmentData);
   
-          const infoResponse = await fetch(`https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us89b.gitpod.io/api/mediGeeks/info/${id}`, {
+          const infoResponse = await fetch(`https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us98.gitpod.io/mediGeeks/info/${id}`, {
             method: "GET",
             headers: {
               Authorization: "Bearer " + localStorage.getItem("token"),
@@ -73,7 +73,7 @@ export const Cita2 = () => {
           const infoData = await infoResponse.json();
           console.log('infoData:', infoData);
   
-          const centerResponse = await fetch(`https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us89b.gitpod.io/api/mediGeeks/centersname/${parseInt(Object.values(infoData)[0].center_id)}`, {
+          const centerResponse = await fetch(`https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us98.gitpod.io/api/mediGeeks/centersname/${parseInt(Object.values(infoData)[0].center_id)}`, {
             method: "GET",
             headers: {
               "Authorization": "Bearer " + localStorage.getItem("token"),
